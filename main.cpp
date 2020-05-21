@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout<<"hjwnb!!!!hhh"<<endl;
+    cout<<"h"<<endl;
     QApplication a(argc, argv);
     Mahjong w;
     w.show();
