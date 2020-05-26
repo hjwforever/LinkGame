@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout<<"2222222222222222222"<<endl;
+    cout<<"233333333333333"<<endl;
     QApplication a(argc, argv);
     LinkGame w;
     w.show();
