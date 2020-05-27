@@ -17,14 +17,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chooselevel_ui.cpp \
+    game_ui.cpp \
     main.cpp \
-    linkgame.cpp
+    linkgame.cpp \
+    set_ui.cpp
 
 HEADERS += \
-    linkgame.h
+    chooselevel_ui.h \
+    game_ui.h \
+    linkgame.h \
+    set_ui.h
 
 FORMS += \
-    linkgame.ui
+    chooselevel_ui.ui \
+    game_ui.ui \
+    linkgame.ui \
+    set_ui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
