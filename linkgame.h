@@ -16,6 +16,13 @@ public:
     LinkGame(QWidget *parent = nullptr);
     ~LinkGame();
 
+private slots:
+    void on_onePersonButton_clicked();
+
+    void on_twoPersonButton_clicked();
+
+    void on_setButton_clicked();
+
 private:
     Ui::LinkGame *ui;
 };

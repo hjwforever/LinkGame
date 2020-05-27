@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     chooselevel_ui.cpp \
     game_ui.cpp \
+    global_value_method.cpp \
     main.cpp \
     linkgame.cpp \
     set_ui.cpp
@@ -26,6 +27,7 @@ SOURCES += \
 HEADERS += \
     chooselevel_ui.h \
     game_ui.h \
+    global_value_method.h \
     linkgame.h \
     set_ui.h
 

@@ -14,9 +14,15 @@ class Game_UI : public QMainWindow
 public:
     explicit Game_UI(QWidget *parent = nullptr);
     ~Game_UI();
+    void setLevel(int level);
+    int getLevel();
+
+private slots:
+    void on_returnButton_clicked();
 
 private:
     Ui::Game_UI *ui;
+    int level=1;
 };
 
 #endif // GAME_UI_H

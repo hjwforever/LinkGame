@@ -15,6 +15,17 @@ public:
     explicit ChooseLevel_UI(QWidget *parent = nullptr);
     ~ChooseLevel_UI();
 
+private slots:
+    void on_easyButton_clicked();
+
+    void on_normalButton_clicked();
+
+    void on_hardButton_clicked();
+
+    void on_returnButton_clicked();
+
+    void on_setButton_clicked();
+
 private:
     Ui::ChooseLevel_UI *ui;
 };

@@ -7,6 +7,11 @@
 #include <QDebug>
 #include <QSysInfo>
 
+#include"chooselevel_ui.h"
+#include"set_ui.h"
+
+extern Set_UI *set_ui;
+
 LinkGame::LinkGame(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::LinkGame)
@@ -19,3 +24,24 @@ LinkGame::~LinkGame()
     delete ui;
 }
 
+
+void LinkGame::on_onePersonButton_clicked()
+{
+    ChooseLevel_UI *chooseUI_One = new ChooseLevel_UI;
+    chooseUI_One->show();
+    this->close();//这里不能用delete，因为this是main函数中创建的栈空间系统自动释放
+}
+
+void LinkGame::on_twoPersonButton_clicked()
+{
+    ChooseLevel_UI *chooseUI_Two = new ChooseLevel_UI;
+    chooseUI_Two->show();
+    this->close();//这里不能用delete，因为this是main函数中创建的栈空间系统自动释放
+}
+
+void LinkGame::on_setButton_clicked()
+{
+    set_ui->setParentName("chooseLevel_ui");
+    set_ui->show();
+    delete this;
+}
