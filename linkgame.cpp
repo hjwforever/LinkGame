@@ -12,6 +12,7 @@ LinkGame::LinkGame(QWidget *parent)
     , ui(new Ui::LinkGame)
 {
     ui->setupUi(this);
+   //TEST
 }
 
 LinkGame::~LinkGame()

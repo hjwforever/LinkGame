@@ -1,5 +1,5 @@
 #include "linkgame.h"
-#include <QDebug>
+
 #include <QApplication>
 
 //≤‚ ‘***********************
