@@ -50,9 +50,3 @@ void ChooseLevel_UI::on_returnButton_clicked()
     delete this;
 }
 
-void ChooseLevel_UI::on_setButton_clicked()
-{
-    set_ui->setParentName("chooseLevel_ui");
-    set_ui->show();
-    delete this;
-}

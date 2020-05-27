@@ -24,8 +24,6 @@ private slots:
 
     void on_returnButton_clicked();
 
-    void on_setButton_clicked();
-
 private:
     Ui::ChooseLevel_UI *ui;
 };
