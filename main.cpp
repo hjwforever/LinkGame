@@ -4,7 +4,6 @@
 
 int main(int argc, char *argv[])
 {
-    //jaosfha f
     QApplication a(argc, argv);
     LinkGame w;
     w.show();
