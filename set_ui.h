@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include<iostream>
+
+#include"musicthread.h"
+
 using namespace std;
 
 namespace Ui {
@@ -26,9 +29,14 @@ protected:
 private slots:
     void on_returnButton_clicked();
 
+    void on_BGM_pushButton_clicked();
+
 private:
     Ui::Set_UI *ui;
     string parentName="";
+
+public:
+    MusicThread musicThread;
 };
 
 #endif // SET_UI_H

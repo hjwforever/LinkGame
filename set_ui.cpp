@@ -40,3 +40,8 @@ void Set_UI::on_returnButton_clicked()
 }
 
 
+
+void Set_UI::on_BGM_pushButton_clicked()
+{
+    musicThread.start();
+}
