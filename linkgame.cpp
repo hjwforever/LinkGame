@@ -41,7 +41,7 @@ void LinkGame::on_twoPersonButton_clicked()
 
 void LinkGame::on_setButton_clicked()
 {
-    set_ui->setParentName("chooseLevel_ui");
+    set_ui->setParentName("linkgame_ui");
     set_ui->show();
-    delete this;
+    //delete this;
 }

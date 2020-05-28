@@ -20,6 +20,9 @@ public:
     void setParentName(string parentName);
     string getParentName();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private slots:
     void on_returnButton_clicked();
 
