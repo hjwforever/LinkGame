@@ -257,7 +257,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="image_style_comboBox">
          <property name="minimumSize">
           <size>
            <width>120</width>
@@ -296,11 +296,6 @@
            <string>人脸</string>
           </property>
          </item>
-         <item>
-          <property name="text">
-           <string>矿石</string>
-          </property>
-         </item>
         </widget>
        </item>
       </layout>
@@ -324,7 +319,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="choose_BGM_pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -388,7 +383,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="method_and_rule_pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -452,7 +447,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="save_set_pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
