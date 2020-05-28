@@ -204,7 +204,7 @@
           </font>
          </property>
          <property name="text">
-          <string>开/关</string>
+          <string>开</string>
          </property>
         </widget>
        </item>

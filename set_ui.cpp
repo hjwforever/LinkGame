@@ -9,6 +9,12 @@ Set_UI::Set_UI(QWidget *parent) :
     ui(new Ui::Set_UI)
 {
     ui->setupUi(this);
+    gameSound = new QMediaPlayer;//创建播放器
+    gameList = new QMediaPlaylist;//创建播放列表
+    gameList->addMedia(QUrl("qrc:/new/prefix1/C:/Users/ddll8/Desktop/China-X.mp3"));//添加音乐
+    gameList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);//循环播放
+    gameSound->setPlaylist(gameList);
+    gameSound->setVolume(50);
 }
 
 Set_UI::~Set_UI()
@@ -43,5 +49,14 @@ void Set_UI::on_returnButton_clicked()
 
 void Set_UI::on_BGM_pushButton_clicked()
 {
-    musicThread.start();
+    QString s;
+    s=ui->BGM_pushButton->text();
+    if(s=="开")
+    {
+        gameSound->play();
+        ui->BGM_pushButton->setText("关");
+    }else{
+        gameSound->pause();
+        ui->BGM_pushButton->setText("开");
+    }
 }

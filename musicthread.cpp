@@ -3,21 +3,18 @@
 MusicThread::MusicThread()
 {
     stopped=false;
+
 }
 
 void MusicThread::stop(){
-    stopped = true;
+    gameSound->pause();
 }
 
 void MusicThread::run(){
-//    while(!stopped){
-////        srand((unsigned)time(NULL));
-////        int randNum=1+rand()%2;
-////        Sleep(randNum*500);
-//        cout<<"11111111111111111"<<endl;
-//    }
 
+    gameSound->play();
     cout<<"11111111111111111"<<endl;
 
     stopped=false;
 }
+
