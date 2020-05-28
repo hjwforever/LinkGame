@@ -24,6 +24,9 @@ private slots:
 
     void on_returnButton_clicked();
 
+signals:
+    void createMap();
+
 private:
     Ui::ChooseLevel_UI *ui;
 };

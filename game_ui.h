@@ -4,6 +4,9 @@
 #include <QMainWindow>
 
 #include"map.h"
+#include <QtMultimedia/QMediaPlayer>
+#include<QtMultimedia/QMediaPlaylist>
+#include"mybutton.h"
 
 namespace Ui {
 class Game_UI;
@@ -26,7 +29,12 @@ private slots:
 
     void on_myButton_clicked(int row,int y);
 
+    void createGameMap();
+
 private:
+    QMediaPlayer *gameSound ;//= new QMediaPlayer;//创建播放器
+    QMediaPlaylist *gameList; //= new QMediaPlaylist;//创建播放链表
+
     Ui::Game_UI *ui;
     int level=1;
     Map map;
@@ -38,6 +46,8 @@ private:
     int start_x=20;
     int start_y=20;
     int edgeOfButton=60;
+
+    MyButton*** gameButtonMap;
 };
 
 #endif // GAME_UI_H

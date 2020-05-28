@@ -14,7 +14,7 @@ Set_UI::Set_UI(QWidget *parent) :
     gameList->addMedia(QUrl("qrc:/voice/music1.mp3"));//添加音乐
     gameList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);//循环播放
     gameSound->setPlaylist(gameList);
-    gameSound->setVolume(50);
+    gameSound->setVolume(20);
 }
 
 Set_UI::~Set_UI()
