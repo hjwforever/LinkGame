@@ -33,6 +33,25 @@
      <string>返回</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="beginButton">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>30</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>开始</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

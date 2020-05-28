@@ -22,7 +22,9 @@ SOURCES += \
     global_value_method.cpp \
     main.cpp \
     linkgame.cpp \
+    map.cpp \
     musicthread.cpp \
+    mybutton.cpp \
     set_ui.cpp
 
 HEADERS += \
@@ -30,7 +32,10 @@ HEADERS += \
     game_ui.h \
     global_value_method.h \
     linkgame.h \
+    linklist.h \
+    map.h \
     musicthread.h \
+    mybutton.h \
     set_ui.h
 
 FORMS += \

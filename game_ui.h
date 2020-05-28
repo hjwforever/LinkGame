@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include"map.h"
+
 namespace Ui {
 class Game_UI;
 }
@@ -20,9 +22,22 @@ public:
 private slots:
     void on_returnButton_clicked();
 
+    void on_beginButton_clicked();
+
+    void on_myButton_clicked(int row,int y);
+
 private:
     Ui::Game_UI *ui;
     int level=1;
+    Map map;
+    int** gameMap;
+    int rowSize=10;
+    int columnSize=10;
+    int numOfPic=8;
+
+    int start_x=20;
+    int start_y=20;
+    int edgeOfButton=60;
 };
 
 #endif // GAME_UI_H
