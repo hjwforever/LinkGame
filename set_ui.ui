@@ -140,13 +140,13 @@
         <widget class="QLabel" name="BGM_label">
          <property name="minimumSize">
           <size>
-           <width>120</width>
+           <width>150</width>
            <height>40</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>150</width>
            <height>40</height>
           </size>
          </property>
@@ -219,13 +219,13 @@
         <widget class="QLabel" name="image_style_label">
          <property name="minimumSize">
           <size>
-           <width>120</width>
+           <width>150</width>
            <height>40</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>150</width>
            <height>40</height>
           </size>
          </property>
@@ -333,13 +333,13 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>180</width>
+           <width>210</width>
            <height>40</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>180</width>
+           <width>210</width>
            <height>40</height>
           </size>
          </property>
@@ -397,13 +397,13 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>160</width>
+           <width>180</width>
            <height>40</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>160</width>
+           <width>180</width>
            <height>40</height>
           </size>
          </property>
@@ -461,13 +461,13 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>120</width>
+           <width>140</width>
            <height>40</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>140</width>
            <height>40</height>
           </size>
          </property>
