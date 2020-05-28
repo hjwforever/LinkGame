@@ -17,11 +17,17 @@
    <widget class="QPushButton" name="easyButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>310</x>
       <y>120</y>
-      <width>171</width>
-      <height>61</height>
+      <width>180</width>
+      <height>60</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>简单</string>
@@ -30,11 +36,17 @@
    <widget class="QPushButton" name="normalButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>310</x>
       <y>200</y>
-      <width>171</width>
-      <height>61</height>
+      <width>180</width>
+      <height>60</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>普通</string>
@@ -43,11 +55,17 @@
    <widget class="QPushButton" name="hardButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>310</x>
       <y>280</y>
-      <width>171</width>
-      <height>61</height>
+      <width>180</width>
+      <height>60</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>困难</string>
@@ -56,28 +74,23 @@
    <widget class="QPushButton" name="returnButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>310</x>
       <y>360</y>
-      <width>171</width>
-      <height>61</height>
+      <width>180</width>
+      <height>60</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>返回</string>
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>26</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
