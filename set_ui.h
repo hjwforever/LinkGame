@@ -22,6 +22,8 @@ public:
 
     void setParentName(string parentName);
     string getParentName();
+    QMediaPlayer *gameSound ;//= new QMediaPlayer;//创建播放器
+    QMediaPlaylist *gameList; //= new QMediaPlaylist;//创建播放链表
 
 protected:
     void closeEvent(QCloseEvent *event);
