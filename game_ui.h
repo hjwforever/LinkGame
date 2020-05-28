@@ -33,7 +33,7 @@ private:
     int** gameMap;
     int rowSize=10;
     int columnSize=10;
-    int numOfPic=8;
+    int numOfPic=10;
 
     int start_x=20;
     int start_y=20;

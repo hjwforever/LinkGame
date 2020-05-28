@@ -59,12 +59,12 @@ void Game_UI::on_beginButton_clicked()
             myButton->show();
             connect(myButton, SIGNAL(clicked(int,int)),this, SLOT(on_myButton_clicked(int,int)));
 
-
+            myButton->setText(QString::number(gameMap[i][j]));
         }
         cout<<endl;
     }
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
-
+    cout<<row<<" "<<column<<endl;
 }

@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/new/prefix1"/>
     <qresource prefix="/">
-        <file>voice/China-X.mp3</file>
+        <file>voice/music1.mp3</file>
     </qresource>
 </RCC>
