@@ -21,6 +21,7 @@ Game_UI::Game_UI(QWidget *parent) :
     gameList->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//播放一次
     gameSound->setPlaylist(gameList);
     gameSound->setVolume(50);
+
 }
 
 Game_UI::~Game_UI()
@@ -87,11 +88,25 @@ void Game_UI::createGameMap(){
         cout<<endl;
     }
 
-
-
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
     cout<<row<<" "<<column<<endl;
+
+    playvoice(3);
+}
+
+void Game_UI::playvoice(int index)
+{
+    gameSound = new QMediaPlayer;//创建播放器
+    gameList = new QMediaPlaylist;//创建播放列表
+    QString url="qrc:/voice/music.mp3";
+    url.insert(16,QString::number(index));
+    cout<<url.toStdString()<<endl;
+    gameList->addMedia(QUrl(url));//添加音乐
+    gameList->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//播放一次
+    gameSound->setPlaylist(gameList);
+    gameSound->setVolume(50);
+
     gameSound->play();
 }

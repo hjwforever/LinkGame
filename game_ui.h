@@ -21,7 +21,7 @@ public:
     ~Game_UI();
     void setLevel(int level);
     int getLevel();
-
+    void playvoice(int index);   //播放指定编号的音频
 private slots:
     void on_returnButton_clicked();
 
