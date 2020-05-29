@@ -7,6 +7,7 @@
 #include <QtMultimedia/QMediaPlayer>
 #include<QtMultimedia/QMediaPlaylist>
 #include"mybutton.h"
+#include"voiceplayer.h"
 
 namespace Ui {
 class Game_UI;
@@ -21,7 +22,7 @@ public:
     ~Game_UI();
     void setLevel(int level);
     int getLevel();
-    void playvoice(int index);   //播放指定编号的音频
+    VoicePlayer *voiceplayer;
 private slots:
     void on_returnButton_clicked();
 
@@ -32,8 +33,7 @@ private slots:
     void createGameMap();
 
 private:
-    QMediaPlayer *gameSound ;//= new QMediaPlayer;//创建播放器
-    QMediaPlaylist *gameList; //= new QMediaPlaylist;//创建播放链表
+
 
     Ui::Game_UI *ui;
     int level=1;

@@ -9,6 +9,7 @@ Game_UI::Game_UI(QWidget *parent) :
     ui(new Ui::Game_UI)
 {
     ui->setupUi(this);
+    voiceplayer=new VoicePlayer;
 }
 
 Game_UI::~Game_UI()
@@ -86,19 +87,6 @@ void Game_UI::on_myButton_clicked(int row,int column){
     /////////////////
     cout<<row<<" "<<column<<endl;
     //////////////////////////////
-    playvoice(1);
-}
 
-void Game_UI::playvoice(int index)
-{
-    gameSound = new QMediaPlayer;//创建播放器
-    gameList = new QMediaPlaylist;//创建播放列表
-    QString url="qrc:/voice/button_Sound/sound.mp3";
-    url.insert(29,QString::number(index));
-    cout<<url.toStdString()<<endl;
-    gameList->addMedia(QUrl(url));//添加音乐
-    gameList->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//播放一次
-    gameSound->setPlaylist(gameList);
-    gameSound->setVolume(20);
-    gameSound->play();
+    voiceplayer->Play_Voice(1);//播放按钮音效
 }

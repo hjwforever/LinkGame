@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include<iostream>
-
+#include "voiceplayer.h"
 #include"musicthread.h"
 
 using namespace std;
@@ -22,8 +22,7 @@ public:
 
     void setParentName(string parentName);
     string getParentName();
-    QMediaPlayer *gameSound ;//= new QMediaPlayer;//创建播放器
-    QMediaPlaylist *gameList; //= new QMediaPlaylist;//创建播放链表
+    VoicePlayer *voiceplayer;
 
 protected:
     void closeEvent(QCloseEvent *event);

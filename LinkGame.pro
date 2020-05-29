@@ -26,7 +26,8 @@ SOURCES += \
     map.cpp \
     musicthread.cpp \
     mybutton.cpp \
-    set_ui.cpp
+    set_ui.cpp \
+    voiceplayer.cpp
 
 HEADERS += \
     chooselevel_ui.h \
@@ -37,7 +38,8 @@ HEADERS += \
     map.h \
     musicthread.h \
     mybutton.h \
-    set_ui.h
+    set_ui.h \
+    voiceplayer.h
 
 FORMS += \
     chooselevel_ui.ui \
