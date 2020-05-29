@@ -86,6 +86,12 @@
       <height>600</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>Agency FB</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
    </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
