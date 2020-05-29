@@ -2,8 +2,8 @@
 #include "ui_game_ui.h"
 #include"chooselevel_ui.h"
 #include<iostream>
-//#include<QPixmap>
-//#include<QGraphicsScene>
+#include<QPixmap>
+#include<QGraphicsScene>
 using namespace std;
 
 Game_UI::Game_UI(QWidget *parent) :
