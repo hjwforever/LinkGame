@@ -515,8 +515,8 @@
    <widget class="QPushButton" name="returnButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>30</width>
       <height>30</height>
      </rect>

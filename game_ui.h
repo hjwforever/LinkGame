@@ -31,7 +31,6 @@ private slots:
 
 private:
 
-
     Ui::Game_UI *ui;
     int level=1;
     Map map;
@@ -39,11 +38,9 @@ private:
     int rowSize=10;
     int columnSize=10;
     int numOfPic=10;
-
     int start_x=20;
     int start_y=20;
     int edgeOfButton=60;
-
     MyButton*** gameButtonMap;
 };
 
