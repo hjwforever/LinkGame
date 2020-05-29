@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>91</width>
-      <height>41</height>
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -30,7 +30,20 @@
      </font>
     </property>
     <property name="text">
-     <string>返回</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Voice.qrc">
+      <normaloff>:/image/button_icon/return1.png</normaloff>:/image/button_icon/return1.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="beginButton">
@@ -52,8 +65,35 @@
      <string>重新开始</string>
     </property>
    </widget>
+   <widget class="QGraphicsView" name="game_UI_graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>800</width>
+      <height>600</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>800</width>
+      <height>600</height>
+     </size>
+    </property>
+   </widget>
+   <zorder>game_UI_graphicsView</zorder>
+   <zorder>returnButton</zorder>
+   <zorder>beginButton</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

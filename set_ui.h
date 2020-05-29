@@ -29,7 +29,6 @@ protected:
 
 private slots:
     void on_returnButton_clicked();
-
     void on_BGM_pushButton_clicked();
 
 private:

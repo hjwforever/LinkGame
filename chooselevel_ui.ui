@@ -90,8 +90,43 @@
      <string>返回</string>
     </property>
    </widget>
+   <widget class="QLabel" name="choose_Level_Background_label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>800</width>
+      <height>600</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>800</width>
+      <height>600</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Voice.qrc">:/image/background/background6.jpg</pixmap>
+    </property>
+   </widget>
+   <zorder>choose_Level_Background_label</zorder>
+   <zorder>easyButton</zorder>
+   <zorder>normalButton</zorder>
+   <zorder>hardButton</zorder>
+   <zorder>returnButton</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

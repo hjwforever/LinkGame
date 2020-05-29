@@ -293,7 +293,12 @@
          </item>
          <item>
           <property name="text">
-           <string>人脸</string>
+           <string>人脸(简单)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>人脸(困难)</string>
           </property>
          </item>
         </widget>
@@ -512,8 +517,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>70</width>
-      <height>40</height>
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -522,24 +527,64 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Voice.qrc">
+      <normaloff>:/image/button_icon/return2.png</normaloff>:/image/button_icon/return2.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="set_UI_Background_label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>300</width>
+      <height>400</height>
+     </rect>
+    </property>
     <property name="minimumSize">
      <size>
-      <width>60</width>
-      <height>40</height>
+      <width>300</width>
+      <height>400</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>16777215</width>
-      <height>40</height>
+      <width>300</width>
+      <height>400</height>
      </size>
     </property>
     <property name="text">
-     <string>返回</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Voice.qrc">:/image/background/set_UI_Background.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
+   <zorder>set_UI_Background_label</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>returnButton</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

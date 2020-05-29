@@ -9,5 +9,12 @@
         <file>background/background2.jpg</file>
         <file>background/background3.jpg</file>
         <file>background/background4.jpg</file>
+        <file>background/background5.jpg</file>
+        <file>background/background6.jpg</file>
+        <file>background/background7.jpg</file>
+        <file>background/background8.jpg</file>
+        <file>background/set_UI_Background.jpg</file>
+        <file>button_icon/return2.png</file>
+        <file>button_icon/return1.png</file>
     </qresource>
 </RCC>

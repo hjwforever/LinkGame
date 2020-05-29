@@ -25,11 +25,8 @@ public:
     VoicePlayer *voiceplayer;
 private slots:
     void on_returnButton_clicked();
-
     void on_beginButton_clicked();
-
     void on_myButton_clicked(int row,int y);
-
     void createGameMap();
 
 private:

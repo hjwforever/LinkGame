@@ -18,9 +18,7 @@ public:
 
 private slots:
     void on_onePersonButton_clicked();
-
     void on_twoPersonButton_clicked();
-
     void on_setButton_clicked();
 
 private:
