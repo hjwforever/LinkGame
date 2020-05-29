@@ -1,12 +1,7 @@
 #include "game_ui.h"
 #include "ui_game_ui.h"
-
 #include"chooselevel_ui.h"
-
 #include<iostream>
-
-
-
 using namespace std;
 
 Game_UI::Game_UI(QWidget *parent) :
@@ -14,14 +9,6 @@ Game_UI::Game_UI(QWidget *parent) :
     ui(new Ui::Game_UI)
 {
     ui->setupUi(this);
-
-    gameSound = new QMediaPlayer;//创建播放器
-    gameList = new QMediaPlaylist;//创建播放列表
-    gameList->addMedia(QUrl("qrc:/voice/music2.mp3"));//添加音乐
-    gameList->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//播放一次
-    gameSound->setPlaylist(gameList);
-    gameSound->setVolume(50);
-
 }
 
 Game_UI::~Game_UI()
@@ -50,13 +37,14 @@ void Game_UI::on_returnButton_clicked()
 void Game_UI::on_beginButton_clicked()
 {
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
-
+    ////////////////////////
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
             gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
         }
         cout<<endl;
     }
+    ///////////////////////////////
 }
 
 void Game_UI::createGameMap(){
@@ -73,7 +61,9 @@ void Game_UI::createGameMap(){
 
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
+            /////////////////
             cout<<gameMap[i][j]<<"\t";
+            ///////////////////////
             MyButton *myButton=new MyButton;
             myButton->setParent(this);
             myButton->setCoordinate(i,j);
@@ -85,28 +75,30 @@ void Game_UI::createGameMap(){
 
             gameButtonMap[i][j]=myButton;
         }
+        /////////////////
         cout<<endl;
+        //////////////////
     }
 
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
+    /////////////////
     cout<<row<<" "<<column<<endl;
-
-    playvoice(3);
+    //////////////////////////////
+    playvoice(1);
 }
 
 void Game_UI::playvoice(int index)
 {
     gameSound = new QMediaPlayer;//创建播放器
     gameList = new QMediaPlaylist;//创建播放列表
-    QString url="qrc:/voice/music.mp3";
-    url.insert(16,QString::number(index));
+    QString url="qrc:/voice/button_Sound/sound.mp3";
+    url.insert(29,QString::number(index));
     cout<<url.toStdString()<<endl;
     gameList->addMedia(QUrl(url));//添加音乐
     gameList->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//播放一次
     gameSound->setPlaylist(gameList);
-    gameSound->setVolume(50);
-
+    gameSound->setVolume(20);
     gameSound->play();
 }

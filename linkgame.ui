@@ -56,7 +56,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>220</y>
+      <y>290</y>
       <width>160</width>
       <height>50</height>
      </rect>
@@ -75,7 +75,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>290</y>
+      <y>360</y>
       <width>160</width>
       <height>50</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>360</y>
+      <y>430</y>
       <width>160</width>
       <height>50</height>
      </rect>
@@ -109,13 +109,13 @@
      <string>退出</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="background_label">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>199</y>
-      <width>141</width>
-      <height>111</height>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
      </rect>
     </property>
     <property name="font">
@@ -125,11 +125,45 @@
      </font>
     </property>
     <property name="text">
-     <string>背景图片</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Voice.qrc">:/image/background/background3.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="ranking_List_Button">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>220</y>
+      <width>160</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>排行榜</string>
+    </property>
+   </widget>
+   <zorder>background_label</zorder>
+   <zorder>onePersonButton</zorder>
+   <zorder>twoPersonButton</zorder>
+   <zorder>setButton</zorder>
+   <zorder>aboutButton</zorder>
+   <zorder>exitButton</zorder>
+   <zorder>ranking_List_Button</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

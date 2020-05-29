@@ -1,8 +1,13 @@
 <RCC>
-    <qresource prefix="/new/prefix1"/>
-    <qresource prefix="/">
-        <file>voice/music1.mp3</file>
-        <file>voice/music2.mp3</file>
-        <file>voice/music3.mp3</file>
+    <qresource prefix="/voice">
+        <file>BGM/China-X.mp3</file>
+        <file>button_Sound/sound1.mp3</file>
+        <file>button_Sound/sound2.mp3</file>
+    </qresource>
+    <qresource prefix="/image">
+        <file>background/background1.jpg</file>
+        <file>background/background2.jpg</file>
+        <file>background/background3.jpg</file>
+        <file>background/background4.jpg</file>
     </qresource>
 </RCC>

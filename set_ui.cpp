@@ -1,6 +1,5 @@
 #include "set_ui.h"
 #include "ui_set_ui.h"
-
 #include"linkgame.h"
 #include"chooselevel_ui.h"
 
@@ -11,7 +10,7 @@ Set_UI::Set_UI(QWidget *parent) :
     ui->setupUi(this);
     gameSound = new QMediaPlayer;//创建播放器
     gameList = new QMediaPlaylist;//创建播放列表
-    gameList->addMedia(QUrl("qrc:/voice/music1.mp3"));//添加音乐
+    gameList->addMedia(QUrl("qrc:/voice/BGM/China-X.mp3"));//添加音乐
     gameList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);//循环播放
     gameSound->setPlaylist(gameList);
     gameSound->setVolume(20);
@@ -29,6 +28,7 @@ void Set_UI::closeEvent(QCloseEvent *event){
 void Set_UI::setParentName(string parentName){
     this->parentName=parentName;
 }
+
 string Set_UI::getParentName(){
     return this->parentName;
 }
@@ -44,8 +44,6 @@ void Set_UI::on_returnButton_clicked()
 //    }
     this->hide();
 }
-
-
 
 void Set_UI::on_BGM_pushButton_clicked()
 {
