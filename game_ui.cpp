@@ -11,7 +11,6 @@ Game_UI::Game_UI(QWidget *parent) :
     ui(new Ui::Game_UI)
 {
     ui->setupUi(this);
-    voiceplayer=new VoicePlayer;
 }
 
 Game_UI::~Game_UI()
@@ -89,6 +88,6 @@ void Game_UI::on_myButton_clicked(int row,int column){
     /////////////////
     cout<<row<<" "<<column<<endl;
     //////////////////////////////
-
+    voiceplayer=new VoicePlayer;
     voiceplayer->Play_Voice(1);//≤•∑≈∞¥≈•“Ù–ß
 }
