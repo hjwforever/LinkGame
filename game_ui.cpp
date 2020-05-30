@@ -338,5 +338,5 @@ void Game_UI::on_pauseButton_clicked()
         gameTimer->start(1000);
         ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
     }
-     ui->label3->setVisible(isPause); //设置遮挡画布的可见性
+     ui->label3->setVisible(isPause); //设置遮挡画布（图片）的可见性
 }
