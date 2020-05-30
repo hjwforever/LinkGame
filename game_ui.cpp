@@ -117,6 +117,19 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 gameButtonMap[vertex1.first][vertex1.second]->hide();
                 count--;
 
+//                Vertex v1,v2;
+//                v2=list.takeFirst();
+//                v1=list.takeLast();
+                cout<<"length"<<list.length()<<endl;
+//                for(int i=1;i<=list.length();i++)
+//                {
+//                    cout<<i
+//                    //cout<<i<<"hhhhhhhhhh"<<list.takeAt(i).first<<" "<<list.takeAt(i).second<<endl;
+//                }
+                cout<<"hhhhhhhhhh1:"<<list.takeLast().first<<" "<<list.takeLast().second<<endl;
+                cout<<"hhhhhhhhhh2:"<<list.takeFirst().first<<" "<<list.takeFirst().second<<endl;
+               // cout<<"hhhhhhhhhhhh"<<v1.first<<" "<<v1.second<<" "<<v2.first<<" "<<v2.second<<endl;
+
                 //判断是否全部消除(游戏通关)
                 if(allCleared())
                 {

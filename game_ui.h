@@ -43,7 +43,7 @@ private:
     int edgeOfButton=60;              //按钮边长
 
     Vertex vertex1,vertex2;
-    int count=0;        //解题按钮计数器
+    int count=0;             //解题按钮计数器
     MyButton*** gameButtonMap;//存放按钮地址的二维数组
 };
 
