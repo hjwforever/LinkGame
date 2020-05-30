@@ -32,24 +32,31 @@ int Game_UI::getLevel(){
 
 void Game_UI::drawLine(int x1,int y1,int x2,int y2)
 {
+    QPoint pointa(x1+edgeOfButton/2,y1+edgeOfButton/2);  //点A
+    QPoint pointb(x2+edgeOfButton/2,y2+edgeOfButton/2);  //点B
+    QPen pen;
+    pen.setColor("red");
+    pen.setWidth(4);
+    QLine line(pointa,pointb);
+    ///////////////////////////////////
+    cout<<"坐标："<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<" "<<endl;
+    ////////////////////////////////////
+    Scence->addLine(line,pen);
+    ui->game_UI_graphicsView->update();
+}
 
-       QPoint pointa(x1+edgeOfButton/2,y1+edgeOfButton/2);  //点A
-       QPoint pointb(x2+edgeOfButton/2,y2+edgeOfButton/2);  //点B
-       //Scence->addLine(QLine(pointa,pointb),QPen(Qt::PenStyle::SolidLine));
-       QPen pen;
-       //pen.setColor("blue");
-       pen.setColor("red");
-       pen.setWidth(2);
-
-       QLine line(pointa,pointb);
-      // painter.setBrush(Qt::red);
-       //painter.drawLine(a.first,a.second,b.first,b.second);
-       //line.setLine(line.x1(),line.y1()+80,line.x2(),line.y2()+80);
-
-       cout<<"坐标："<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<" "<<endl;
-      Scence->addLine(line,pen);
-
-   ui->game_UI_graphicsView->update();
+void Game_UI::Erasure_Score()
+{
+    score++;
+    erasure_Interval = Erasure_Time.restart();
+    if(erasure_Interval<=1500){
+        continuous_Erasure++;
+        score+=continuous_Erasure;
+    }else{
+        continuous_Erasure = 0;
+    }
+    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+    ui->score_Label->setStyleSheet("color:white");
 }
 
 void Game_UI::initButtonImage()
@@ -58,8 +65,6 @@ void Game_UI::initButtonImage()
         for(int j=1;j<columnSize-1;j++){
             gameButtonMap[i][j]->setStyleSheet(QString("QPushButton{border-image: url(:/image/button_icon/fruit/%1.png)}").arg(gameMap[i][j]).toLatin1().data());
         }
-
-        cout<<endl;
     }
 }
 
@@ -75,21 +80,20 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
-    QIcon icon;
-    icon.addFile("qrc:/image/button_icon/animal/1.png");
-
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
-    //////////////////////////////
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
             gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
             gameButtonMap[i][j]->show();
         }
-
-        cout<<endl;
     }
-    ///////////////////////////////
     initButtonImage();
+    score=0;
+    continuous_Erasure=0;
+    erasure_Interval=0;
+    Scence->clear();
+    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+    ui->score_Label->setStyleSheet("color:white");
 }
 
 bool Game_UI::allCleared()
@@ -99,7 +103,7 @@ bool Game_UI::allCleared()
             if(gameMap[i][j] != 0)
                 return false;
         }
-        }
+    }
     return true;
 }
 
@@ -138,12 +142,7 @@ void Game_UI::createGameMap(){
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
-    /////////////////
-    cout<<row<<" "<<column<<endl;
-    //////////////////////////////
     voiceplayer=new VoicePlayer;
-    //voiceplayer->Play_Voice(1);//播放按钮音效
-
     if(count == 1){
         if(gameMap[row][column] == gameMap[vertex1.first][vertex1.second])
         {
@@ -158,7 +157,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 gameButtonMap[row][column]->hide();
                 gameButtonMap[vertex1.first][vertex1.second]->hide();
                 count--;
-
+                Erasure_Score();
                 for(int i=0;i<list.length();i++)
                 {
                     cout<<i<<"hhhhhhhhhh"<<list.at(i).first<<" "<<list.at(i).second<<endl;
@@ -167,36 +166,33 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 int x1,y1,x2,y2;
                 MyButton *button1=gameButtonMap[row][column];
                 MyButton *button2=gameButtonMap[vertex1.first][vertex1.second];
-                MyButton *button3,*button4;
+                MyButton *button3;
                 if(turnNum == 0)
                 {
-                     drawLine(button1->x(),button1->y(),button2->x(),button2->y());
+                    drawLine(button1->x(),button1->y(),button2->x(),button2->y());
                 }
                 else if(turnNum == 1)
                 {
-
-                     button3=gameButtonMap[list.at(0).first][list.at(0).second];
-
-                     drawLine(button1->x(),button1->y(),button3->x(),button3->y());
-                     drawLine(button3->x(),button3->y(),button2->x(),button2->y());
+                    button3=gameButtonMap[list.at(0).first][list.at(0).second];
+                    drawLine(button1->x(),button1->y(),button3->x(),button3->y());
+                    drawLine(button3->x(),button3->y(),button2->x(),button2->y());
                 }
                 else if(turnNum == 2)
                 {
-                     x1=list.at(0).second*edgeOfButton+start_x;
-                     y1=list.at(0).first*edgeOfButton+start_y;
-                     x2=list.at(1).second*edgeOfButton+start_x;
-                     y2=list.at(1).first*edgeOfButton+start_y;
-                     drawLine(button1->x(),button1->y(),x1,y1);
-                     drawLine(x1,y1,x2,y2);
-                     drawLine(x2,y2,button2->x(),button2->y());
+                    x1=list.at(0).second*edgeOfButton+start_x;
+                    y1=list.at(0).first*edgeOfButton+start_y;
+                    x2=list.at(1).second*edgeOfButton+start_x;
+                    y2=list.at(1).first*edgeOfButton+start_y;
+                    drawLine(button1->x(),button1->y(),x1,y1);
+                    drawLine(x1,y1,x2,y2);
+                    drawLine(x2,y2,button2->x(),button2->y());
                 }
-                    //drawLine(10,100,50,400);
-
-                //drawLine(list.at(0).first,list.at(0).second,list.at(1).first,list.at(1).second);
                 //判断是否全部消除(游戏通关)
                 if(allCleared())
                 {
+                    ////////////////////////////////待添加结束界面
                     cout<<"全部删除！！！"<<endl;
+                    ////////////////////////////////
                 }
             }
             else

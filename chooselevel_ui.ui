@@ -115,7 +115,10 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Voice.qrc">:/image/background/background6.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/background4.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <zorder>choose_Level_Background_label</zorder>

@@ -109,7 +109,7 @@
           </font>
          </property>
          <property name="text">
-          <string>设置</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; color:#ffffff;&quot;&gt;设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -157,7 +157,7 @@
           </font>
          </property>
          <property name="text">
-          <string>背景音乐</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;背景音乐&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -236,7 +236,7 @@
           </font>
          </property>
          <property name="text">
-          <string>图片风格</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;图片风格&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -293,12 +293,12 @@
          </item>
          <item>
           <property name="text">
-           <string>人脸(简单)</string>
+           <string>人脸 易</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>人脸(困难)</string>
+           <string>人脸 难</string>
           </property>
          </item>
         </widget>
@@ -572,7 +572,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Voice.qrc">:/image/background/set_UI_Background.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/set_UI_Background3.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

@@ -2,11 +2,11 @@
 #define GAME_UI_H
 
 #include <QMainWindow>
-
 #include"map.h"
 #include"mybutton.h"
 #include"voiceplayer.h"
 #include<QGraphicsScene>
+#include<QElapsedTimer>
 
 namespace Ui {
 class Game_UI;
@@ -25,6 +25,7 @@ public:
     bool allCleared();
     void initButtonImage();
     void drawLine(int x1,int y1,int x2,int y2);
+    void Erasure_Score();
 
 private slots:
     void on_returnButton_clicked();
@@ -44,11 +45,13 @@ private:
     int start_x=20;                        //(0，0)按钮的横坐标起始位置，ps：(0，0)按钮不显示
     int start_y=20;                        //(0，0)按钮的纵坐标起始位置
     int edgeOfButton=60;              //按钮边长
-
+    int score = 0;                            //得分
+    int continuous_Erasure = 0;      //连消次数
+    int erasure_Interval = 0;          //两次消除间隔，ms
+    QElapsedTimer Erasure_Time;
     Vertex vertex1,vertex2;
     int count=0;             //解题按钮计数器
     MyButton*** gameButtonMap;//存放按钮地址的二维数组
-
     QGraphicsScene *Scence;
 };
 

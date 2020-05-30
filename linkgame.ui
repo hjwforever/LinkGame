@@ -140,7 +140,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Voice.qrc">:/image/background/background7.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/background5.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -165,6 +165,28 @@
      <string>排行榜</string>
     </property>
    </widget>
+   <widget class="QLabel" name="software_Name_Label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>230</y>
+      <width>241</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>40</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;年年&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;连连看&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
    <zorder>linkgame_background_label</zorder>
    <zorder>onePersonButton</zorder>
    <zorder>twoPersonButton</zorder>
@@ -172,6 +194,7 @@
    <zorder>aboutButton</zorder>
    <zorder>exitButton</zorder>
    <zorder>ranking_List_Button</zorder>
+   <zorder>software_Name_Label</zorder>
   </widget>
  </widget>
  <resources>
