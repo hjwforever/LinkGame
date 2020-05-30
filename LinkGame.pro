@@ -5,6 +5,7 @@ QT       +=multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
+CONFIG+=resources_big
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -19,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     chooselevel_ui.cpp \
+    deleteqgraphicsitemthread.cpp \
     game_ui.cpp \
     global_value_method.cpp \
     main.cpp \
@@ -31,6 +33,7 @@ SOURCES += \
 
 HEADERS += \
     chooselevel_ui.h \
+    deleteqgraphicsitemthread.h \
     game_ui.h \
     global_value_method.h \
     linkgame.h \

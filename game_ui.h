@@ -7,6 +7,7 @@
 #include"voiceplayer.h"
 #include<QGraphicsScene>
 #include<QElapsedTimer>
+#include<QGraphicsItem>
 
 namespace Ui {
 class Game_UI;
@@ -32,6 +33,7 @@ private slots:
     void on_beginButton_clicked();
     void on_myButton_clicked(int row,int y);
     void createGameMap();
+    void on_deleteThread(int x,int y);
 
 private:
 

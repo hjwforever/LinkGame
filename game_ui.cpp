@@ -1,6 +1,7 @@
 #include "game_ui.h"
 #include "ui_game_ui.h"
 #include"chooselevel_ui.h"
+#include"deleteqgraphicsitemthread.h"
 #include<iostream>
 #include<QPixmap>
 #include<QGraphicsScene>
@@ -37,7 +38,7 @@ void Game_UI::drawLine(int x1,int y1,int x2,int y2)
     QPoint pointa(x1+edgeOfButton/2,y1+edgeOfButton/2);  //点A
     QPoint pointb(x2+edgeOfButton/2,y2+edgeOfButton/2);  //点B
     QPen pen;
-    pen.setColor("red");
+    pen.setColor("white");
     pen.setWidth(4);
     QLine line(pointa,pointb);
     ///////////////////////////////////
@@ -45,6 +46,9 @@ void Game_UI::drawLine(int x1,int y1,int x2,int y2)
     ////////////////////////////////////
     Scence->addLine(line,pen);
     ui->game_UI_graphicsView->update();
+    DeleteQGraphicsItemThread *thread=new DeleteQGraphicsItemThread(x1+edgeOfButton/2,y1+edgeOfButton/2);
+    thread->start();
+    connect(thread, SIGNAL(deleteItem(int,int)),this, SLOT(on_deleteThread(int,int)));
 }
 
 void Game_UI::Erasure_Score()
@@ -68,6 +72,16 @@ void Game_UI::initButtonImage()
             gameButtonMap[i][j]->setStyleSheet(QString("QPushButton{border-image: url(:/image/button_icon/%1/%2.png)}").arg(currentModel[set_ui->currentModelNum]).arg(gameMap[i][j]).toLatin1().data());
         }
     }
+}
+
+void Game_UI::on_deleteThread(int x,int y){
+    QList<QGraphicsItem *> item_list_p = Scence->items(QRectF(x, y, 1, 1), Qt::IntersectsItemShape);
+
+        //删除元素
+        for(int i=0; i<item_list_p.size(); i++){
+            Scence->removeItem(item_list_p[i]);  //从scene移除
+            delete item_list_p[i];  //释放内存
+        }
 }
 
 void Game_UI::on_returnButton_clicked()
