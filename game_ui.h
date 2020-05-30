@@ -39,6 +39,9 @@ private:
     int start_x=20;                        //(0，0)按钮的横坐标起始位置，ps：(0，0)按钮不显示
     int start_y=20;                        //(0，0)按钮的纵坐标起始位置
     int edgeOfButton=60;              //按钮边长
+
+    Vertex vertex1,vertex2;
+    int count=0;        //解题按钮计数器
     MyButton*** gameButtonMap;//存放按钮地址的二维数组
 };
 
