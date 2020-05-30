@@ -6,6 +6,7 @@
 #include"map.h"
 #include"mybutton.h"
 #include"voiceplayer.h"
+#include<QGraphicsScene>
 
 namespace Ui {
 class Game_UI;
@@ -22,6 +23,7 @@ public:
     int getLevel();
     VoicePlayer *voiceplayer;
     bool allCleared();
+    void drawLine(int x1,int y1,int x2,int y2);
 
 private slots:
     void on_returnButton_clicked();
@@ -45,6 +47,8 @@ private:
     Vertex vertex1,vertex2;
     int count=0;             //解题按钮计数器
     MyButton*** gameButtonMap;//存放按钮地址的二维数组
+
+    QGraphicsScene *Scence;
 };
 
 #endif // GAME_UI_H

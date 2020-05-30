@@ -12,6 +12,9 @@ Game_UI::Game_UI(QWidget *parent) :
     ui(new Ui::Game_UI)
 {
     ui->setupUi(this);
+    Scence=new QGraphicsScene(this);
+    Scence->setSceneRect(0,0,this->width(),this->height());
+    ui->game_UI_graphicsView->setScene(Scence);
 }
 
 Game_UI::~Game_UI()
@@ -27,6 +30,28 @@ int Game_UI::getLevel(){
     return this->level;
 }
 
+void Game_UI::drawLine(int x1,int y1,int x2,int y2)
+{
+
+
+
+       QPoint pointa(x1,y1);  //点A
+       QPoint pointb(x2,y2);  //点B
+       //Scence->addLine(QLine(pointa,pointb),QPen(Qt::PenStyle::SolidLine));
+       QPen pen;
+       pen.setColor("blue");
+       pen.setWidth(2);
+
+       QLine line(pointa,pointb);
+      // painter.setBrush(Qt::red);
+       //painter.drawLine(a.first,a.second,b.first,b.second);
+       //line.setLine(line.x1(),line.y1()+80,line.x2(),line.y2()+80);
+
+       cout<<"坐标："<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<" "<<endl;
+      Scence->addLine(line,pen);
+
+   ui->game_UI_graphicsView->update();
+}
 void Game_UI::on_returnButton_clicked()
 {
     ChooseLevel_UI *chooseLevel_ui=new ChooseLevel_UI;
@@ -108,7 +133,8 @@ void Game_UI::on_myButton_clicked(int row,int column){
         if(gameMap[row][column] == gameMap[vertex1.first][vertex1.second])
         {
             QList<Vertex> list;
-            if(map.canLink_2(gameMap,row,column,vertex1.first,vertex1.second,list)!=-1)//判断能否连接消除
+            int turnNum = map.canLink_2(gameMap,row,column,vertex1.first,vertex1.second,list);
+            if(turnNum!=-1)//判断能否连接消除
             {
                 voiceplayer->Play_Voice(2);//播放消除音效
                 gameMap[row][column]=0;
@@ -122,6 +148,32 @@ void Game_UI::on_myButton_clicked(int row,int column){
                     cout<<i<<"hhhhhhhhhh"<<list.at(i).first<<" "<<list.at(i).second<<endl;
                 }
 
+                MyButton *button1=gameButtonMap[row][column];
+                MyButton *button2=gameButtonMap[vertex1.first][vertex1.second];
+                MyButton *button3,*button4;
+                if(turnNum == 0)
+                {
+                     drawLine(button1->x(),button1->y(),button2->x(),button2->y());
+                }
+                else if(turnNum == 1)
+                {
+                     button3=gameButtonMap[list.at(0).first][list.at(0).second];
+
+                     drawLine(button1->x(),button1->y(),button3->x(),button3->y());
+                     drawLine(button3->x(),button3->y(),button2->x(),button2->y());
+                }
+                else if(turnNum == 2)
+                {
+                     button3=gameButtonMap[list.at(0).first][list.at(0).second];
+                     button4=gameButtonMap[list.at(1).first][list.at(1).second];
+
+                     drawLine(button1->x(),button1->y(),button3->x(),button3->y());
+                     drawLine(button3->x(),button3->y(),button4->x(),button4->y());
+                     drawLine(button4->x(),button4->y(),button2->x(),button2->y());
+                }
+                    //drawLine(10,100,50,400);
+
+                //drawLine(list.at(0).first,list.at(0).second,list.at(1).first,list.at(1).second);
                 //判断是否全部消除(游戏通关)
                 if(allCleared())
                 {
@@ -148,6 +200,6 @@ void Game_UI::on_myButton_clicked(int row,int column){
         vertex1.second = column;
         count++;
     }
-
-
 }
+
+
