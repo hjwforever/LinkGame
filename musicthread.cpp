@@ -11,10 +11,7 @@ void MusicThread::stop(){
 }
 
 void MusicThread::run(){
-
     gameSound->play();
-    cout<<"11111111111111111"<<endl;
-
     stopped=false;
 }
 

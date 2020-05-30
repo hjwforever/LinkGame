@@ -35,8 +35,7 @@ int** Map::creatMap(int rowSize,int columnSize,int level,int picNum){
 
     int i=0;
     while(emptyVertexList.getLen()){
-
-    bool allTraped=true;                                   //空的点位是否全部碰壁
+        bool allTraped=true;                                   //空的点位是否全部碰壁
 
         for(int i=0;i<emptyVertexList.getLen();i++){
             Vertex tempVertex;
@@ -46,7 +45,6 @@ int** Map::creatMap(int rowSize,int columnSize,int level,int picNum){
                 break;
             }
         }
-
 
         if(!allTraped){
             Vertex vertex_1;
@@ -61,7 +59,6 @@ int** Map::creatMap(int rowSize,int columnSize,int level,int picNum){
             map[vertex_1.first][vertex_1.second]=1+i%picNum;       //将图片编号加到该坐标中
             emptyVertexList.del(indexOfvertex_1,vertex_1);
 
-
             Vertex vertex_2;
             while (true) {
                 int indexOfvertex_2=rand()%emptyVertexList.getLen();   //从空位置中随便挑一个出来
@@ -74,7 +71,6 @@ int** Map::creatMap(int rowSize,int columnSize,int level,int picNum){
                     i++;//放到真正添加图片编号的地方
                     break;
                 }
-
             }
 
         }else{
@@ -83,7 +79,6 @@ int** Map::creatMap(int rowSize,int columnSize,int level,int picNum){
             emptyVertexList.del(indexOfvertex_1,vertex_1);
             map[vertex_1.first][vertex_1.second]=1+i%picNum;       //将图片编号加到该坐标中
 
-
             Vertex vertex_2;
             int indexOfvertex_2=rand()%emptyVertexList.getLen();   //从空位置中随便挑一个出来
             emptyVertexList.del(indexOfvertex_2,vertex_2);
@@ -91,9 +86,7 @@ int** Map::creatMap(int rowSize,int columnSize,int level,int picNum){
 
             i++;
         }
-
     }
-
     return map;
 }
 
@@ -124,7 +117,6 @@ bool Map::isTrap(int** map,int rowSize,int columnSize,Vertex vertex_1){
             }
         }
     }
-
 
     if(vertex_1.second==1){      //如果在第一列
         if(vertex_1.first!=1||vertex_1.first!=rowSize-2){
@@ -177,7 +169,6 @@ bool Map::isTrap(int** map,int rowSize,int columnSize,Vertex vertex_1){
     return false;
 }
 
-
 //0折连接////////////////////////////////////////////////////////////////////
 //输入参数 两点的x，y坐标
 //返回bool (是否属于0折连接)
@@ -211,7 +202,6 @@ bool Map::canLink_0(int** map,int x1,int y1,int x2,int y2)
         }
     }
     return true;
-
 }
 
 //1折连接////////////////////////////////////////////////////////////////////

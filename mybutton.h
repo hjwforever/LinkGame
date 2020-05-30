@@ -16,7 +16,7 @@ signals:
     void clicked(int row,int column);
 
 public:
-    void setCoordinate(int row,int column);
+    void setCoordinate(int row,int column);  //设置button在数组中的下标
     int getRow();
     int getColumn();
 private:

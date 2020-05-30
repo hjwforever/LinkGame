@@ -1,10 +1,9 @@
 #include "chooselevel_ui.h"
 #include "ui_chooselevel_ui.h"
-
 #include"game_ui.h"
 #include"linkgame.h"
-//#include"global_value_method.h"
 #include"set_ui.h"
+
 extern Set_UI *set_ui;
 
 ChooseLevel_UI::ChooseLevel_UI(QWidget *parent) :
@@ -18,7 +17,7 @@ ChooseLevel_UI::~ChooseLevel_UI()
 {
     delete ui;
 }
-
+//简单难度按钮
 void ChooseLevel_UI::on_easyButton_clicked()
 {
     Game_UI *game_ui = new Game_UI;
@@ -29,7 +28,7 @@ void ChooseLevel_UI::on_easyButton_clicked()
 
     delete this;
 }
-
+/*普通难度按钮*/
 void ChooseLevel_UI::on_normalButton_clicked()
 {
     Game_UI *game_ui = new Game_UI;
@@ -40,7 +39,7 @@ void ChooseLevel_UI::on_normalButton_clicked()
 
     delete this;
 }
-
+/*困难难度按钮*/
 void ChooseLevel_UI::on_hardButton_clicked()
 {
     Game_UI *game_ui = new Game_UI;

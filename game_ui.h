@@ -4,8 +4,6 @@
 #include <QMainWindow>
 
 #include"map.h"
-#include <QtMultimedia/QMediaPlayer>
-#include<QtMultimedia/QMediaPlaylist>
 #include"mybutton.h"
 #include"voiceplayer.h"
 
@@ -32,16 +30,16 @@ private slots:
 private:
 
     Ui::Game_UI *ui;
-    int level=1;
-    Map map;
-    int** gameMap;
-    int rowSize=10;
-    int columnSize=10;
-    int numOfPic=10;
-    int start_x=20;
-    int start_y=20;
-    int edgeOfButton=60;
-    MyButton*** gameButtonMap;
+    int level=1;                                 //难度等级
+    Map map;                                   //游戏地图
+    int** gameMap;                         //存储地图中按钮中编号的二维数组
+    int rowSize=10;                         //行的大小
+    int columnSize=10;                    //列的大小
+    int numOfPic=10;                      //图片种类
+    int start_x=20;                        //(0，0)按钮的横坐标起始位置，ps：(0，0)按钮不显示
+    int start_y=20;                        //(0，0)按钮的纵坐标起始位置
+    int edgeOfButton=60;              //按钮边长
+    MyButton*** gameButtonMap;//存放按钮地址的二维数组
 };
 
 #endif // GAME_UI_H

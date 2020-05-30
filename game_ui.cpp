@@ -39,7 +39,7 @@ void Game_UI::on_returnButton_clicked()
 void Game_UI::on_beginButton_clicked()
 {
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
-    ////////////////////////
+    //////////////////////////////
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
             gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
@@ -71,10 +71,9 @@ void Game_UI::createGameMap(){
             myButton->setCoordinate(i,j);
             myButton->setGeometry(start_x+j*edgeOfButton,start_y+i*edgeOfButton,edgeOfButton,edgeOfButton);
             myButton->show();
+            //连接信号槽，传递button的数组下标
             connect(myButton, SIGNAL(clicked(int,int)),this, SLOT(on_myButton_clicked(int,int)));
-
             myButton->setText(QString::number(gameMap[i][j]));
-
             gameButtonMap[i][j]=myButton;
         }
         /////////////////

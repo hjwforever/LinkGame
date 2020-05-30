@@ -1,14 +1,13 @@
 #include "linkgame.h"
 #include "ui_linkgame.h"
+#include"chooselevel_ui.h"
+#include"set_ui.h"
 #include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
 #include <QSysInfo>
-
-#include"chooselevel_ui.h"
-#include"set_ui.h"
 
 extern Set_UI *set_ui;
 
@@ -43,5 +42,4 @@ void LinkGame::on_setButton_clicked()
 {
     set_ui->setParentName("linkgame_ui");
     set_ui->show();
-    //delete this;
 }

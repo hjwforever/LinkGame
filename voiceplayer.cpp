@@ -3,25 +3,33 @@
 VoicePlayer::VoicePlayer()
 {
     //背景音乐
-    gameSound_BGM = new QMediaPlayer;//创建播放器
-    gameList_BGM = new QMediaPlaylist;//创建播放列表
-    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/China-X.mp3"));//添加音乐
-    gameList_BGM->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);//循环播放
+    //创建播放器
+    gameSound_BGM = new QMediaPlayer;
+    //创建播放列表
+    gameList_BGM = new QMediaPlaylist;
+    //添加音乐
+    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/China-X.mp3"));
+    //循环播放
+    gameList_BGM->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
     gameSound_BGM->setPlaylist(gameList_BGM);
     gameSound_BGM->setVolume(20);
     //按钮及消除音效
-    gameSound_Voice = new QMediaPlayer;//创建播放器
-    gameList_Voice = new QMediaPlaylist;//创建播放列表
-
+    //创建播放器
+    gameSound_Voice = new QMediaPlayer;
+    //创建播放列表
+    gameList_Voice = new QMediaPlaylist;
 }
+
 void VoicePlayer::Play_BGM()
 {
     gameSound_BGM->play();
 }
+
 void VoicePlayer::Pause_BGM()
 {
     gameSound_BGM->pause();
 }
+
 void VoicePlayer::Play_Voice(int i)
 {
     QString url="qrc:/voice/button_Sound/sound.mp3";
