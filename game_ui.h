@@ -21,6 +21,8 @@ public:
     void setLevel(int level);
     int getLevel();
     VoicePlayer *voiceplayer;
+    bool allCleared();
+
 private slots:
     void on_returnButton_clicked();
     void on_beginButton_clicked();

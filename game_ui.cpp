@@ -52,6 +52,17 @@ void Game_UI::on_beginButton_clicked()
     ///////////////////////////////
 }
 
+bool Game_UI::allCleared()
+{
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize-1;j++){
+            if(gameMap[i][j] != 0)
+                return false;
+        }
+        }
+    return true;
+}
+
 void Game_UI::createGameMap(){
     MyButton *button=new MyButton;
     gameButtonMap=(MyButton***) malloc(rowSize*sizeof(MyButton**));
@@ -105,6 +116,12 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 gameButtonMap[row][column]->hide();
                 gameButtonMap[vertex1.first][vertex1.second]->hide();
                 count--;
+
+                //判断是否全部消除(游戏通关)
+                if(allCleared())
+                {
+                    cout<<"全部消除！！！"<<endl;
+                }
             }
             else
             {
