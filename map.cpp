@@ -267,36 +267,16 @@ Vertex Map::canLink_1(int** map,int x1,int y1,int x2,int y2)
 //2折连接  返回(x1,y1)(x2,y2)   判断标志Qpairlist[0].second!=-1&&Qpairlist[0].first!=-1
 int Map::canLink_2(int** map,int x1,int y1,int x2,int y2,QList<Vertex> &pairlist)
 {
-    //if(map[x1][y1]!=map[x2][y2]) return -1;
     if(x1==x2&&y1==y2) return -1;
-
-    //    QPair<int,int> pair1(-1,-1);
-    //    QPair<int,int> pair2(-1,-1);
-
-//    Vertex pair1;
-//    pair1.first=-1;
-//    pair1.second=-1;
-
-//    Vertex pair2;
-//    pair2.first=-1;
-//    pair2.second=-1;
-    //QList<QPair<int,int>> pairlist;
-    //pairlist<<pair1<<pair2;
 
     // 判断0折连接
     if(canLink_0(map,x1,y1,x2,y2)) {
-        //Vertex pair;
-       // pair.first=0;
-        //pair.second=-1;
-        //pairlist[1]=pair;
-
         return 0;
     }
 
     // 判断1折连接
     Vertex pair1 = canLink_1(map,x1,y1,x2,y2);
     if(pair1.first!=-1) {
-        //pairlist[0]=pair1;
         pairlist.push_back(pair1);
         return 1;
     }
@@ -310,7 +290,6 @@ int Map::canLink_2(int** map,int x1,int y1,int x2,int y2,QList<Vertex> &pairlist
             p1.second=i;
             Vertex p2 = canLink_1(map,p1.first,p1.second,x2,y2);
             if(p2.first != -1) {
-                //pairlist.clear();
                 pairlist<<p1<<p2;
                 return 2;
             }
@@ -325,7 +304,6 @@ int Map::canLink_2(int** map,int x1,int y1,int x2,int y2,QList<Vertex> &pairlist
             p1.second=i;
             Vertex p2 = canLink_1(map,p1.first,p1.second,x2,y2);
             if(p2.first != -1) {
-                //pairlist.clear();
                 pairlist<<p1<<p2;
                 return 2;
             }
@@ -334,13 +312,11 @@ int Map::canLink_2(int** map,int x1,int y1,int x2,int y2,QList<Vertex> &pairlist
 
     for(i = x1 + 1; i < maxsize; i++) {
         if(map[i][y1] == 0) {
-            //QPair<int,int> p1=qMakePair(i,y1);
             Vertex p1;
             p1.first=i;
             p1.second=y1;
             Vertex p2 = canLink_1(map,p1.first,p1.second,x2,y2);
             if(p2.first != -1) {
-                //pairlist.clear();
                 pairlist<<p1<<p2;
                 return 2;
             }
@@ -362,8 +338,6 @@ int Map::canLink_2(int** map,int x1,int y1,int x2,int y2,QList<Vertex> &pairlist
         } else break;
     }
 
-    //     pairlist.clear();
-    //     pairlist<<qMakePair(-1,-1)<<qMakePair(-1,-1);
     return -1;
 }
 
