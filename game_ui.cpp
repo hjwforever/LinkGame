@@ -136,7 +136,7 @@ void Game_UI::createGameMap(){
         cout<<endl;
         //////////////////
     }
-
+    initButtonImage();
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
