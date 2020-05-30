@@ -56,9 +56,7 @@ void Game_UI::initButtonImage()
 {
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
-            const char *c=QString("QPushButton{border-image: url(:/image/button_icon/fruit/%1.png)}").arg(QString::number(gameButtonMap[i][j]->text().toUInt())).toLatin1().data();
-            gameButtonMap[i][j]->setStyleSheet(c);
-            //gameButtonMap[i][j]->show();
+            gameButtonMap[i][j]->setStyleSheet(QString("QPushButton{border-image: url(:/image/button_icon/fruit/%1.png)}").arg(gameMap[i][j]).toLatin1().data());
         }
 
         cout<<endl;
