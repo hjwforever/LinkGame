@@ -18,6 +18,17 @@ Game_UI::Game_UI(QWidget *parent) :
     Scence=new QGraphicsScene(this);
     Scence->setSceneRect(0,0,this->width(),this->height());
     ui->game_UI_graphicsView->setScene(Scence);
+    // 进度条
+    ui->timeBar->setMaximum(61);
+    ui->timeBar->setMinimum(0);
+    ui->timeBar->setValue(61);
+    timeprogressbarthread = new TimeProgressBarThread;
+    // 游戏计时器
+    gameTimer = new QTimer;
+    timeprogressbarthread->start();
+    connect(gameTimer, SIGNAL(TimeStar()), this, SLOT(gameTimerEvent()));
+//    gameTimer->start(1000);
+
 }
 
 Game_UI::~Game_UI()
@@ -82,6 +93,22 @@ void Game_UI::on_deleteThread(int x,int y){
             Scence->removeItem(item_list_p[i]);  //从scene移除
             delete item_list_p[i];  //释放内存
         }
+}
+
+//游戏进度条
+void Game_UI::gameTimerEvent(){
+    //进度条计时效果
+    if(ui->timeBar->value() == 0)
+    {
+//        timeprogressbarthread->GamePause();
+        gameTimer->stop();
+        QMessageBox::information(this, "game over", "play again>_<");
+    }
+    else
+    {
+        ui->timeBar->setValue(ui->timeBar->value() - 1);
+        ui->gametime_label->setText(QString::number(ui->timeBar->value() - 1));
+    }
 }
 
 void Game_UI::on_returnButton_clicked()
@@ -155,6 +182,15 @@ void Game_UI::createGameMap(){
         //////////////////
     }
     initButtonImage();
+}
+
+void Game_UI::allButtonHide(){
+    for(int i=0;i<rowSize;i++){
+        gameButtonMap[i]=(MyButton**)malloc(columnSize*sizeof(MyButton*));
+        for(int j=0;j<columnSize;j++){
+            gameButtonMap[i][j]->hide();
+        }
+    }
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
@@ -233,4 +269,21 @@ void Game_UI::on_myButton_clicked(int row,int column){
     }
 }
 
-
+//暂停继续按钮
+void Game_UI::on_pauseButton_clicked()
+{
+         cout<<"hhhhhhh"<<endl;
+    if(ui->pauseButton->text()=="暂停")
+    {
+        timeprogressbarthread->GamePause();
+//        gameTimer->stop();
+        ui->pauseButton->setText("继续");
+        allButtonHide();
+    }
+    else if(ui->pauseButton->text()=="继续")
+    {
+        timeprogressbarthread->GameContinue();
+//        gameTimer->start(1000);
+        ui->pauseButton->setText("暂停");
+    }
+}

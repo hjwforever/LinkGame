@@ -8,6 +8,10 @@
 #include<QGraphicsScene>
 #include<QElapsedTimer>
 #include<QGraphicsItem>
+#include <QTimer>
+#include <QDateTime>
+#include <QMessageBox>
+#include "timeprogressbarthread.h"
 
 namespace Ui {
 class Game_UI;
@@ -27,6 +31,8 @@ public:
     void initButtonImage();
     void drawLine(int x1,int y1,int x2,int y2);
     void Erasure_Score();
+    void gameTimerEvent(); // 游戏计时回调
+    void allButtonHide();//隐藏所有按钮
 
 private slots:
     void on_returnButton_clicked();
@@ -34,6 +40,9 @@ private slots:
     void on_myButton_clicked(int row,int y);
     void createGameMap();
     void on_deleteThread(int x,int y);
+
+    void on_pauseButton_clicked();
+
 
 private:
 
@@ -57,6 +66,8 @@ private:
     int count=0;             //解题按钮计数器
     MyButton*** gameButtonMap;//存放按钮地址的二维数组
     QGraphicsScene *Scence;
+    TimeProgressBarThread *timeprogressbarthread;
+    QTimer *gameTimer;
 };
 
 #endif // GAME_UI_H

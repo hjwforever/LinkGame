@@ -4,8 +4,6 @@
 #include <QThread>
 #include <iostream>
 #include<windows.h>
-#include <QtMultimedia/QMediaPlayer>
-#include<QtMultimedia/QMediaPlaylist>
 #include <cstdlib>
 #include <ctime>
 

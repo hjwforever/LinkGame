@@ -29,6 +29,7 @@ SOURCES += \
     musicthread.cpp \
     mybutton.cpp \
     set_ui.cpp \
+    timeprogressbarthread.cpp \
     voiceplayer.cpp
 
 HEADERS += \
@@ -42,6 +43,7 @@ HEADERS += \
     musicthread.h \
     mybutton.h \
     set_ui.h \
+    timeprogressbarthread.h \
     voiceplayer.h
 
 FORMS += \

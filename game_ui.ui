@@ -33,7 +33,7 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="Voice.qrc">
+     <iconset>
       <normaloff>:/image/button_icon/return2.png</normaloff>:/image/button_icon/return2.png</iconset>
     </property>
     <property name="iconSize">
@@ -129,14 +129,98 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QProgressBar" name="timeBar">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>60</y>
+      <width>431</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar {   border: 2px solid grey;   border-radius: 7px;   background-color: #FFFFFF;}QProgressBar::chunk {   background-color: #05B8CC;   width: 20px;}QProgressBar {   border: 2px solid grey;   border-radius: 7px;   text-align: center;}</string>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>10</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;游戏时间：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gametime_label">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>10</y>
+      <width>60</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;60&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pauseButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>110</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>暂停</string>
+    </property>
+   </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
    <zorder>beginButton</zorder>
    <zorder>score_Label</zorder>
+   <zorder>timeBar</zorder>
+   <zorder>label_2</zorder>
+   <zorder>gametime_label</zorder>
+   <zorder>pauseButton</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="Voice.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
