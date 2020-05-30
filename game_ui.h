@@ -23,6 +23,7 @@ public:
     int getLevel();
     VoicePlayer *voiceplayer;
     bool allCleared();
+    void initButtonImage();
     void drawLine(int x1,int y1,int x2,int y2);
 
 private slots:

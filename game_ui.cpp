@@ -37,7 +37,8 @@ void Game_UI::drawLine(int x1,int y1,int x2,int y2)
        QPoint pointb(x2+edgeOfButton/2,y2+edgeOfButton/2);  //µãB
        //Scence->addLine(QLine(pointa,pointb),QPen(Qt::PenStyle::SolidLine));
        QPen pen;
-       pen.setColor("blue");
+       //pen.setColor("blue");
+       pen.setColor("red");
        pen.setWidth(2);
 
        QLine line(pointa,pointb);
@@ -50,6 +51,20 @@ void Game_UI::drawLine(int x1,int y1,int x2,int y2)
 
    ui->game_UI_graphicsView->update();
 }
+
+void Game_UI::initButtonImage()
+{
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize-1;j++){
+            const char *c=QString("QPushButton{border-image: url(:/image/button_icon/fruit/%1.png)}").arg(QString::number(gameButtonMap[i][j]->text().toUInt())).toLatin1().data();
+            gameButtonMap[i][j]->setStyleSheet(c);
+            //gameButtonMap[i][j]->show();
+        }
+
+        cout<<endl;
+    }
+}
+
 void Game_UI::on_returnButton_clicked()
 {
     ChooseLevel_UI *chooseLevel_ui=new ChooseLevel_UI;
@@ -62,6 +77,9 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+    QIcon icon;
+    icon.addFile("qrc:/image/button_icon/animal/1.png");
+
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
     //////////////////////////////
     for(int i=1;i<rowSize-1;i++){
@@ -73,6 +91,7 @@ void Game_UI::on_beginButton_clicked()
         cout<<endl;
     }
     ///////////////////////////////
+    initButtonImage();
 }
 
 bool Game_UI::allCleared()
