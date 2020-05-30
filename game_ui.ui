@@ -33,7 +33,7 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
+     <iconset resource="Voice.qrc">
       <normaloff>:/image/button_icon/return2.png</normaloff>:/image/button_icon/return2.png</iconset>
     </property>
     <property name="iconSize">
@@ -49,8 +49,8 @@
    <widget class="QPushButton" name="beginButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>50</y>
+      <x>610</x>
+      <y>80</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -132,8 +132,8 @@
    <widget class="QProgressBar" name="timeBar">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>60</y>
+      <x>110</x>
+      <y>30</y>
       <width>431</width>
       <height>16</height>
      </rect>
@@ -148,10 +148,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>540</x>
       <y>10</y>
       <width>191</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -173,10 +173,10 @@
    <widget class="QLabel" name="gametime_label">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>700</x>
       <y>10</y>
       <width>60</width>
-      <height>50</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -186,7 +186,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;60&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;59&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -195,8 +195,8 @@
    <widget class="QPushButton" name="pauseButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>110</y>
+      <x>610</x>
+      <y>140</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -221,6 +221,8 @@
    <zorder>pauseButton</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

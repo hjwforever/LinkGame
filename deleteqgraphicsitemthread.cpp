@@ -19,7 +19,5 @@ void DeleteQGraphicsItemThread::run(){
         Sleep(200);
         emit deleteItem(x,y);
 
-        cout<<"thread start"<<endl;
-
     stopped=false;
 }

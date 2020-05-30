@@ -18,16 +18,20 @@ Game_UI::Game_UI(QWidget *parent) :
     Scence=new QGraphicsScene(this);
     Scence->setSceneRect(0,0,this->width(),this->height());
     ui->game_UI_graphicsView->setScene(Scence);
+
+    ui->score_Label->setStyleSheet("color:white");
+
     // 进度条
-    ui->timeBar->setMaximum(61);
+    ui->gametime_label->setText("59");
+    ui->gametime_label->setStyleSheet("color:white");
+    ui->timeBar->setTextVisible(false);
+    ui->timeBar->setMaximum(60);
     ui->timeBar->setMinimum(0);
-    ui->timeBar->setValue(61);
-    timeprogressbarthread = new TimeProgressBarThread;
+    ui->timeBar->setValue(60);
     // 游戏计时器
     gameTimer = new QTimer;
-    timeprogressbarthread->start();
-    connect(gameTimer, SIGNAL(TimeStar()), this, SLOT(gameTimerEvent()));
-//    gameTimer->start(1000);
+    connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
+    gameTimer->start(1000);
 
 }
 
@@ -100,15 +104,26 @@ void Game_UI::gameTimerEvent(){
     //进度条计时效果
     if(ui->timeBar->value() == 0)
     {
-//        timeprogressbarthread->GamePause();
         gameTimer->stop();
         QMessageBox::information(this, "game over", "play again>_<");
     }
     else
     {
         ui->timeBar->setValue(ui->timeBar->value() - 1);
+        if(ui->gametime_label->text()!="0")
         ui->gametime_label->setText(QString::number(ui->timeBar->value() - 1));
     }
+}
+
+bool Game_UI::allCleared()
+{
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize-1;j++){
+            if(gameMap[i][j] != 0)
+                return false;
+        }
+    }
+    return true;
 }
 
 void Game_UI::on_returnButton_clicked()
@@ -123,6 +138,13 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+    ui->timeBar->setValue(60);
+    ui->gametime_label->setText(QString::number(59));
+    gameTimer->stop();
+    gameTimer=new QTimer;
+    gameTimer->start(1000);
+    connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
+
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
@@ -137,17 +159,6 @@ void Game_UI::on_beginButton_clicked()
     Scence->clear();
     ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
     ui->score_Label->setStyleSheet("color:white");
-}
-
-bool Game_UI::allCleared()
-{
-    for(int i=1;i<rowSize-1;i++){
-        for(int j=1;j<columnSize-1;j++){
-            if(gameMap[i][j] != 0)
-                return false;
-        }
-    }
-    return true;
 }
 
 void Game_UI::createGameMap(){
@@ -184,11 +195,16 @@ void Game_UI::createGameMap(){
     initButtonImage();
 }
 
-void Game_UI::allButtonHide(){
+void Game_UI::setAllButtonVisible(bool visible){
     for(int i=0;i<rowSize;i++){
-        gameButtonMap[i]=(MyButton**)malloc(columnSize*sizeof(MyButton*));
         for(int j=0;j<columnSize;j++){
-            gameButtonMap[i][j]->hide();
+            if(gameMap[i][j]!=0){
+                if(visible){
+                    gameButtonMap[i][j]->show();
+                }else{
+                    gameButtonMap[i][j]->hide();
+                }
+            }
         }
     }
 }
@@ -272,18 +288,19 @@ void Game_UI::on_myButton_clicked(int row,int column){
 //暂停继续按钮
 void Game_UI::on_pauseButton_clicked()
 {
-         cout<<"hhhhhhh"<<endl;
-    if(ui->pauseButton->text()=="暂停")
+    if(!isPause)
     {
-        timeprogressbarthread->GamePause();
-//        gameTimer->stop();
-        ui->pauseButton->setText("继续");
-        allButtonHide();
+        setAllButtonVisible(false);
+        isPause=true;
+        gameTimer->stop();
+        ui->pauseButton->setText(QString::fromLocal8Bit("继续"));
+        //allButtonHide();
     }
-    else if(ui->pauseButton->text()=="继续")
+    else if(isPause)
     {
-        timeprogressbarthread->GameContinue();
-//        gameTimer->start(1000);
-        ui->pauseButton->setText("暂停");
+        setAllButtonVisible(true);
+        isPause=false;
+        gameTimer->start(1000);
+        ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
     }
 }
