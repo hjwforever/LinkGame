@@ -131,5 +131,8 @@
         <file>background/set_UI_Background1.jpg</file>
         <file>background/set_UI_Background2.jpg</file>
         <file>background/set_UI_Background3.jpg</file>
+        <file>background/background7.jpg</file>
+        <file>background/background8.jpg</file>
+        <file>background/background9.jpg</file>
     </qresource>
 </RCC>

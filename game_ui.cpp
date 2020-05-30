@@ -23,6 +23,7 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->game_UI_graphicsView->setScene(Scence);
 
     ui->score_Label->setStyleSheet("color:white");
+    ui->label3->setVisible(false);
 
     // 进度条
     ui->gametime_label->setText("59");
@@ -171,6 +172,8 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+    ui->label3->setVisible(false);
+    ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
     ui->timeBar->setValue(60);
     ui->gametime_label->setText(QString::number(59));
     gameTimer->stop();
@@ -327,7 +330,6 @@ void Game_UI::on_pauseButton_clicked()
         isPause=true;
         gameTimer->stop();
         ui->pauseButton->setText(QString::fromLocal8Bit("继续"));
-        //allButtonHide();
     }
     else if(isPause)
     {
@@ -336,4 +338,5 @@ void Game_UI::on_pauseButton_clicked()
         gameTimer->start(1000);
         ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
     }
+     ui->label3->setVisible(isPause); //设置遮挡画布的可见性
 }
