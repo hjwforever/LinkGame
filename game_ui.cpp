@@ -33,10 +33,8 @@ int Game_UI::getLevel(){
 void Game_UI::drawLine(int x1,int y1,int x2,int y2)
 {
 
-
-
-       QPoint pointa(x1,y1);  //点A
-       QPoint pointb(x2,y2);  //点B
+       QPoint pointa(x1+edgeOfButton/2,y1+edgeOfButton/2);  //点A
+       QPoint pointb(x2+edgeOfButton/2,y2+edgeOfButton/2);  //点B
        //Scence->addLine(QLine(pointa,pointb),QPen(Qt::PenStyle::SolidLine));
        QPen pen;
        pen.setColor("blue");
@@ -136,6 +134,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
             int turnNum = map.canLink_2(gameMap,row,column,vertex1.first,vertex1.second,list);
             if(turnNum!=-1)//判断能否连接消除
             {
+                Scence->clear();
                 voiceplayer->Play_Voice(2);//播放消除音效
                 gameMap[row][column]=0;
                 gameMap[vertex1.first][vertex1.second]=0;
@@ -148,6 +147,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
                     cout<<i<<"hhhhhhhhhh"<<list.at(i).first<<" "<<list.at(i).second<<endl;
                 }
 
+                int x1,y1,x2,y2;
                 MyButton *button1=gameButtonMap[row][column];
                 MyButton *button2=gameButtonMap[vertex1.first][vertex1.second];
                 MyButton *button3,*button4;
@@ -157,6 +157,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 }
                 else if(turnNum == 1)
                 {
+
                      button3=gameButtonMap[list.at(0).first][list.at(0).second];
 
                      drawLine(button1->x(),button1->y(),button3->x(),button3->y());
@@ -164,12 +165,13 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 }
                 else if(turnNum == 2)
                 {
-                     button3=gameButtonMap[list.at(0).first][list.at(0).second];
-                     button4=gameButtonMap[list.at(1).first][list.at(1).second];
-
-                     drawLine(button1->x(),button1->y(),button3->x(),button3->y());
-                     drawLine(button3->x(),button3->y(),button4->x(),button4->y());
-                     drawLine(button4->x(),button4->y(),button2->x(),button2->y());
+                     x1=list.at(0).second*edgeOfButton+start_x;
+                     y1=list.at(0).first*edgeOfButton+start_y;
+                     x2=list.at(1).second*edgeOfButton+start_x;
+                     y2=list.at(1).first*edgeOfButton+start_y;
+                     drawLine(button1->x(),button1->y(),x1,y1);
+                     drawLine(x1,y1,x2,y2);
+                     drawLine(x2,y2,button2->x(),button2->y());
                 }
                     //drawLine(10,100,50,400);
 

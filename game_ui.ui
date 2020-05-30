@@ -33,7 +33,7 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="Voice.qrc">
+     <iconset>
       <normaloff>:/image/button_icon/return1.png</normaloff>:/image/button_icon/return1.png</iconset>
     </property>
     <property name="iconSize">
@@ -92,14 +92,18 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
    </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
    <zorder>beginButton</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="Voice.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
