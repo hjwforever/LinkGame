@@ -48,6 +48,8 @@ private:
     int score = 0;                            //得分
     int continuous_Erasure = 0;      //连消次数
     int erasure_Interval = 0;          //两次消除间隔，ms
+
+    QString currentModel[5]={"fruit","animal","gem","face_easy","face_hard"};
     QElapsedTimer Erasure_Time;
     Vertex vertex1,vertex2;
     int count=0;             //解题按钮计数器

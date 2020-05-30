@@ -54,3 +54,8 @@ void Set_UI::on_BGM_pushButton_clicked()
         ui->BGM_pushButton->setText("开");
     }
 }
+
+void Set_UI::on_image_style_comboBox_currentIndexChanged(int index)
+{
+    this->currentModelNum = index;
+}

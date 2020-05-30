@@ -5,8 +5,10 @@
 #include<QPixmap>
 #include<QGraphicsScene>
 #include<QList>
+#include"set_ui.h"
 using namespace std;
 
+extern Set_UI *set_ui;
 Game_UI::Game_UI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Game_UI)
@@ -63,7 +65,7 @@ void Game_UI::initButtonImage()
 {
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
-            gameButtonMap[i][j]->setStyleSheet(QString("QPushButton{border-image: url(:/image/button_icon/fruit/%1.png)}").arg(gameMap[i][j]).toLatin1().data());
+            gameButtonMap[i][j]->setStyleSheet(QString("QPushButton{border-image: url(:/image/button_icon/%1/%2.png)}").arg(currentModel[set_ui->currentModelNum]).arg(gameMap[i][j]).toLatin1().data());
         }
     }
 }
@@ -83,7 +85,7 @@ void Game_UI::on_beginButton_clicked()
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
-            gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
+            //gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
             gameButtonMap[i][j]->show();
         }
     }
@@ -131,7 +133,7 @@ void Game_UI::createGameMap(){
             myButton->show();
             //连接信号槽，传递button的数组下标
             connect(myButton, SIGNAL(clicked(int,int)),this, SLOT(on_myButton_clicked(int,int)));
-            myButton->setText(QString::number(gameMap[i][j]));
+            //myButton->setText(QString::number(gameMap[i][j]));
             gameButtonMap[i][j]=myButton;
         }
         /////////////////
