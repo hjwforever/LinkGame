@@ -6,6 +6,9 @@
 #include<QPixmap>
 #include<QGraphicsScene>
 #include<QList>
+#include<QPixmap>
+#include<QSize>
+#include"linkgame.h"
 #include"set_ui.h"
 using namespace std;
 
@@ -105,13 +108,43 @@ void Game_UI::gameTimerEvent(){
     if(ui->timeBar->value() == 0)
     {
         gameTimer->stop();
+
+        //ÌáÊ¾¿ò
         QMessageBox::information(this, "game over", "play again>_<");
+        QMessageBox msgBox;
+        msgBox.setText(tr("<span style='color: blue; font-size: 24px;'>   Game Over!</span/p>"));
+        msgBox.setInformativeText(tr("Do you want to continue?"));
+        msgBox.setStandardButtons(QMessageBox::Retry
+                                  | QMessageBox::Yes
+                                  | QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::Save);
+       // msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png"));
+        msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png").scaled(QSize(60,40), Qt::KeepAspectRatio));
+        int ret = msgBox.exec();
+        switch (ret) {
+        case QMessageBox::Retry:
+            qDebug() << "Retry";
+            on_beginButton_clicked();
+            break;
+        case QMessageBox::Yes:
+            qDebug() << "Yes";
+            break;
+        case QMessageBox::No:
+            qDebug() << "No";
+            LinkGame *linkGame_ui=new LinkGame;
+            linkGame_ui->show();
+            delete this;
+            break;
+        }
     }
     else
     {
         ui->timeBar->setValue(ui->timeBar->value() - 1);
         if(ui->gametime_label->text()!="0")
         ui->gametime_label->setText(QString::number(ui->timeBar->value() - 1));
+        else
+        ui->timeBar->setValue(0);
+
     }
 }
 
