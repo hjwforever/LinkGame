@@ -414,7 +414,7 @@ void Game_UI::setAllButtonVisible(bool visible){
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
-    //voiceplayer=new VoicePlayer;
+    voiceplayer=new VoicePlayer;
     if(count == 1){
         if(gameMap[row][column] == gameMap[vertex1.first][vertex1.second])
         {
@@ -499,7 +499,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
         vertex1.second = column;
         count++;
     }
-
+    voiceplayer->Stop_Voice();
 }
 
 //ÔÝÍ£¼ÌÐø°´Å¥

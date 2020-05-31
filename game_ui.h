@@ -60,7 +60,7 @@ private:
     int** gameMap;                         //存储地图中按钮中编号的二维数组
     int rowSize=10;                         //行的大小
     int columnSize=10;                    //列的大小
-    int numOfPic=32;                      //图片种类
+    int numOfPic=10;                      //图片种类
     int start_x=20;                        //(0，0)按钮的横坐标起始位置，ps：(0，0)按钮不显示
     int start_y=20;                        //(0，0)按钮的纵坐标起始位置
     int edgeOfButton=60;              //按钮边长

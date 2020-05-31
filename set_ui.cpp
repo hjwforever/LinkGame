@@ -2,7 +2,7 @@
 #include "ui_set_ui.h"
 #include"linkgame.h"
 #include"chooselevel_ui.h"
-
+static int BGM_index;
 Set_UI::Set_UI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Set_UI)
@@ -58,4 +58,16 @@ void Set_UI::on_BGM_pushButton_clicked()
 void Set_UI::on_image_style_comboBox_currentIndexChanged(int index)
 {
     this->currentModelNum = index;
+}
+
+void Set_UI::on_comboBox_currentIndexChanged(int index)
+{
+    QString qs;
+    qs=ui->BGM_pushButton->text();
+    BGM_index=index;
+    voiceplayer->Play_Music(BGM_index);
+    if(qs=="关")
+    {
+        voiceplayer->Play_BGM();
+    }
 }

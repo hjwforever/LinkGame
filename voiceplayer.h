@@ -17,6 +17,8 @@ public:
     void Play_BGM();                               //播放背景音乐
     void Pause_BGM();                            //暂停播放背景音乐
     void Play_Voice(int i);                       //播放点击按钮或消除音效
+    void Play_Music(int i);
+    void Stop_Voice();
     QString url;
 };
 

@@ -8,7 +8,11 @@ VoicePlayer::VoicePlayer()
     //创建播放列表
     gameList_BGM = new QMediaPlaylist;
     //添加音乐
-    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/China-X.mp3"));
+    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music1.mp3"));
+    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music2.mp3"));
+    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music3.mp3"));
+    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music4.mp3"));
+    gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music5.mp3"));
     //循环播放
     gameList_BGM->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
     gameSound_BGM->setPlaylist(gameList_BGM);
@@ -42,3 +46,10 @@ void VoicePlayer::Play_Voice(int i)
     gameSound_Voice->play();
 }
 
+void VoicePlayer::Play_Music(int i){
+    gameList_BGM->setCurrentIndex(i);
+}
+
+void VoicePlayer::Stop_Voice(){
+    gameSound_BGM->stop();
+}

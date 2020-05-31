@@ -324,34 +324,32 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="choose_BGM_pushButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>210</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>210</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>楷体</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>选择背景音乐</string>
-         </property>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>China-X</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>I Hate Myself for Loving You</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>佛系少女</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>芒种</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>少年</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>

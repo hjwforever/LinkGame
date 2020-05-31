@@ -29,6 +29,8 @@ private slots:
 
     void on_image_style_comboBox_currentIndexChanged(int index);
 
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::Set_UI *ui;
     string parentName="";

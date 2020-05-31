@@ -1,8 +1,12 @@
 <RCC>
     <qresource prefix="/voice">
-        <file>BGM/China-X.mp3</file>
         <file>button_Sound/sound1.mp3</file>
         <file>button_Sound/sound2.mp3</file>
+        <file>BGM/music1.mp3</file>
+        <file>BGM/music2.mp3</file>
+        <file>BGM/music3.mp3</file>
+        <file>BGM/music4.mp3</file>
+        <file>BGM/music5.mp3</file>
     </qresource>
     <qresource prefix="/image">
         <file>background/background1.jpg</file>
@@ -134,5 +138,29 @@
         <file>background/background7.jpg</file>
         <file>background/background8.jpg</file>
         <file>background/background9.jpg</file>
+        <file>button_icon/face_easy/11.png</file>
+        <file>button_icon/face_easy/12.png</file>
+        <file>button_icon/face_easy/13.png</file>
+        <file>button_icon/face_easy/14.png</file>
+        <file>button_icon/face_easy/15.png</file>
+        <file>button_icon/face_easy/16.png</file>
+        <file>button_icon/face_easy/17.png</file>
+        <file>button_icon/face_easy/18.png</file>
+        <file>button_icon/face_easy/19.png</file>
+        <file>button_icon/face_easy/20.png</file>
+        <file>button_icon/fruit/11.png</file>
+        <file>button_icon/fruit/12.png</file>
+        <file>button_icon/fruit/13.png</file>
+        <file>button_icon/fruit/14.png</file>
+        <file>button_icon/fruit/15.png</file>
+        <file>button_icon/fruit/16.png</file>
+        <file>button_icon/fruit/17.png</file>
+        <file>button_icon/fruit/18.png</file>
+        <file>button_icon/fruit/19.png</file>
+        <file>button_icon/fruit/20.png</file>
+        <file>button_icon/fruit/21.png</file>
+        <file>button_icon/fruit/22.png</file>
+        <file>button_icon/fruit/23.png</file>
+        <file>button_icon/fruit/24.png</file>
     </qresource>
 </RCC>
