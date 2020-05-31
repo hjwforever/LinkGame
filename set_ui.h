@@ -1,6 +1,5 @@
 #ifndef SET_UI_H
 #include "voiceplayer.h"
-#include"musicthread.h"
 #include<QMainWindow>
 using namespace std;
 
@@ -36,7 +35,6 @@ private:
     string parentName="";
 
 public:
-    MusicThread musicThread;
     int currentModelNum = 0;
 };
 

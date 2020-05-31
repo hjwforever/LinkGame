@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    autoproblemsolvethread.cpp \
     chooselevel_ui.cpp \
     deleteqgraphicsitemthread.cpp \
     game_ui.cpp \
@@ -26,13 +27,13 @@ SOURCES += \
     main.cpp \
     linkgame.cpp \
     map.cpp \
-    musicthread.cpp \
     mybutton.cpp \
     set_ui.cpp \
     timeprogressbarthread.cpp \
     voiceplayer.cpp
 
 HEADERS += \
+    autoproblemsolvethread.h \
     chooselevel_ui.h \
     deleteqgraphicsitemthread.h \
     game_ui.h \
@@ -40,7 +41,6 @@ HEADERS += \
     linkgame.h \
     linklist.h \
     map.h \
-    musicthread.h \
     mybutton.h \
     set_ui.h \
     timeprogressbarthread.h \
