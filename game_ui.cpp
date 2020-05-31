@@ -45,7 +45,11 @@ Game_UI::~Game_UI()
 }
 
 void Game_UI::setLevel(int level){
+
     this->level=level;
+    numOfPic = 2+level*6;
+    cout<<numOfPic<<"  "<<level<<endl;
+    cout<<"level:"<<level<<endl;
 }
 
 int Game_UI::getLevel(){
