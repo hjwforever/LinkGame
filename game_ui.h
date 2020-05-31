@@ -12,6 +12,7 @@
 #include <QDateTime>
 #include <QMessageBox>
 #include "timeprogressbarthread.h"
+#include"autoproblemsolvethread.h"
 
 namespace Ui {
 class Game_UI;
@@ -33,10 +34,10 @@ public:
     void Erasure_Score();
 
     void setAllButtonVisible(bool visible);//设置按钮是否可见
-    bool autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2);
-    bool autoProblemSolve(int** gameMap,bool showProgress);
+
     void tip(int** gameMap);
     void resetMap(int** gameMap);
+    bool isDeadlock(int** gameMap_0);
 
 private slots:
     void on_returnButton_clicked();
@@ -52,6 +53,11 @@ private slots:
     void on_autoSolveProblemButton_clicked();
 
     void on_tipButton_clicked();
+
+    bool autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2);
+    void drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_y2,QList<Vertex> *list);
+    void hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2);
+    void changeAutoState();
 
 private:
 
@@ -69,6 +75,7 @@ private:
     int continuous_Erasure = 0;      //连消次数
     int erasure_Interval = 0;          //两次消除间隔，ms
     bool isPause=false;
+    bool isAutoSolve=false;
 
     QString currentModel[5]={"fruit","animal","gem","face_easy","face_hard"};
     QElapsedTimer Erasure_Time;
@@ -77,6 +84,7 @@ private:
     MyButton*** gameButtonMap;//存放按钮地址的二维数组
     QGraphicsScene *Scence;
     QTimer *gameTimer;
+    AutoProblemSolveThread *autoProblemSolveThread;
 };
 
 #endif // GAME_UI_H
