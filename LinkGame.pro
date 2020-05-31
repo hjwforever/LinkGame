@@ -26,7 +26,6 @@ SOURCES += \
     main.cpp \
     linkgame.cpp \
     map.cpp \
-    musicthread.cpp \
     mybutton.cpp \
     set_ui.cpp \
     timeprogressbarthread.cpp \
@@ -40,7 +39,6 @@ HEADERS += \
     linkgame.h \
     linklist.h \
     map.h \
-    musicthread.h \
     mybutton.h \
     set_ui.h \
     timeprogressbarthread.h \

@@ -45,11 +45,8 @@ Game_UI::~Game_UI()
 }
 
 void Game_UI::setLevel(int level){
-
     this->level=level;
-    numOfPic = 2+level*6;
-    cout<<numOfPic<<"  "<<level<<endl;
-    cout<<"level:"<<level<<endl;
+    numOfPic =2+level*6;
 }
 
 int Game_UI::getLevel(){
@@ -210,6 +207,9 @@ bool Game_UI::autoProblemSolve(int** gameMap_0,bool showProgress){
         if(!hasSollution) {
             cout<<"无解"<<endl;
             return false;
+        }
+        if(!showProgress){
+            break;
         }
     }
     cout<<"有解"<<endl;

@@ -36,6 +36,7 @@ public:
     bool autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2);
     bool autoProblemSolve(int** gameMap,bool showProgress);
     void tip(int** gameMap);
+    void resetMap(int** gameMap);
 
 private slots:
     void on_returnButton_clicked();
