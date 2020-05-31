@@ -230,6 +230,44 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="autoSolveProblemButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>200</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>自动解题</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tipButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>260</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>提示</string>
+    </property>
+   </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
    <zorder>beginButton</zorder>
@@ -239,6 +277,8 @@
    <zorder>gametime_label</zorder>
    <zorder>pauseButton</zorder>
    <zorder>label3</zorder>
+   <zorder>autoSolveProblemButton</zorder>
+   <zorder>tipButton</zorder>
   </widget>
  </widget>
  <resources>

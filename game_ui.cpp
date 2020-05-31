@@ -103,6 +103,174 @@ void Game_UI::on_deleteThread(int x,int y){
         }
 }
 
+bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2){
+
+    if(gameMap_0[index_x1][index_y1] == gameMap_0[index_x2][index_y2])
+    {
+        QList<Vertex> list;
+        int turnNum = map.canLink_2(gameMap_0,index_x1,index_y1,index_x2,index_y2,list);
+        if(turnNum!=-1)//判断能否连接消除
+        {
+            gameMap_0[index_x1][index_y1]=0;
+            gameMap_0[index_x2][index_y2]=0;
+            if(showProgress){
+                //画线
+                int x1,y1,x2,y2;
+                MyButton *button1=gameButtonMap[index_x1][index_y1];
+                MyButton *button2=gameButtonMap[index_x2][index_y2];
+                MyButton *button3;
+                if(turnNum == 0)
+                {
+                    drawLine(button1->x(),button1->y(),button2->x(),button2->y());
+                }
+                else if(turnNum == 1)
+                {
+                    button3=gameButtonMap[list.at(0).first][list.at(0).second];
+                    drawLine(button1->x(),button1->y(),button3->x(),button3->y());
+                    drawLine(button3->x(),button3->y(),button2->x(),button2->y());
+                }
+                else if(turnNum == 2)
+                {
+                    x1=list.at(0).second*edgeOfButton+start_x;
+                    y1=list.at(0).first*edgeOfButton+start_y;
+                    x2=list.at(1).second*edgeOfButton+start_x;
+                    y2=list.at(1).first*edgeOfButton+start_y;
+                    drawLine(button1->x(),button1->y(),x1,y1);
+                    drawLine(x1,y1,x2,y2);
+                    drawLine(x2,y2,button2->x(),button2->y());
+                }
+
+                qApp->processEvents();
+                Sleep(500);
+//                gameMap[index_x1][index_y1]=0;
+//                gameMap[index_x2][index_y2]=0;
+                gameButtonMap[index_x1][index_y1]->hide();
+                gameButtonMap[index_x2][index_y2]->hide();
+
+                Erasure_Score();
+                qApp->processEvents();
+
+            }
+
+
+//            voiceplayer=new VoicePlayer;
+//            voiceplayer->Play_Voice(2);//播放消除音效
+
+
+
+            //判断是否全部消除(游戏通关)
+            if(allCleared(gameMap_0))
+            {
+                ////////////////////////////////待添加结束界面
+                cout<<"全部删除！！！"<<endl;
+                ////////////////////////////////
+            }
+            return true;
+        }
+        else
+        {
+            //voiceplayer->Play_Voice(1);//播放按钮音效
+            return false;
+        }
+    }
+    else
+    {
+        //voiceplayer->Play_Voice(1);//播放按钮音效
+        return false;
+    }
+}
+
+/*
+ *自动解题
+ */
+bool Game_UI::autoProblemSolve(int** gameMap_0,bool showProgress){
+
+    while(!allCleared(gameMap_0)){
+        bool hasSollution=false;
+        for(int i=1;i<=rowSize-2;i++){
+            for(int j=1;j<=columnSize-2;j++){
+                if(gameMap_0[i][j]!=0){
+                    for (int m=1;m<=rowSize-2;m++) {
+                        for(int n=1;n<=columnSize-2;n++){
+                            if(gameMap_0[m][n]!=0){
+                                if(autoEliminateBlock(gameMap_0,showProgress,i,j,m,n)){
+                                    hasSollution=true;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(!hasSollution) {
+            cout<<"无解"<<endl;
+            return false;
+        }
+    }
+    cout<<"有解"<<endl;
+    return true;    //***************************************************************暂时返回true
+}
+
+void Game_UI::tip(int** gameMap_0){
+    while(!allCleared(gameMap_0)) {
+        bool hasSollution=false;
+        for(int i=1;i<=rowSize-2;i++){
+            for(int j=1;j<=columnSize-2;j++){
+                if(gameMap_0[i][j]!=0){
+                    for (int m=1;m<=rowSize-2;m++) {
+                        for(int n=1;n<=columnSize-2;n++){
+                            if(gameMap_0[m][n]!=0){
+                                if(gameMap_0[i][j] == gameMap_0[m][n])
+                                {
+                                    QList<Vertex> list;
+                                    int turnNum = map.canLink_2(gameMap_0,i,j,m,n,list);
+                                    if(turnNum!=-1)//判断能否连接消除
+                                    {
+                                        //画线
+                                        int x1,y1,x2,y2;
+                                        MyButton *button1=gameButtonMap[i][j];
+                                        MyButton *button2=gameButtonMap[m][n];
+                                        MyButton *button3;
+                                        if(turnNum == 0)
+                                        {
+                                            drawLine(button1->x(),button1->y(),button2->x(),button2->y());
+                                        }
+                                        else if(turnNum == 1)
+                                        {
+                                            button3=gameButtonMap[list.at(0).first][list.at(0).second];
+                                            drawLine(button1->x(),button1->y(),button3->x(),button3->y());
+                                            drawLine(button3->x(),button3->y(),button2->x(),button2->y());
+                                        }
+                                        else if(turnNum == 2)
+                                        {
+                                            x1=list.at(0).second*edgeOfButton+start_x;
+                                            y1=list.at(0).first*edgeOfButton+start_y;
+                                            x2=list.at(1).second*edgeOfButton+start_x;
+                                            y2=list.at(1).first*edgeOfButton+start_y;
+                                            drawLine(button1->x(),button1->y(),x1,y1);
+                                            drawLine(x1,y1,x2,y2);
+                                            drawLine(x2,y2,button2->x(),button2->y());
+                                        }
+
+                                        qApp->processEvents();
+                                        hasSollution=true;
+                                        goto label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(!hasSollution) {
+            break;
+        }
+    }
+    label:;
+}
+
 //游戏进度条
 void Game_UI::gameTimerEvent(){
     //进度条计时效果
@@ -149,7 +317,7 @@ void Game_UI::gameTimerEvent(){
     }
 }
 
-bool Game_UI::allCleared()
+bool Game_UI::allCleared(int** gameMap)
 {
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
@@ -246,7 +414,7 @@ void Game_UI::setAllButtonVisible(bool visible){
 }
 
 void Game_UI::on_myButton_clicked(int row,int column){
-    voiceplayer=new VoicePlayer;
+    //voiceplayer=new VoicePlayer;
     if(count == 1){
         if(gameMap[row][column] == gameMap[vertex1.first][vertex1.second])
         {
@@ -254,18 +422,19 @@ void Game_UI::on_myButton_clicked(int row,int column){
             int turnNum = map.canLink_2(gameMap,row,column,vertex1.first,vertex1.second,list);
             if(turnNum!=-1)//判断能否连接消除
             {
-                Scence->clear();
+                count--;
                 voiceplayer->Play_Voice(2);//播放消除音效
+
                 gameMap[row][column]=0;
                 gameMap[vertex1.first][vertex1.second]=0;
                 gameButtonMap[row][column]->hide();
                 gameButtonMap[vertex1.first][vertex1.second]->hide();
-                count--;
+
                 Erasure_Score();
-                for(int i=0;i<list.length();i++)
+                for(int i=0;i<list.length();i++)//**************************************************
                 {
                     cout<<i<<"hhhhhhhhhh"<<list.at(i).first<<" "<<list.at(i).second<<endl;
-                }
+                }//*******************************************************************************
 
                 int x1,y1,x2,y2;
                 MyButton *button1=gameButtonMap[row][column];
@@ -292,11 +461,22 @@ void Game_UI::on_myButton_clicked(int row,int column){
                     drawLine(x2,y2,button2->x(),button2->y());
                 }
                 //判断是否全部消除(游戏通关)
-                if(allCleared())
+                if(allCleared(gameMap))
                 {
                     ////////////////////////////////待添加结束界面
                     cout<<"全部删除！！！"<<endl;
                     ////////////////////////////////
+                }
+
+                int** copyGameMap=(int**) malloc(rowSize*sizeof(int*));
+                for(int i=0;i<rowSize;i++){
+                    copyGameMap[i]=(int*)malloc(columnSize*sizeof(int));
+                    for(int j=0;j<columnSize;j++){
+                        copyGameMap[i][j]=gameMap[i][j];
+                    }
+                }
+                if(!autoProblemSolve(copyGameMap,false)){
+                    cout<<"陷入僵局"<<endl;
                 }
             }
             else
@@ -319,6 +499,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
         vertex1.second = column;
         count++;
     }
+
 }
 
 //暂停继续按钮
@@ -339,4 +520,15 @@ void Game_UI::on_pauseButton_clicked()
         ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
     }
      ui->label3->setVisible(isPause); //设置遮挡画布（图片）的可见性
+}
+
+void Game_UI::on_autoSolveProblemButton_clicked()
+{
+
+    autoProblemSolve(gameMap,true);
+}
+
+void Game_UI::on_tipButton_clicked()
+{
+    tip(gameMap);
 }

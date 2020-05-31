@@ -341,3 +341,8 @@ int Map::canLink_2(int** map,int x1,int y1,int x2,int y2,QList<Vertex> &pairlist
     return -1;
 }
 
+bool autoProblemSolve(int** gameMap,Vertex v1,Vertex v2){
+
+
+}
+
