@@ -25,6 +25,8 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
 
+    numOfPic = 2+level*6;
+
     // ½ø¶ÈÌõ
     ui->gametime_label->setText("59");
     ui->gametime_label->setStyleSheet("color:white");
