@@ -7,6 +7,12 @@
         <file>BGM/music3.mp3</file>
         <file>BGM/music4.mp3</file>
         <file>BGM/music5.mp3</file>
+        <file>button_Sound/failed.wav</file>
+        <file>button_Sound/joy.wav</file>
+        <file>button_Sound/success1.wav</file>
+        <file>button_Sound/success2.wav</file>
+        <file>button_Sound/success3.wav</file>
+        <file>button_Sound/timeout.wav</file>
     </qresource>
     <qresource prefix="/image">
         <file>background/background1.jpg</file>
@@ -162,5 +168,15 @@
         <file>button_icon/fruit/22.png</file>
         <file>button_icon/fruit/23.png</file>
         <file>button_icon/fruit/24.png</file>
+        <file>button_icon/gem/11.png</file>
+        <file>button_icon/gem/12.png</file>
+        <file>button_icon/gem/13.png</file>
+        <file>button_icon/gem/14.png</file>
+        <file>button_icon/gem/15.png</file>
+        <file>button_icon/gem/16.png</file>
+        <file>button_icon/gem/17.png</file>
+        <file>button_icon/gem/18.png</file>
+        <file>button_icon/gem/19.png</file>
+        <file>button_icon/gem/20.png</file>
     </qresource>
 </RCC>

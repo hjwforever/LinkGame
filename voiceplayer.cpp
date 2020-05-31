@@ -19,8 +19,8 @@ VoicePlayer::VoicePlayer()
     gameSound_BGM->setVolume(20);
     //按钮及消除音效
     //创建播放器
-    gameSound_Voice = new QMediaPlayer;
     //创建播放列表
+    gameSound_Voice = new QMediaPlayer;
     gameList_Voice = new QMediaPlaylist;
 }
 
