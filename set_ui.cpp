@@ -76,6 +76,10 @@ void Set_UI::on_comboBox_currentIndexChanged(int index)
 
 void Set_UI::on_method_and_rule_pushButton_clicked()
 {
-    MessageDialog* messageDialog = new MessageDialog(this,"连就完事了，奥利给！！！");
+    MessageDialog* messageDialog = new MessageDialog(this,"1.消除卡片：选择一对相同图案的卡片连接起来，连接路径在避开其他图片,并不超过两次转弯。\n"
+                                                          "2.操作：任意连续两次点击不同位置的图片，若两次点击的卡片图案相同，且符合消除卡片条件，则消除该对卡片。\n"
+                                                          "3.胜利条件：消除全部卡片，按分数排名（相同分数以时间为参考）。\n"
+                                                          "4.失败条件：超时。\n"
+                                                          "5.连击加分机制：短时间内连续消除越多卡片，则加分越多。");
     messageDialog->show();
 }
