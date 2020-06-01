@@ -10,6 +10,7 @@
 #include<QSize>
 #include"linkgame.h"
 #include"set_ui.h"
+
 using namespace std;
 
 extern Set_UI *set_ui;
@@ -21,10 +22,8 @@ Game_UI::Game_UI(QWidget *parent) :
     Scence=new QGraphicsScene(this);
     Scence->setSceneRect(0,0,this->width(),this->height());
     ui->game_UI_graphicsView->setScene(Scence);
-
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
-
     // 进度条
     ui->gametime_label->setText("59");
     ui->gametime_label->setStyleSheet("color:white");
@@ -32,7 +31,6 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->timeBar->setMaximum(60);
     ui->timeBar->setMinimum(0);
     ui->timeBar->setValue(60);
-
     // 游戏计时器
     gameTimer = new QTimer;
     connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
@@ -111,7 +109,6 @@ void Game_UI::drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_
         drawLine(x1,y1,x2,y2);
         drawLine(x2,y2,button2->x(),button2->y());
     }
-
     qApp->processEvents();
 }
 
@@ -147,11 +144,11 @@ void Game_UI::initButtonImage()
 void Game_UI::on_deleteThread(int x,int y){
     QList<QGraphicsItem *> item_list_p = Scence->items(QRectF(x, y, 1, 1), Qt::IntersectsItemShape);
 
-        //删除元素
-        for(int i=0; i<item_list_p.size(); i++){
-            Scence->removeItem(item_list_p[i]);  //从scene移除
-            delete item_list_p[i];  //释放内存
-        }
+    //删除元素
+    for(int i=0; i<item_list_p.size(); i++){
+        Scence->removeItem(item_list_p[i]);  //从scene移除
+        delete item_list_p[i];  //释放内存
+    }
 }
 
 bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2){
@@ -162,8 +159,6 @@ bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,
         int turnNum = map.canLink_2(gameMap_0,index_x1,index_y1,index_x2,index_y2,list);
         if(turnNum!=-1)//判断能否连接消除
         {
-
-
             //判断是否全部消除(游戏通关)
             if(allCleared(gameMap_0))
             {
@@ -186,30 +181,27 @@ bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,
         return false;
     }
 }
-
-
-
 /*
  *判定僵局
  */
 bool Game_UI::isDeadlock(int** gameMap_0){
-        for(int i=1;i<=rowSize-2;i++){
-            for(int j=1;j<=columnSize-2;j++){
-                if(gameMap_0[i][j]!=0){
-                    for (int m=1;m<=rowSize-2;m++) {
-                        for(int n=1;n<=columnSize-2;n++){
-                            if(gameMap_0[m][n]!=0&&gameMap_0[i][j]==gameMap_0[m][n]){
-                                QList<Vertex> list;
-                                int turnNum = map.canLink_2(gameMap_0,i,j,m,n,list);
-                                if(turnNum!=-1){
-                                    return false;
-                                }
+    for(int i=1;i<=rowSize-2;i++){
+        for(int j=1;j<=columnSize-2;j++){
+            if(gameMap_0[i][j]!=0){
+                for (int m=1;m<=rowSize-2;m++) {
+                    for(int n=1;n<=columnSize-2;n++){
+                        if(gameMap_0[m][n]!=0&&gameMap_0[i][j]==gameMap_0[m][n]){
+                            QList<Vertex> list;
+                            int turnNum = map.canLink_2(gameMap_0,i,j,m,n,list);
+                            if(turnNum!=-1){
+                                return false;
                             }
                         }
                     }
                 }
             }
         }
+    }
     return true;
 }
 
@@ -230,32 +222,32 @@ void Game_UI::tip(int** gameMap_0){
                                     {
                                         //画线
                                         drawPathLine_exe(i,j,m,n,&list);
-//                                        int x1,y1,x2,y2;
-//                                        MyButton *button1=gameButtonMap[i][j];
-//                                        MyButton *button2=gameButtonMap[m][n];
-//                                        MyButton *button3;
-//                                        if(turnNum == 0)
-//                                        {
-//                                            drawLine(button1->x(),button1->y(),button2->x(),button2->y());
-//                                        }
-//                                        else if(turnNum == 1)
-//                                        {
-//                                            button3=gameButtonMap[list.at(0).first][list.at(0).second];
-//                                            drawLine(button1->x(),button1->y(),button3->x(),button3->y());
-//                                            drawLine(button3->x(),button3->y(),button2->x(),button2->y());
-//                                        }
-//                                        else if(turnNum == 2)
-//                                        {
-//                                            x1=list.at(0).second*edgeOfButton+start_x;
-//                                            y1=list.at(0).first*edgeOfButton+start_y;
-//                                            x2=list.at(1).second*edgeOfButton+start_x;
-//                                            y2=list.at(1).first*edgeOfButton+start_y;
-//                                            drawLine(button1->x(),button1->y(),x1,y1);
-//                                            drawLine(x1,y1,x2,y2);
-//                                            drawLine(x2,y2,button2->x(),button2->y());
-//                                        }
+                                        //                                        int x1,y1,x2,y2;
+                                        //                                        MyButton *button1=gameButtonMap[i][j];
+                                        //                                        MyButton *button2=gameButtonMap[m][n];
+                                        //                                        MyButton *button3;
+                                        //                                        if(turnNum == 0)
+                                        //                                        {
+                                        //                                            drawLine(button1->x(),button1->y(),button2->x(),button2->y());
+                                        //                                        }
+                                        //                                        else if(turnNum == 1)
+                                        //                                        {
+                                        //                                            button3=gameButtonMap[list.at(0).first][list.at(0).second];
+                                        //                                            drawLine(button1->x(),button1->y(),button3->x(),button3->y());
+                                        //                                            drawLine(button3->x(),button3->y(),button2->x(),button2->y());
+                                        //                                        }
+                                        //                                        else if(turnNum == 2)
+                                        //                                        {
+                                        //                                            x1=list.at(0).second*edgeOfButton+start_x;
+                                        //                                            y1=list.at(0).first*edgeOfButton+start_y;
+                                        //                                            x2=list.at(1).second*edgeOfButton+start_x;
+                                        //                                            y2=list.at(1).first*edgeOfButton+start_y;
+                                        //                                            drawLine(button1->x(),button1->y(),x1,y1);
+                                        //                                            drawLine(x1,y1,x2,y2);
+                                        //                                            drawLine(x2,y2,button2->x(),button2->y());
+                                        //                                        }
 
-//                                        qApp->processEvents();
+                                        //                                        qApp->processEvents();
                                         hasSollution=true;
                                         goto label;
                                     }
@@ -270,7 +262,7 @@ void Game_UI::tip(int** gameMap_0){
             break;
         }
     }
-    label:;
+label:;
 }
 
 //游戏进度条
@@ -279,7 +271,6 @@ void Game_UI::gameTimerEvent(){
     if(ui->timeBar->value() == 0)
     {
         gameTimer->stop();
-
         //提示框
         QMessageBox::information(this, "game over", "play again>_<");
         QMessageBox msgBox;
@@ -289,7 +280,7 @@ void Game_UI::gameTimerEvent(){
                                   | QMessageBox::Yes
                                   | QMessageBox::No);
         msgBox.setDefaultButton(QMessageBox::Save);
-       // msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png"));
+        // msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png"));
         msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png").scaled(QSize(60,40), Qt::KeepAspectRatio));
         int ret = msgBox.exec();
         switch (ret) {
@@ -312,10 +303,9 @@ void Game_UI::gameTimerEvent(){
     {
         ui->timeBar->setValue(ui->timeBar->value() - 1);
         if(ui->gametime_label->text()!="0")
-        ui->gametime_label->setText(QString::number(ui->timeBar->value() - 1));
+            ui->gametime_label->setText(QString::number(ui->timeBar->value() - 1));
         else
-        ui->timeBar->setValue(0);
-
+            ui->timeBar->setValue(0);
     }
 }
 
@@ -350,7 +340,6 @@ void Game_UI::on_beginButton_clicked()
     gameTimer=new QTimer;
     gameTimer->start(1000);
     connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
-
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
@@ -478,7 +467,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
                         copyGameMap[i][j]=gameMap[i][j];
                     }
                 }
-                if(isDeadlock(copyGameMap)){
+                if(isDeadlock(copyGameMap)&&!allCleared(gameMap)){
                     cout<<"陷入僵局"<<endl;
                 }
             }
@@ -541,7 +530,6 @@ void Game_UI::on_pauseButton_clicked()
 void Game_UI::on_autoSolveProblemButton_clicked()
 {
     if(isAutoSolve){
-        //isAutoSolve=false;
         autoProblemSolveThread->stop();
         ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("自动解题"));
     }else{
@@ -553,15 +541,12 @@ void Game_UI::on_autoSolveProblemButton_clicked()
         autoProblemSolveThread->start();
         ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("手动解题"));
     }
-
-      //autoProblemSolve(gameMap,true);
 }
 
 void Game_UI::on_tipButton_clicked()
 {
-    if(isDeadlock(gameMap)){
+    if(isDeadlock(gameMap)&&!allCleared(gameMap)){
         cout<<"僵局"<<endl;
     }
     tip(gameMap);
-
 }

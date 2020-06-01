@@ -27,6 +27,7 @@ SOURCES += \
     main.cpp \
     linkgame.cpp \
     map.cpp \
+    messagedialog.cpp \
     mybutton.cpp \
     set_ui.cpp \
     timeprogressbarthread.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     linkgame.h \
     linklist.h \
     map.h \
+    messagedialog.h \
     mybutton.h \
     set_ui.h \
     timeprogressbarthread.h \
@@ -50,6 +52,7 @@ FORMS += \
     chooselevel_ui.ui \
     game_ui.ui \
     linkgame.ui \
+    messagedialog.ui \
     set_ui.ui
 
 # Default rules for deployment.

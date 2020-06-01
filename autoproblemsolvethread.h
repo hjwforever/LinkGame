@@ -6,7 +6,6 @@
 #include<windows.h>
 #include <cstdlib>
 #include <ctime>
-
 #include"map.h"
 
 using namespace std;

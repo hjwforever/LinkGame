@@ -115,7 +115,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Voice.qrc">:/image/background/background4.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/background1.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

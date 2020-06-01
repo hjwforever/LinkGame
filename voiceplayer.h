@@ -4,6 +4,7 @@
 #include <QtMultimedia/QMediaPlayer>
 #include<QtMultimedia/QMediaPlaylist>
 #include<iostream>
+
 using namespace std;
 
 class VoicePlayer

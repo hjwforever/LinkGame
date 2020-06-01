@@ -32,9 +32,7 @@ public:
     void initButtonImage();
     void drawLine(int x1,int y1,int x2,int y2);
     void Erasure_Score();
-
     void setAllButtonVisible(bool visible);//设置按钮是否可见
-
     void tip(int** gameMap);
     void resetMap(int** gameMap);
     bool isDeadlock(int** gameMap_0);
@@ -45,15 +43,10 @@ private slots:
     void on_myButton_clicked(int row,int y);
     void createGameMap();
     void on_deleteThread(int x,int y);
-
     void on_pauseButton_clicked();
     void gameTimerEvent(); // 游戏计时回调
-
-
     void on_autoSolveProblemButton_clicked();
-
     void on_tipButton_clicked();
-
     bool autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2);
     void drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_y2,QList<Vertex> *list);
     void hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2);
@@ -76,7 +69,6 @@ private:
     int erasure_Interval = 0;          //两次消除间隔，ms
     bool isPause=false;
     bool isAutoSolve=false;
-
     QString currentModel[5]={"fruit","animal","gem","face_easy","face_hard"};
     QElapsedTimer Erasure_Time;
     Vertex vertex1,vertex2;
