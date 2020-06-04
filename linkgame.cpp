@@ -28,18 +28,29 @@ void LinkGame::on_onePersonButton_clicked()
 {
     ChooseLevel_UI *chooseUI_One = new ChooseLevel_UI;
     chooseUI_One->show();
-    this->close();//ÕâÀï²»ÄÜÓÃdelete£¬ÒòÎªthisÊÇmainº¯ÊýÖÐ´´½¨µÄÕ»¿Õ¼äÏµÍ³×Ô¶¯ÊÍ·Å
+    this->close();//ï¿½ï¿½ï¿½ï²»ï¿½ï¿½ï¿½ï¿½deleteï¿½ï¿½ï¿½ï¿½Îªthisï¿½ï¿½mainï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½Õ¼ï¿½ÏµÍ³ï¿½Ô¶ï¿½ï¿½Í·ï¿½
 }
 
 void LinkGame::on_twoPersonButton_clicked()
 {
     ChooseLevel_UI *chooseUI_Two = new ChooseLevel_UI;
     chooseUI_Two->show();
-    this->close();//ÕâÀï²»ÄÜÓÃdelete£¬ÒòÎªthisÊÇmainº¯ÊýÖÐ´´½¨µÄÕ»¿Õ¼äÏµÍ³×Ô¶¯ÊÍ·Å
+    this->close();//ï¿½ï¿½ï¿½ï²»ï¿½ï¿½ï¿½ï¿½deleteï¿½ï¿½ï¿½ï¿½Îªthisï¿½ï¿½mainï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½Õ¼ï¿½ÏµÍ³ï¿½Ô¶ï¿½ï¿½Í·ï¿½
 }
 
 void LinkGame::on_setButton_clicked()
 {
     set_ui->setParentName("linkgame_ui");
     set_ui->show();
+}
+
+void LinkGame::on_exitButton_clicked()
+{
+    qApp->quit();
+}
+
+void LinkGame::on_aboutButton_clicked()
+{
+    MessageDialog* messageDialog = new MessageDialog(this,"åˆ¶ä½œäººï¼šé™ˆåº†æ´‹ã€é‚“ç¡•ã€èƒ¡æ±Ÿæµ©ã€é»„ä¿Šé›¯\nåˆ¶ä½œæ—¥æœŸï¼š2020.5-2020.6");
+    messageDialog->show();
 }

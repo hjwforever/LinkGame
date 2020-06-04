@@ -19,11 +19,12 @@ public:
     void GameContinue();
     void run() override;
 
-
 signals:
     void TimeStar();
+
 private:
     QTimer *gameTimer;
+
 };
 
 #endif // TIMEPROGRESSBARTHREAD_H

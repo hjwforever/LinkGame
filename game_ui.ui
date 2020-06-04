@@ -96,8 +96,9 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">QGraphicsView{border-image: url(:/image/background/background1.jpg);
-}
+     <string notr="true">QGraphicsView{border-image: url(:/image/background/background4.jpg);}
+
+
 </string>
     </property>
     <property name="verticalScrollBarPolicy">
@@ -110,7 +111,7 @@
    <widget class="QLabel" name="score_Label">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>610</x>
       <y>440</y>
       <width>150</width>
       <height>60</height>
@@ -215,16 +216,13 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>80</y>
-      <width>511</width>
-      <height>481</height>
+      <y>70</y>
+      <width>500</width>
+      <height>500</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
-    </property>
     <property name="pixmap">
-     <pixmap resource="Voice.qrc">:/image/background/background7.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/background6.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

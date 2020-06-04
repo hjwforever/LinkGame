@@ -5,8 +5,6 @@
 #include<iostream>
 using namespace std;
 
-
 Set_UI *set_ui;
-
 
 #endif // GLOBAL_VALUE_METHOD_H

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include"messagedialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class LinkGame; }
@@ -20,6 +21,10 @@ private slots:
     void on_onePersonButton_clicked();
     void on_twoPersonButton_clicked();
     void on_setButton_clicked();
+
+    void on_exitButton_clicked();
+
+    void on_aboutButton_clicked();
 
 private:
     Ui::LinkGame *ui;

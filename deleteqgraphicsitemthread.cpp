@@ -16,8 +16,7 @@ void DeleteQGraphicsItemThread::stop(){
 }
 
 void DeleteQGraphicsItemThread::run(){
-        Sleep(200);
-        emit deleteItem(x,y);
-
+    Sleep(200);
+    emit deleteItem(x,y);
     stopped=false;
 }

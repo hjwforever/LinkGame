@@ -1,6 +1,9 @@
 #ifndef SET_UI_H
+
 #include "voiceplayer.h"
 #include<QMainWindow>
+#include"messagedialog.h"
+
 using namespace std;
 
 namespace Ui {
@@ -14,7 +17,6 @@ class Set_UI : public QMainWindow
 public:
     explicit Set_UI(QWidget *parent = nullptr);
     ~Set_UI();
-
     void setParentName(string parentName);
     string getParentName();
     VoicePlayer *voiceplayer;
@@ -25,10 +27,9 @@ protected:
 private slots:
     void on_returnButton_clicked();
     void on_BGM_pushButton_clicked();
-
     void on_image_style_comboBox_currentIndexChanged(int index);
-
     void on_comboBox_currentIndexChanged(int index);
+    void on_method_and_rule_pushButton_clicked();
 
 private:
     Ui::Set_UI *ui;

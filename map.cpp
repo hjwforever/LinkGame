@@ -1,7 +1,5 @@
 #include "map.h"
-
 #include<time.h>
-
 #include"linklist.h"
 
 Map::Map()
