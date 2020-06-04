@@ -42,7 +42,6 @@ void AutoProblemSolveThread::run(){
                             if(gameMap[m][n]!=0&&gameMap[i][j]==gameMap[m][n]){
                                 QList<Vertex> *list=new QList<Vertex>();
                                 int turnNum = map.canLink_2(gameMap,i,j,m,n,*list);
-                                cout<<"turnNum "<<turnNum<<endl;
                                 if(turnNum!=-1){
                                     hasSollution=true;
                                     Sleep(sleepTime);
@@ -51,8 +50,6 @@ void AutoProblemSolveThread::run(){
                                     emit drawPathLine(i,j,m,n,list);
                                     Sleep(300);
                                     emit hideButton(i,j,m,n);
-
-                                    cout<<"PPPPPPPPPPPPPPPPPPPPPPPPPPPP"<<endl;
                                 }
                             }
                         }
@@ -61,7 +58,7 @@ void AutoProblemSolveThread::run(){
             }
         }
         if(!hasSollution) {
-            cout<<"无解"<<endl;
+            cout<<"无解 AutoProblemSolveThread"<<endl;
             break;
         }
         if(!showProgress){

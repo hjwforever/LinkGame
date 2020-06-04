@@ -124,6 +124,12 @@ void Game_UI::hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2
     gameButtonMap[index_x1][index_y1]->hide();
     gameButtonMap[index_x2][index_y2]->hide();
     Erasure_Score();
+    //判断是否全部消除(游戏通关)
+    if(allCleared(gameMap))
+    {
+        gameOver();
+        cout<<"全部删除！！！"<<endl;
+    }
 }
 
 void Game_UI::Erasure_Score()
