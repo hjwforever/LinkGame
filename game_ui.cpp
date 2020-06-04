@@ -113,11 +113,11 @@ void Game_UI::drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_
     qApp->processEvents();
 
     //判断是否全部消除(游戏通关)
-    if(allCleared(gameMap))
-    {
-        gameOver();
-        cout<<"全部删除！！！"<<endl;
-    }
+//    if(allCleared(gameMap))
+//    {
+//        //gameOver();
+//        cout<<"全部删除！！！"<<endl;
+//    }
 }
 
 void Game_UI::hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2){
@@ -158,37 +158,38 @@ void Game_UI::on_deleteThread(int x,int y){
     }
 }
 
-bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2){
-    cout<<"showProgress "<<showProgress<<" "<<index_x1<<" "<<index_y1<<" "<<index_x2<<" "<<index_y2<<endl;
-    if(gameMap_0[index_x1][index_y1] == gameMap_0[index_x2][index_y2])
-    {
-        QList<Vertex> list;
-        int turnNum = map.canLink_2(gameMap_0,index_x1,index_y1,index_x2,index_y2,list);
-        if(turnNum!=-1)//判断能否连接消除
-        {
-            //判断是否全部消除(游戏通关)
-            if(allCleared(gameMap_0))
-            {
-                ////////////////////////////////待添加结束界面
-                gameOver();
-                cout<<"全部删除！！！"<<endl;
-                ////////////////////////////////
-            }
-            return true;
-        }
-        else
-        {
-            //voiceplayer->Play_Voice(1);//播放按钮音效
-            return false;
-        }
-        voiceplayer->Stop_Voice();
-    }
-    else
-    {
-        //voiceplayer->Play_Voice(1);//播放按钮音效
-        return false;
-    }
-}
+//bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2){
+//    cout<<"showProgress "<<showProgress<<" "<<index_x1<<" "<<index_y1<<" "<<index_x2<<" "<<index_y2<<endl;
+//    if(gameMap_0[index_x1][index_y1] == gameMap_0[index_x2][index_y2])
+//    {
+//        QList<Vertex> list;
+//        int turnNum = map.canLink_2(gameMap_0,index_x1,index_y1,index_x2,index_y2,list);
+//        if(turnNum!=-1)//判断能否连接消除
+//        {
+//            //判断是否全部消除(游戏通关)
+//            if(allCleared(gameMap_0))
+//            {
+//                ////////////////////////////////待添加结束界面
+//                gameOver();
+//                cout<<"全部删除！！！"<<endl;
+//                ////////////////////////////////
+//            }
+//            return true;
+//        }
+//        else
+//        {
+//            //voiceplayer->Play_Voice(1);//播放按钮音效
+//            return false;
+//        }
+//        voiceplayer->Stop_Voice();
+//    }
+//    else
+//    {
+//        //voiceplayer->Play_Voice(1);//播放按钮音效
+//        return false;
+//    }
+//}
+
 /*
  *判定僵局
  */

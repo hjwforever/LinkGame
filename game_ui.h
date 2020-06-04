@@ -48,7 +48,7 @@ private slots:
     void gameTimerEvent(); // 游戏计时回调
     void on_autoSolveProblemButton_clicked();
     void on_tipButton_clicked();
-    bool autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2);
+    //bool autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,int index_y1,int index_x2,int index_y2);
     void drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_y2,QList<Vertex> *list);
     void hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2);
     void changeAutoState();
