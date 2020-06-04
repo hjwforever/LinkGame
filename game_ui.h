@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include "timeprogressbarthread.h"
 #include"autoproblemsolvethread.h"
+#include"linklist.h"
 
 namespace Ui {
 class Game_UI;
@@ -34,9 +35,11 @@ public:
     void Erasure_Score();
     void setAllButtonVisible(bool visible);//设置按钮是否可见
     void tip(int** gameMap);
-    void resetMap(int** gameMap);
+    void resetMap();
     bool isDeadlock(int** gameMap_0);
     void gameOver();
+    bool hasSollution(int** gameMap);
+    void freeGameMap(int** gameMap);
 
 private slots:
     void on_returnButton_clicked();
@@ -52,6 +55,8 @@ private slots:
     void drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_y2,QList<Vertex> *list);
     void hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2);
     void changeAutoState();
+
+    void on_resetButton_clicked();
 
 private:
 

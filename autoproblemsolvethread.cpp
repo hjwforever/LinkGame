@@ -42,7 +42,7 @@ void AutoProblemSolveThread::run(){
                             if(gameMap[m][n]!=0&&gameMap[i][j]==gameMap[m][n]){
                                 QList<Vertex> *list=new QList<Vertex>();
                                 int turnNum = map.canLink_2(gameMap,i,j,m,n,*list);
-                                if(turnNum!=-1){
+                                if(!stopped&&turnNum!=-1){
                                     hasSollution=true;
                                     Sleep(sleepTime);
                                     gameMap[i][j]=0;

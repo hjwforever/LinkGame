@@ -44,6 +44,87 @@ Game_UI::~Game_UI()
     delete ui;
 }
 
+void Game_UI::freeGameMap(int** gameMap){
+    for(int i=0;i<rowSize;i++){
+        free(gameMap[i]);
+    }
+}
+
+bool Game_UI::hasSollution(int** gameMap){
+    int** copyGameMap=(int**) malloc(rowSize*sizeof(int*));
+    for(int i=0;i<rowSize;i++){
+        copyGameMap[i]=(int*)malloc(columnSize*sizeof(int));
+        for(int j=0;j<columnSize;j++){
+            copyGameMap[i][j]=gameMap[i][j];
+        }
+    }
+
+    while(!allCleared(copyGameMap)){
+        bool hasSollution=false;
+        for(int i=1;i<=rowSize-2;i++){
+            for(int j=1;j<=columnSize-2;j++){
+                if(copyGameMap[i][j]!=0){
+                    for (int m=1;m<=rowSize-2;m++) {
+                        for(int n=1;n<=columnSize-2;n++){
+                            if(copyGameMap[m][n]!=0&&copyGameMap[i][j]==copyGameMap[m][n]){
+                                QList<Vertex> *list=new QList<Vertex>();
+                                int turnNum = map.canLink_2(copyGameMap,i,j,m,n,*list);
+                                if(turnNum!=-1){
+                                    hasSollution=true;
+                                    copyGameMap[i][j]=0;
+                                    copyGameMap[m][n]=0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(!hasSollution) {
+            return false;
+            cout<<"无解 hasSollution(int** gameMap)"<<endl;
+            break;
+        }
+    }
+    return true;
+    /////////////////////////////////////////////////释放copyGameMap内存
+}
+
+void Game_UI::resetMap(){
+    LinkList<Vertex*> *remainVertexList=new LinkList<Vertex*>;
+    LinkList<int> *remainPictrueList=new LinkList<int>;
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize;j++){
+            if(gameMap[i][j]){
+                Vertex *vertex=new Vertex();
+                vertex->first=i;
+                vertex->second=j;
+                remainVertexList->tailInsert(vertex);
+                remainPictrueList->tailInsert(gameMap[i][j]);
+            }
+        }
+    }
+
+    srand(time(NULL));
+
+    while (remainVertexList->getLen()) {
+        int randNum=rand()%remainVertexList->getLen();
+        Vertex *tempVertex;
+        remainVertexList->del(randNum,tempVertex);
+        int picIndex=0;
+        remainPictrueList->del(0,picIndex);
+        gameMap[tempVertex->first][tempVertex->second]=picIndex;
+        gameButtonMap[tempVertex->first][tempVertex->second]->setStyleSheet(QString("QPushButton{border-image: url(:/image/button_icon/%1/%2.png)}").arg(currentModel[set_ui->currentModelNum]).arg(picIndex).toLatin1().data());
+    }
+
+    while(!hasSollution(gameMap)){
+        resetMap();
+    }
+
+    remainVertexList->~LinkList();
+    remainPictrueList->~LinkList();
+}
+
 void Game_UI::changeAutoState(){
     if(!isPause){
         if(isAutoSolve){
@@ -366,6 +447,10 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+    freeGameMap(gameMap);
+    if(isAutoSolve){
+        autoProblemSolveThread->stop();
+    }
     ui->label3->setVisible(false);
     ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
     ui->timeBar->setValue(60);
@@ -425,8 +510,8 @@ void Game_UI::createGameMap(){
 }
 
 void Game_UI::setAllButtonVisible(bool visible){
-    for(int i=0;i<rowSize;i++){
-        for(int j=0;j<columnSize;j++){
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize-1;j++){
             if(gameMap[i][j]!=0){
                 if(visible){
                     gameButtonMap[i][j]->show();
@@ -495,14 +580,15 @@ void Game_UI::on_myButton_clicked(int row,int column){
                     ////////////////////////////////
                 }
 
-                int** copyGameMap=(int**) malloc(rowSize*sizeof(int*));
-                for(int i=0;i<rowSize;i++){
-                    copyGameMap[i]=(int*)malloc(columnSize*sizeof(int));
-                    for(int j=0;j<columnSize;j++){
-                        copyGameMap[i][j]=gameMap[i][j];
-                    }
-                }
-                if(isDeadlock(copyGameMap)&&!allCleared(gameMap)){
+//                int** copyGameMap=(int**) malloc(rowSize*sizeof(int*));
+//                for(int i=0;i<rowSize;i++){
+//                    copyGameMap[i]=(int*)malloc(columnSize*sizeof(int));
+//                    for(int j=0;j<columnSize;j++){
+//                        copyGameMap[i][j]=gameMap[i][j];
+//                    }
+//                }
+                if(isDeadlock(gameMap)&&!allCleared(gameMap)){
+                    resetMap();
                     cout<<"陷入僵局"<<endl;
                 }
             }
@@ -584,4 +670,15 @@ void Game_UI::on_tipButton_clicked()
         cout<<"僵局"<<endl;
     }
     tip(gameMap);
+}
+
+void Game_UI::on_resetButton_clicked()
+{
+    resetMap();
+    if(score<5){
+        score=0;
+    }else{
+        score-=5;
+    }
+    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
 }
