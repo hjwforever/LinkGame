@@ -27,6 +27,7 @@ Game_UI::Game_UI(QWidget *parent) :
     // 进度条
     ui->gametime_label->setText("59");
     ui->gametime_label->setStyleSheet("color:white");
+    ui->score_Label->setStyleSheet("color:white");
     ui->timeBar->setTextVisible(false);
     ui->timeBar->setMaximum(60);
     ui->timeBar->setMinimum(0);
@@ -110,6 +111,13 @@ void Game_UI::drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_
         drawLine(x2,y2,button2->x(),button2->y());
     }
     qApp->processEvents();
+
+    //判断是否全部消除(游戏通关)
+    if(allCleared(gameMap))
+    {
+        gameOver();
+        cout<<"全部删除！！！"<<endl;
+    }
 }
 
 void Game_UI::hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2){
@@ -129,7 +137,6 @@ void Game_UI::Erasure_Score()
         continuous_Erasure = 0;
     }
     ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
-    ui->score_Label->setStyleSheet("color:white");
 }
 
 void Game_UI::initButtonImage()
@@ -163,6 +170,7 @@ bool Game_UI::autoEliminateBlock(int** gameMap_0,bool showProgress,int index_x1,
             if(allCleared(gameMap_0))
             {
                 ////////////////////////////////待添加结束界面
+                gameOver();
                 cout<<"全部删除！！！"<<endl;
                 ////////////////////////////////
             }
@@ -270,34 +278,9 @@ void Game_UI::gameTimerEvent(){
     //进度条计时效果
     if(ui->timeBar->value() == 0)
     {
-        gameTimer->stop();
-        //提示框
-        QMessageBox::information(this, "game over", "play again>_<");
-        QMessageBox msgBox;
-        msgBox.setText(tr("<span style='color: blue; font-size: 24px;'>   Game Over!</span/p>"));
-        msgBox.setInformativeText(tr("Do you want to continue?"));
-        msgBox.setStandardButtons(QMessageBox::Retry
-                                  | QMessageBox::Yes
-                                  | QMessageBox::No);
-        msgBox.setDefaultButton(QMessageBox::Save);
-        // msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png"));
-        msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png").scaled(QSize(60,40), Qt::KeepAspectRatio));
-        int ret = msgBox.exec();
-        switch (ret) {
-        case QMessageBox::Retry:
-            qDebug() << "Retry";
-            on_beginButton_clicked();
-            break;
-        case QMessageBox::Yes:
-            qDebug() << "Yes";
-            break;
-        case QMessageBox::No:
-            qDebug() << "No";
-            LinkGame *linkGame_ui=new LinkGame;
-            linkGame_ui->show();
-            delete this;
-            break;
-        }
+        //游戏结束
+        gameOver();
+
     }
     else
     {
@@ -318,6 +301,50 @@ bool Game_UI::allCleared(int** gameMap)
         }
     }
     return true;
+}
+
+void Game_UI::gameOver()
+{
+    //倒计时停止
+    gameTimer->stop();
+
+    //游戏时限内结束游戏，奖励加分2*level*剩余秒数
+    score+=ui->gametime_label->text().toInt()*2*level;
+    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+
+    //提示框
+    QMessageBox::information(this, "Game Over!", tr("<span style='color: blue; font-size: 24px;'>   Your score:%1 </span/p>\nplay again>_<").arg(QString::number(score)));
+    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+
+    //重新开始
+    on_beginButton_clicked();
+
+///////////////////强制提示框,Yes，Retry,Cancel  分别 对应无影响，重新开始，返回主界面
+//    QMessageBox msgBox;
+//    msgBox.setText(tr("<span style='color: blue; font-size: 24px;'>   Game Over!</span/p>"));
+//    msgBox.setInformativeText(tr("Do you want to continue?"));
+//    msgBox.setStandardButtons(QMessageBox::Retry
+//                              | QMessageBox::Yes
+//                              | QMessageBox::No);
+//    msgBox.setDefaultButton(QMessageBox::Save);
+//    // msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png"));
+//    msgBox.setIconPixmap(QPixmap(":/image/button_icon/fruit/2.png").scaled(QSize(60,40), Qt::KeepAspectRatio));
+//    int ret = msgBox.exec();
+//    switch (ret) {
+//    case QMessageBox::Retry:
+//        qDebug() << "Retry";
+//        on_beginButton_clicked();
+//        break;
+//    case QMessageBox::Yes:
+//        qDebug() << "Yes";
+//        break;
+//    case QMessageBox::No:
+//        qDebug() << "No";
+//        LinkGame *linkGame_ui=new LinkGame;
+//        linkGame_ui->show();
+//        delete this;
+//        break;
+//    }
 }
 
 void Game_UI::on_returnButton_clicked()
@@ -456,6 +483,7 @@ void Game_UI::on_myButton_clicked(int row,int column){
                 {
 
                     ////////////////////////////////待添加结束界面
+                    gameOver();
                     cout<<"全部删除！！！"<<endl;
                     ////////////////////////////////
                 }

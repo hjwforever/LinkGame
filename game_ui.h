@@ -36,6 +36,7 @@ public:
     void tip(int** gameMap);
     void resetMap(int** gameMap);
     bool isDeadlock(int** gameMap_0);
+    void gameOver();
 
 private slots:
     void on_returnButton_clicked();
