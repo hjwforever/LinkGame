@@ -2,6 +2,8 @@
 #define CHOOSELEVEL_UI_H
 
 #include <QMainWindow>
+#include <QPixmap>
+#include <QBitmap>
 
 namespace Ui {
 class ChooseLevel_UI;

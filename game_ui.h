@@ -2,6 +2,8 @@
 #define GAME_UI_H
 
 #include <QMainWindow>
+#include <QPixmap>
+#include <QBitmap>
 #include"map.h"
 #include"mybutton.h"
 #include"voiceplayer.h"

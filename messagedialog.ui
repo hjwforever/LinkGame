@@ -64,17 +64,17 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="returnPushButton">
+      <widget class="QToolButton" name="returnPushButton">
        <property name="minimumSize">
         <size>
-         <width>80</width>
-         <height>40</height>
+         <width>0</width>
+         <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>80</width>
-         <height>40</height>
+         <width>1000</width>
+         <height>1000</height>
         </size>
        </property>
        <property name="font">

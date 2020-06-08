@@ -10,6 +10,35 @@ Set_UI::Set_UI(QWidget *parent) :
     ui(new Ui::Set_UI)
 {
     ui->setupUi(this);
+    QPixmap pixmap1(":/image/button_icon/set_ui/open.png");
+    ui->BGM_pushButton->resize(pixmap1.size());
+    ui->BGM_pushButton->setIcon(pixmap1);
+    ui->BGM_pushButton->setIconSize(pixmap1.size());
+    ui->BGM_pushButton->setMask(pixmap1.mask());
+    ui->BGM_pushButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap2(":/image/button_icon/set_ui/rule.png");
+    ui->method_and_rule_pushButton->resize(pixmap2.size());
+    ui->method_and_rule_pushButton->setIcon(pixmap2);
+    ui->method_and_rule_pushButton->setIconSize(pixmap2.size());
+    ui->method_and_rule_pushButton->setMask(pixmap2.mask());
+    ui->method_and_rule_pushButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap3(":/image/button_icon/set_ui/save.png");
+    ui->save_set_pushButton->resize(pixmap3.size());
+    ui->save_set_pushButton->setIcon(pixmap3);
+    ui->save_set_pushButton->setIconSize(pixmap3.size());
+    ui->save_set_pushButton->setMask(pixmap3.mask());
+    ui->save_set_pushButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap4(":/image/button_icon/return2.png");
+    ui->returnButton->resize(pixmap4.size());
+    ui->returnButton->setIcon(pixmap4);
+    ui->returnButton->setIconSize(pixmap4.size());
+    ui->returnButton->setMask(pixmap4.mask());
+    ui->returnButton->setStyleSheet("QToolButton{border:0px;}");
+
+
     voiceplayer=new VoicePlayer;
 }
 
@@ -44,16 +73,25 @@ void Set_UI::on_returnButton_clicked()
 
 void Set_UI::on_BGM_pushButton_clicked()
 {
-
-    QString s;
-    s=ui->BGM_pushButton->text();
-    if(s=="开")
+    if(!isopen)
     {
         voiceplayer->Play_BGM();
-        ui->BGM_pushButton->setText("关");
+        QPixmap pixmap1(":/image/button_icon/set_ui/close.png");
+        ui->BGM_pushButton->resize(pixmap1.size());
+        ui->BGM_pushButton->setIcon(pixmap1);
+        ui->BGM_pushButton->setIconSize(pixmap1.size());
+        ui->BGM_pushButton->setMask(pixmap1.mask());
+        ui->BGM_pushButton->setStyleSheet("QToolButton{border:0px;}");
+        isopen=true;
     }else{
         voiceplayer->Pause_BGM();
-        ui->BGM_pushButton->setText("开");
+        QPixmap pixmap2(":/image/button_icon/set_ui/open.png");
+        ui->BGM_pushButton->resize(pixmap2.size());
+        ui->BGM_pushButton->setIcon(pixmap2);
+        ui->BGM_pushButton->setIconSize(pixmap2.size());
+        ui->BGM_pushButton->setMask(pixmap2.mask());
+        ui->BGM_pushButton->setStyleSheet("QToolButton{border:0px;}");
+        isopen=false;
     }
 }
 

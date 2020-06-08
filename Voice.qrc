@@ -175,5 +175,27 @@
         <file>button_icon/gem/18.png</file>
         <file>button_icon/gem/19.png</file>
         <file>button_icon/gem/20.png</file>
+        <file>button_icon/chooselevel_ui/level_common.png</file>
+        <file>button_icon/chooselevel_ui/level_easy.png</file>
+        <file>button_icon/chooselevel_ui/level_hard.png</file>
+        <file>button_icon/chooselevel_ui/return.png</file>
+        <file>button_icon/game_ui/auto_solve_problem.png</file>
+        <file>button_icon/game_ui/playback.png</file>
+        <file>button_icon/game_ui/remind.png</file>
+        <file>button_icon/game_ui/reset.png</file>
+        <file>button_icon/game_ui/restart.png</file>
+        <file>button_icon/linkgame_ui/about.png</file>
+        <file>button_icon/linkgame_ui/double_mode.png</file>
+        <file>button_icon/linkgame_ui/exit.png</file>
+        <file>button_icon/linkgame_ui/list.png</file>
+        <file>button_icon/linkgame_ui/set.png</file>
+        <file>button_icon/linkgame_ui/single_mode.png</file>
+        <file>button_icon/set_ui/close.png</file>
+        <file>button_icon/set_ui/open.png</file>
+        <file>button_icon/set_ui/rule.png</file>
+        <file>button_icon/set_ui/save.png</file>
+        <file>button_icon/game_ui/continue.png</file>
+        <file>button_icon/game_ui/pause.png</file>
+        <file>button_icon/game_ui/manual_problem_solving.png</file>
     </qresource>
 </RCC>

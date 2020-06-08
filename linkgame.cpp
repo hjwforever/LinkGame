@@ -16,6 +16,49 @@ LinkGame::LinkGame(QWidget *parent)
     , ui(new Ui::LinkGame)
 {
     ui->setupUi(this);
+
+    QPixmap pixmap1(":/image/button_icon/linkgame_ui/single_mode.png");
+    ui->onePersonButton->resize(pixmap1.size());
+    ui->onePersonButton->setIcon(pixmap1);
+    ui->onePersonButton->setIconSize(pixmap1.size());
+    ui->onePersonButton->setMask(pixmap1.mask());
+    ui->onePersonButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap2(":/image/button_icon/linkgame_ui/double_mode.png");
+    ui->twoPersonButton->resize(pixmap2.size());
+    ui->twoPersonButton->setIcon(pixmap2);
+    ui->twoPersonButton->setIconSize(pixmap2.size());
+    ui->twoPersonButton->setMask(pixmap2.mask());
+    ui->twoPersonButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap3(":/image/button_icon/linkgame_ui/list.png");
+    ui->ranking_List_Button->resize(pixmap3.size());
+    ui->ranking_List_Button->setIcon(pixmap3);
+    ui->ranking_List_Button->setIconSize(pixmap3.size());
+    ui->ranking_List_Button->setMask(pixmap3.mask());
+    ui->ranking_List_Button->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap4(":/image/button_icon/linkgame_ui/set.png");
+    ui->setButton->resize(pixmap4.size());
+    ui->setButton->setIcon(pixmap4);
+    ui->setButton->setIconSize(pixmap4.size());
+    ui->setButton->setMask(pixmap4.mask());
+    ui->setButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap5(":/image/button_icon/linkgame_ui/about.png");
+    ui->aboutButton->resize(pixmap5.size());
+    ui->aboutButton->setIcon(pixmap5);
+    ui->aboutButton->setIconSize(pixmap5.size());
+    ui->aboutButton->setMask(pixmap5.mask());
+    ui->aboutButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap6(":/image/button_icon/linkgame_ui/exit.png");
+    ui->exitButton->resize(pixmap6.size());
+    ui->exitButton->setIcon(pixmap6);
+    ui->exitButton->setIconSize(pixmap6.size());
+    ui->exitButton->setMask(pixmap6.mask());
+    ui->exitButton->setStyleSheet("QToolButton{border:0px;}");
+
 }
 
 LinkGame::~LinkGame()

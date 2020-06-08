@@ -178,7 +178,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="BGM_pushButton">
+        <widget class="QToolButton" name="BGM_pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -187,14 +187,14 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>120</width>
-           <height>40</height>
+           <width>0</width>
+           <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
-           <height>40</height>
+           <width>150</width>
+           <height>150</height>
           </size>
          </property>
          <property name="font">
@@ -276,6 +276,23 @@
            <pointsize>20</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆角 */
+    color: #ffffff;
+    background: transparent;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: 1px solid yellow;   /* 整个下拉窗体的边框 */
+    color: #ffffff;
+    background-color: #55aaff;   /* 整个下拉窗体的背景色 */
+    selection-background-color: lightgreen;   /* 整个下拉窗体被选中项的背景色 */
+}</string>
+         </property>
          <item>
           <property name="text">
            <string>水果</string>
@@ -336,6 +353,23 @@
            <pointsize>20</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">/* 未下拉时，QComboBox的样式 */
+QComboBox {
+    border: 1px solid gray;   /* 边框 */
+    border-radius: 3px;   /* 圆角 */
+    color: #ffffff;
+    background: transparent;
+}
+/* 下拉后，整个下拉窗体样式 */
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;   /* 选定项的虚框 */
+    border: 1px solid yellow;   /* 整个下拉窗体的边框 */
+    color: #ffffff;
+    background-color: #55aaff;   /* 整个下拉窗体的背景色 */
+    selection-background-color: lightgreen;   /* 整个下拉窗体被选中项的背景色 */
+}</string>
+         </property>
          <item>
           <property name="text">
            <string>China-X</string>
@@ -384,7 +418,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="method_and_rule_pushButton">
+        <widget class="QToolButton" name="method_and_rule_pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -393,14 +427,14 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>180</width>
-           <height>40</height>
+           <width>0</width>
+           <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>180</width>
-           <height>40</height>
+           <width>1000</width>
+           <height>1000</height>
           </size>
          </property>
          <property name="font">
@@ -448,7 +482,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="save_set_pushButton">
+        <widget class="QToolButton" name="save_set_pushButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -457,14 +491,14 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>140</width>
-           <height>40</height>
+           <width>0</width>
+           <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>140</width>
-           <height>40</height>
+           <width>1000</width>
+           <height>10000</height>
           </size>
          </property>
          <property name="font">
@@ -508,7 +542,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="returnButton">
+   <widget class="QToolButton" name="returnButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -535,12 +569,6 @@
       <width>30</width>
       <height>30</height>
      </size>
-    </property>
-    <property name="default">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="set_UI_Background_label">

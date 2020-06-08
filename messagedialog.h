@@ -2,6 +2,8 @@
 #define MESSAGEDIALOG_H
 
 #include <QDialog>
+#include <QPixmap>
+#include <QBitmap>
 
 namespace Ui {
 class MessageDialog;

@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="returnButton">
+   <widget class="QToolButton" name="returnButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -42,11 +42,8 @@
       <height>35</height>
      </size>
     </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
    </widget>
-   <widget class="QPushButton" name="beginButton">
+   <widget class="QToolButton" name="beginButton">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -193,7 +190,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pauseButton">
+   <widget class="QToolButton" name="pauseButton">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -228,7 +225,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="autoSolveProblemButton">
+   <widget class="QToolButton" name="autoSolveProblemButton">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -247,7 +244,7 @@
      <string>自动解题</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="tipButton">
+   <widget class="QToolButton" name="tipButton">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -266,7 +263,7 @@
      <string>提示</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="resetButton">
+   <widget class="QToolButton" name="resetButton">
     <property name="geometry">
      <rect>
       <x>610</x>

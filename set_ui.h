@@ -2,6 +2,8 @@
 
 #include "voiceplayer.h"
 #include<QMainWindow>
+#include <QPixmap>
+#include <QBitmap>
 #include"messagedialog.h"
 
 using namespace std;
@@ -34,6 +36,7 @@ private slots:
 private:
     Ui::Set_UI *ui;
     string parentName="";
+    bool isopen=false;
 
 public:
     int currentModelNum = 0;

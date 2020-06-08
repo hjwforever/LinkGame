@@ -11,6 +11,34 @@ ChooseLevel_UI::ChooseLevel_UI(QWidget *parent) :
     ui(new Ui::ChooseLevel_UI)
 {
     ui->setupUi(this);
+    QPixmap pixmap1(":/image/button_icon/chooselevel_ui/level_easy.png");
+    ui->easyButton->resize(pixmap1.size());
+    ui->easyButton->setIcon(pixmap1);
+    ui->easyButton->setIconSize(pixmap1.size());
+    ui->easyButton->setMask(pixmap1.mask());
+    ui->easyButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap2(":/image/button_icon/chooselevel_ui/level_common.png");
+    ui->normalButton->resize(pixmap2.size());
+    ui->normalButton->setIcon(pixmap2);
+    ui->normalButton->setIconSize(pixmap2.size());
+    ui->normalButton->setMask(pixmap2.mask());
+    ui->normalButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap3(":/image/button_icon/chooselevel_ui/level_hard.png");
+    ui->hardButton->resize(pixmap3.size());
+    ui->hardButton->setIcon(pixmap3);
+    ui->hardButton->setIconSize(pixmap3.size());
+    ui->hardButton->setMask(pixmap3.mask());
+    ui->hardButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap4(":/image/button_icon/chooselevel_ui/return.png");
+    ui->returnButton->resize(pixmap4.size());
+    ui->returnButton->setIcon(pixmap4);
+    ui->returnButton->setIconSize(pixmap4.size());
+    ui->returnButton->setMask(pixmap4.mask());
+    ui->returnButton->setStyleSheet("QToolButton{border:0px;}");
+
 }
 
 ChooseLevel_UI::~ChooseLevel_UI()

@@ -37,6 +37,48 @@ Game_UI::Game_UI(QWidget *parent) :
     connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
     gameTimer->start(1000);
 
+    QPixmap pixmap1(":/image/button_icon/game_ui/restart.png");
+    ui->beginButton->resize(pixmap1.size());
+    ui->beginButton->setIcon(pixmap1);
+    ui->beginButton->setIconSize(pixmap1.size());
+    ui->beginButton->setMask(pixmap1.mask());
+    ui->beginButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap2(":/image/button_icon/game_ui/pause.png");
+    ui->pauseButton->resize(pixmap2.size());
+    ui->pauseButton->setIcon(pixmap2);
+    ui->pauseButton->setIconSize(pixmap2.size());
+    ui->pauseButton->setMask(pixmap2.mask());
+    ui->pauseButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap3(":/image/button_icon/game_ui/auto_solve_problem.png");
+    ui->autoSolveProblemButton->resize(pixmap3.size());
+    ui->autoSolveProblemButton->setIcon(pixmap3);
+    ui->autoSolveProblemButton->setIconSize(pixmap3.size());
+    ui->autoSolveProblemButton->setMask(pixmap3.mask());
+    ui->autoSolveProblemButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap4(":/image/button_icon/game_ui/remind.png");
+    ui->tipButton->resize(pixmap4.size());
+    ui->tipButton->setIcon(pixmap4);
+    ui->tipButton->setIconSize(pixmap4.size());
+    ui->tipButton->setMask(pixmap4.mask());
+    ui->tipButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap5(":/image/button_icon/game_ui/reset.png");
+    ui->resetButton->resize(pixmap5.size());
+    ui->resetButton->setIcon(pixmap5);
+    ui->resetButton->setIconSize(pixmap5.size());
+    ui->resetButton->setMask(pixmap5.mask());
+    ui->resetButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap6(":/image/button_icon/return2.png");
+    ui->returnButton->resize(pixmap6.size());
+    ui->returnButton->setIcon(pixmap6);
+    ui->returnButton->setIconSize(pixmap6.size());
+    ui->returnButton->setMask(pixmap6.mask());
+    ui->returnButton->setStyleSheet("QToolButton{border:0px;}");
+
 }
 
 Game_UI::~Game_UI()
@@ -447,12 +489,21 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+
     freeGameMap(gameMap);
     if(isAutoSolve){
         autoProblemSolveThread->stop();
     }
     ui->label3->setVisible(false);
-    ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
+//    ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
+
+    QPixmap pixmap1(":/image/button_icon/game_ui/pause.png");
+    ui->pauseButton->resize(pixmap1.size());
+    ui->pauseButton->setIcon(pixmap1);
+    ui->pauseButton->setIconSize(pixmap1.size());
+    ui->pauseButton->setMask(pixmap1.mask());
+    ui->pauseButton->setStyleSheet("QToolButton{border:0px;}");
+
     ui->timeBar->setValue(60);
     ui->gametime_label->setText(QString::number(59));
     gameTimer->stop();
@@ -627,7 +678,13 @@ void Game_UI::on_pauseButton_clicked()
         setAllButtonVisible(false);
         isPause=true;
         gameTimer->stop();
-        ui->pauseButton->setText(QString::fromLocal8Bit("继续"));
+//        ui->pauseButton->setText(QString::fromLocal8Bit("继续"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/continue.png");
+        ui->pauseButton->resize(pixmap1.size());
+        ui->pauseButton->setIcon(pixmap1);
+        ui->pauseButton->setIconSize(pixmap1.size());
+        ui->pauseButton->setMask(pixmap1.mask());
+        ui->pauseButton->setStyleSheet("QToolButton{border:0px;}");
     }
     else if(isPause)
     {
@@ -638,7 +695,13 @@ void Game_UI::on_pauseButton_clicked()
         setAllButtonVisible(true);
         isPause=false;
         gameTimer->start(1000);
-        ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
+//        ui->pauseButton->setText(QString::fromLocal8Bit("暂停"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/pause.png");
+        ui->pauseButton->resize(pixmap1.size());
+        ui->pauseButton->setIcon(pixmap1);
+        ui->pauseButton->setIconSize(pixmap1.size());
+        ui->pauseButton->setMask(pixmap1.mask());
+        ui->pauseButton->setStyleSheet("QToolButton{border:0px;}");
     }
     ui->label3->setVisible(isPause); //设置遮挡画布（图片）的可见性
     if(isAutoSolve){
@@ -652,7 +715,13 @@ void Game_UI::on_autoSolveProblemButton_clicked()
 {
     if(isAutoSolve){
         autoProblemSolveThread->stop();
-        ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("自动解题"));
+//        ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("自动解题"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/auto_solve_problem.png");
+        ui->autoSolveProblemButton->resize(pixmap1.size());
+        ui->autoSolveProblemButton->setIcon(pixmap1);
+        ui->autoSolveProblemButton->setIconSize(pixmap1.size());
+        ui->autoSolveProblemButton->setMask(pixmap1.mask());
+        ui->autoSolveProblemButton->setStyleSheet("QToolButton{border:0px;}");
     }else{
         isAutoSolve=true;
         autoProblemSolveThread=new AutoProblemSolveThread(gameMap,rowSize,columnSize,true,250);
@@ -660,7 +729,13 @@ void Game_UI::on_autoSolveProblemButton_clicked()
         connect(autoProblemSolveThread, SIGNAL(hideButton(int,int,int,int)),this, SLOT(hideButton_exe(int,int,int,int)));
         connect(autoProblemSolveThread, SIGNAL(autoSolveFinish()),this, SLOT(changeAutoState()));
         autoProblemSolveThread->start();
-        ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("手动解题"));
+//        ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("手动解题"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/manual_problem_solving.png");
+        ui->autoSolveProblemButton->resize(pixmap1.size());
+        ui->autoSolveProblemButton->setIcon(pixmap1);
+        ui->autoSolveProblemButton->setIconSize(pixmap1.size());
+        ui->autoSolveProblemButton->setMask(pixmap1.mask());
+        ui->autoSolveProblemButton->setStyleSheet("QToolButton{border:0px;}");
     }
 }
 

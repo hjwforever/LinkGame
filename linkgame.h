@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
+#include <QPixmap>
+#include <QBitmap>
 #include"messagedialog.h"
 
 QT_BEGIN_NAMESPACE
