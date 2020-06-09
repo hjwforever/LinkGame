@@ -10,6 +10,7 @@ Set_UI::Set_UI(QWidget *parent) :
     ui(new Ui::Set_UI)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::FramelessWindowHint);
     QPixmap pixmap1(":/image/button_icon/set_ui/open.png");
     ui->BGM_pushButton->resize(pixmap1.size());
     ui->BGM_pushButton->setIcon(pixmap1);

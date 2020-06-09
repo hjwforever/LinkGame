@@ -11,6 +11,7 @@ ChooseLevel_UI::ChooseLevel_UI(QWidget *parent) :
     ui(new Ui::ChooseLevel_UI)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::FramelessWindowHint);
     QPixmap pixmap1(":/image/button_icon/chooselevel_ui/level_easy.png");
     ui->easyButton->resize(pixmap1.size());
     ui->easyButton->setIcon(pixmap1);

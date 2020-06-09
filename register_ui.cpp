@@ -11,6 +11,7 @@ Register_UI::Register_UI(QWidget *parent) :
     ui(new Ui::Register_UI)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::FramelessWindowHint);
     connect(set_ui, &Set_UI::signal_signInSuccessfully, this, &Register_UI::slot_SignInSuccessfully);
 }
 

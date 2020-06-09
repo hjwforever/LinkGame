@@ -13,6 +13,7 @@ Login_UI::Login_UI(QWidget *parent) :
     ui(new Ui::Login_UI)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::FramelessWindowHint);
     set_ui->connectToServer();
     connect(set_ui, &Set_UI::signal_loginSuccessfully, this, &Login_UI::slot_loginSuccessfully);
 }

@@ -18,7 +18,7 @@ LinkGame::LinkGame(QWidget *parent)
     , ui(new Ui::LinkGame)
 {
     ui->setupUi(this);
-
+    this->setWindowFlags(Qt::FramelessWindowHint);
     QPixmap pixmap1(":/image/button_icon/linkgame_ui/single_mode.png");
     ui->onePersonButton->resize(pixmap1.size());
     ui->onePersonButton->setIcon(pixmap1);

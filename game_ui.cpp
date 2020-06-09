@@ -24,6 +24,8 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->game_UI_graphicsView->setScene(Scence);
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setMinimumSize(45,45);
 //    // ½ø¶ÈÌõ
 //    ui->gametime_label->setText("59");
 //    ui->gametime_label->setStyleSheet("color:white");
@@ -923,3 +925,25 @@ void Game_UI::slot_ChangeHasPrepared(bool win){
     }
 
 }
+
+//void Game_UI::mousePressEvent(QMouseEvent *event)
+//{
+////    if (event->button() == Qt::LeftButton) {
+////        pos = event->globalPos() - frameGeometry().topLeft();
+////        event->accept();
+////    }
+
+//    if(event->button()==Qt::LeftButton)
+//        clickPos=event->pos();
+
+//}
+
+//void Game_UI::mouseMoveEvent(QMouseEvent *event)
+//{
+////    if (event->buttons() & Qt::LeftButton) {
+////        move(event->globalPos() - pos);
+////        event->accept();
+////    }
+//    if(event->buttons()&Qt::LeftButton)
+//        move(event->pos()+pos()-clickPos);
+//}

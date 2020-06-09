@@ -43,6 +43,12 @@ public:
     bool hasSollution(int** gameMap);
     void freeGameMap(int** gameMap);
 
+//protected:
+//    void mousePressEvent(QMouseEvent *event);
+//    void mouseMoveEvent(QMouseEvent *event);
+private:
+    QPoint clickPos;
+
 private slots:
     void on_returnButton_clicked();
     void on_beginButton_clicked();
