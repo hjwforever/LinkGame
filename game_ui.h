@@ -16,12 +16,13 @@
 #include "timeprogressbarthread.h"
 #include"autoproblemsolvethread.h"
 #include"linklist.h"
+#include "mymainwindow.h"
 
 namespace Ui {
 class Game_UI;
 }
 
-class Game_UI : public QMainWindow
+class Game_UI : public MyMainWindow
 {
     Q_OBJECT
 

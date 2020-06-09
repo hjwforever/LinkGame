@@ -6,7 +6,7 @@
 static int BGM_index;
 
 Set_UI::Set_UI(QWidget *parent) :
-    QMainWindow(parent),
+    MyMainWindow(parent),
     ui(new Ui::Set_UI)
 {
     ui->setupUi(this);

@@ -7,10 +7,11 @@
 extern Set_UI *set_ui;
 
 Register_UI::Register_UI(QWidget *parent) :
-    QMainWindow(parent),
+    MyMainWindow(parent),
     ui(new Ui::Register_UI)
 {
     ui->setupUi(this);
+    ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
     this->setWindowFlags(Qt::FramelessWindowHint);
     connect(set_ui, &Set_UI::signal_signInSuccessfully, this, &Register_UI::slot_SignInSuccessfully);
 }

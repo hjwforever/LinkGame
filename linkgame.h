@@ -6,12 +6,13 @@
 #include <QPixmap>
 #include <QBitmap>
 #include"messagedialog.h"
+#include "mymainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class LinkGame; }
 QT_END_NAMESPACE
 
-class LinkGame : public QMainWindow
+class LinkGame : public MyMainWindow
 {
     Q_OBJECT
 

@@ -30,6 +30,7 @@ SOURCES += \
     map.cpp \
     messagedialog.cpp \
     mybutton.cpp \
+    mymainwindow.cpp \
     register_ui.cpp \
     set_ui.cpp \
     timeprogressbarthread.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     map.h \
     messagedialog.h \
     mybutton.h \
+    mymainwindow.h \
     register_ui.h \
     set_ui.h \
     timeprogressbarthread.h \

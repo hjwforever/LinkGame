@@ -8,6 +8,7 @@
 #include<iostream>
 
 #include"messagedialog.h"
+#include "mymainwindow.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ namespace Ui {
 class Set_UI;
 }
 
-class Set_UI : public QMainWindow
+class Set_UI : public MyMainWindow
 {
     Q_OBJECT
 

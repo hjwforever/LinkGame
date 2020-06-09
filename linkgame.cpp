@@ -14,7 +14,7 @@
 extern Set_UI *set_ui;
 
 LinkGame::LinkGame(QWidget *parent)
-    : QMainWindow(parent)
+    : MyMainWindow(parent)
     , ui(new Ui::LinkGame)
 {
     ui->setupUi(this);

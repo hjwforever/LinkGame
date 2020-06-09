@@ -7,7 +7,7 @@
 extern Set_UI *set_ui;
 
 ChooseLevel_UI::ChooseLevel_UI(QWidget *parent) :
-    QMainWindow(parent),
+    MyMainWindow(parent),
     ui(new Ui::ChooseLevel_UI)
 {
     ui->setupUi(this);

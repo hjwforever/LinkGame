@@ -2,12 +2,13 @@
 #define REGISTER_UI_H
 
 #include <QMainWindow>
+#include "mymainwindow.h"
 
 namespace Ui {
 class Register_UI;
 }
 
-class Register_UI : public QMainWindow
+class Register_UI : public MyMainWindow
 {
     Q_OBJECT
 

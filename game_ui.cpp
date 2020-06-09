@@ -15,7 +15,7 @@ using namespace std;
 
 extern Set_UI *set_ui;
 Game_UI::Game_UI(QWidget *parent) :
-    QMainWindow(parent),
+    MyMainWindow(parent),
     ui(new Ui::Game_UI)
 {
     ui->setupUi(this);
@@ -548,6 +548,7 @@ void Game_UI::on_beginButton_clicked()
         autoProblemSolveThread->stop();
     }
     ui->label3->setVisible(false);
+    ui->win_lose_gameover_Label->setVisible(false);
 //    ui->pauseButton->setText(QString::fromLocal8Bit("ÔÝÍ£"));
 
     QPixmap pixmap1(":/image/button_icon/game_ui/pause.png");

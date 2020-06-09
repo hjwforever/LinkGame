@@ -4,12 +4,13 @@
 #include <QMainWindow>
 #include <QPixmap>
 #include <QBitmap>
+#include "mymainwindow.h"
 
 namespace Ui {
 class ChooseLevel_UI;
 }
 
-class ChooseLevel_UI : public QMainWindow
+class ChooseLevel_UI : public MyMainWindow
 {
     Q_OBJECT
 

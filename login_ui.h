@@ -2,12 +2,13 @@
 #define LOGIN_UI_H
 
 #include <QMainWindow>
+#include "mymainwindow.h"
 
 namespace Ui {
 class Login_UI;
 }
 
-class Login_UI : public QMainWindow
+class Login_UI : public MyMainWindow
 {
     Q_OBJECT
 
