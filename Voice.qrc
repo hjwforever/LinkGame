@@ -197,5 +197,10 @@
         <file>button_icon/game_ui/continue.png</file>
         <file>button_icon/game_ui/pause.png</file>
         <file>button_icon/game_ui/manual_problem_solving.png</file>
+        <file>button_icon/game_over_pink.png</file>
+        <file>button_icon/lose_pink.png</file>
+        <file>button_icon/win_pink.png</file>
+        <file>button_icon/game_ui/cancel_prepare.png</file>
+        <file>button_icon/game_ui/prepare.png</file>
     </qresource>
 </RCC>

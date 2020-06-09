@@ -81,6 +81,15 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->returnButton->setMask(pixmap6.mask());
     ui->returnButton->setStyleSheet("QToolButton{border:0px;}");
 
+    QPixmap pixmap7(":/image/button_icon/game_ui/prepare.png");
+    ui->prepareButton->resize(pixmap7.size());
+    ui->prepareButton->setIcon(pixmap7);
+    ui->prepareButton->setIconSize(pixmap7.size());
+    ui->prepareButton->setMask(pixmap7.mask());
+    ui->prepareButton->setStyleSheet("QToolButton{border:0px;}");
+
+    ui->win_lose_gameover_Label->hide();
+
     ui->name_Label->setText(set_ui->name);
     connect(set_ui, SIGNAL(signal_startPK(int**)),this, SLOT(slot_startPK(int**)));
     connect(set_ui, SIGNAL(signal_ChangeHasPrepared(bool)),this, SLOT(slot_ChangeHasPrepared(bool)));
@@ -454,6 +463,10 @@ void Game_UI::gameOver()
     setAllButtonVisible(false);
 
     if(!set_ui->ispking){
+        QPixmap myPix(":/image/button_icon/game_over_pink.png");
+        ui->win_lose_gameover_Label->setPixmap(myPix);
+        ui->win_lose_gameover_Label->setScaledContents(true);
+        ui->win_lose_gameover_Label->show();
         //显示gameover图片////////////////////////////////////////////////////////////////////////////////
     }
 
@@ -866,14 +879,27 @@ void Game_UI::on_resetButton_clicked()
 
 void Game_UI::on_prepareButton_clicked()
 {
+    ui->win_lose_gameover_Label->hide();
     if(!isPrepared){
         QString pkMsg="PK:"+set_ui->mail;
         set_ui->tcpsocket->write(pkMsg.toUtf8().data());
-        ui->prepareButton->setText(QString::fromLocal8Bit("取消准备"));
+//        ui->prepareButton->setText(QString::fromLocal8Bit("取消准备"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/cancel_prepare.png");
+        ui->prepareButton->resize(pixmap1.size());
+        ui->prepareButton->setIcon(pixmap1);
+        ui->prepareButton->setIconSize(pixmap1.size());
+        ui->prepareButton->setMask(pixmap1.mask());
+        ui->prepareButton->setStyleSheet("QToolButton{border:0px;}");
         isPrepared=true;
     }else{
         set_ui->tcpsocket->write("CANCALPK");
-        ui->prepareButton->setText(QString::fromLocal8Bit("准备"));
+//        ui->prepareButton->setText(QString::fromLocal8Bit("准备"));
+        QPixmap pixmap2(":/image/button_icon/game_ui/prepare.png");
+        ui->prepareButton->resize(pixmap2.size());
+        ui->prepareButton->setIcon(pixmap2);
+        ui->prepareButton->setIconSize(pixmap2.size());
+        ui->prepareButton->setMask(pixmap2.mask());
+        ui->prepareButton->setStyleSheet("QToolButton{border:0px;}");
         isPrepared=false;
     }
 
@@ -904,23 +930,43 @@ void Game_UI::slot_startPK(int** pkgameMap){
     ui->score_Label->setStyleSheet("color:white");
 
     ui->prepareButton->hide();
+    ui->win_lose_gameover_Label->hide();
 }
 
 void Game_UI::slot_ChangeHasPrepared(bool win){
     setAllButtonVisible(false);
-
     if(win){
+        QPixmap myPix(":/image/button_icon/win_pink.png");
+        ui->win_lose_gameover_Label->setPixmap(myPix);
+        ui->win_lose_gameover_Label->setScaledContents(true);
+        ui->win_lose_gameover_Label->show();
         //胜利的图片///////////////////////////////////////////////////////////////////////////////////////////////
     }else{
+        QPixmap myPix(":/image/button_icon/lose_pink.png");
+        ui->win_lose_gameover_Label->setPixmap(myPix);
+        ui->win_lose_gameover_Label->setScaledContents(true);
+        ui->win_lose_gameover_Label->show();
         //输的图片
     }
 
     ui->prepareButton->show();
     if(!isPrepared){
-        ui->prepareButton->setText(QString::fromLocal8Bit("取消准备"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/cancel_prepare.png");
+        ui->prepareButton->resize(pixmap1.size());
+        ui->prepareButton->setIcon(pixmap1);
+        ui->prepareButton->setIconSize(pixmap1.size());
+        ui->prepareButton->setMask(pixmap1.mask());
+        ui->prepareButton->setStyleSheet("QToolButton{border:0px;}");
+//        ui->prepareButton->setText(QString::fromLocal8Bit("取消准备"));
         isPrepared=true;
     }else{
-        ui->prepareButton->setText(QString::fromLocal8Bit("准备"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/prepare.png");
+        ui->prepareButton->resize(pixmap1.size());
+        ui->prepareButton->setIcon(pixmap1);
+        ui->prepareButton->setIconSize(pixmap1.size());
+        ui->prepareButton->setMask(pixmap1.mask());
+        ui->prepareButton->setStyleSheet("QToolButton{border:0px;}");
+//        ui->prepareButton->setText(QString::fromLocal8Bit("准备"));
         isPrepared=false;
     }
 
