@@ -507,7 +507,11 @@ void Game_UI::gameOver()
 
 void Game_UI::on_returnButton_clicked()
 {
+
     if(set_ui->isTwoPeople){
+        if(set_ui->ispking){
+            set_ui->tcpsocket->write("MIDFIELDEXIT");
+        }
         LinkGame *linkgame=new LinkGame;
         linkgame->show();
     }else{
