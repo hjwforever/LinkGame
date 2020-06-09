@@ -24,18 +24,18 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->game_UI_graphicsView->setScene(Scence);
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
-    // 进度条
-    ui->gametime_label->setText("59");
-    ui->gametime_label->setStyleSheet("color:white");
-    ui->score_Label->setStyleSheet("color:white");
-    ui->timeBar->setTextVisible(false);
-    ui->timeBar->setMaximum(60);
-    ui->timeBar->setMinimum(0);
-    ui->timeBar->setValue(60);
-    // 游戏计时器
-    gameTimer = new QTimer;
-    connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
-    gameTimer->start(1000);
+//    // 进度条
+//    ui->gametime_label->setText("59");
+//    ui->gametime_label->setStyleSheet("color:white");
+//    ui->score_Label->setStyleSheet("color:white");
+//    ui->timeBar->setTextVisible(false);
+//    ui->timeBar->setMaximum(60);
+//    ui->timeBar->setMinimum(0);
+//    ui->timeBar->setValue(60);
+//    // 游戏计时器
+//    gameTimer = new QTimer;
+//    connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
+//    gameTimer->start(1000);
 
     QPixmap pixmap1(":/image/button_icon/game_ui/restart.png");
     ui->beginButton->resize(pixmap1.size());
@@ -79,6 +79,9 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->returnButton->setMask(pixmap6.mask());
     ui->returnButton->setStyleSheet("QToolButton{border:0px;}");
 
+    ui->name_Label->setText(set_ui->name);
+    connect(set_ui, SIGNAL(signal_startPK(int**)),this, SLOT(slot_startPK(int**)));
+    connect(set_ui, SIGNAL(signal_ChangeHasPrepared(bool)),this, SLOT(slot_ChangeHasPrepared(bool)));
 }
 
 Game_UI::~Game_UI()
@@ -171,13 +174,24 @@ void Game_UI::changeAutoState(){
     if(!isPause){
         if(isAutoSolve){
             isAutoSolve=false;
-            ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("自动解题"));
+            //ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("自动解题"));
+            QPixmap pixmap1(":/image/button_icon/game_ui/auto_solve_problem.png");
+            ui->autoSolveProblemButton->resize(pixmap1.size());
+            ui->autoSolveProblemButton->setIcon(pixmap1);
+            ui->autoSolveProblemButton->setIconSize(pixmap1.size());
+            ui->autoSolveProblemButton->setMask(pixmap1.mask());
+            ui->autoSolveProblemButton->setStyleSheet("QToolButton{border:0px;}");
         }else{
             isAutoSolve=true;
-            ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("手动解题"));
+            //ui->autoSolveProblemButton->setText(QString::fromLocal8Bit("手动解题"));
+            QPixmap pixmap1(":/image/button_icon/game_ui/manual_problem_solving.png");
+            ui->autoSolveProblemButton->resize(pixmap1.size());
+            ui->autoSolveProblemButton->setIcon(pixmap1);
+            ui->autoSolveProblemButton->setIconSize(pixmap1.size());
+            ui->autoSolveProblemButton->setMask(pixmap1.mask());
+            ui->autoSolveProblemButton->setStyleSheet("QToolButton{border:0px;}");
         }
     }
-
 }
 
 void Game_UI::setLevel(int level){
@@ -435,19 +449,33 @@ bool Game_UI::allCleared(int** gameMap)
 
 void Game_UI::gameOver()
 {
+    setAllButtonVisible(false);
+
+    if(!set_ui->ispking){
+        //显示gameover图片////////////////////////////////////////////////////////////////////////////////
+    }
+
+    if(set_ui->hasLogin){
+        QString endMsg="END:"+set_ui->mail;
+        set_ui->tcpsocket->write(endMsg.toUtf8().data());
+    }
+
     //倒计时停止
-    gameTimer->stop();
+    if(!set_ui->ispking) gameTimer->stop();
+
 
     //游戏时限内结束游戏，奖励加分2*level*剩余秒数
     score+=ui->gametime_label->text().toInt()*2*level;
     ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
 
     //提示框
-    QMessageBox::information(this, "Game Over!", tr("<span style='color: blue; font-size: 24px;'>   Your score:%1 </span/p>\nplay again>_<").arg(QString::number(score)));
+    QMessageBox::information(this, "Game Over!", tr("<span style='color: blue; font-size: 24px;'>   Your score:%1").arg(QString::number(score)));
     ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
 
+
     //重新开始
-    on_beginButton_clicked();
+    //if(!set_ui->ispking) on_beginButton_clicked();
+
 
 ///////////////////强制提示框,Yes，Retry,Cancel  分别 对应无影响，重新开始，返回主界面
 //    QMessageBox msgBox;
@@ -479,8 +507,13 @@ void Game_UI::gameOver()
 
 void Game_UI::on_returnButton_clicked()
 {
-    ChooseLevel_UI *chooseLevel_ui=new ChooseLevel_UI;
-    chooseLevel_ui->show();
+    if(set_ui->isTwoPeople){
+        LinkGame *linkgame=new LinkGame;
+        linkgame->show();
+    }else{
+        ChooseLevel_UI *chooseLevel_ui=new ChooseLevel_UI;
+        chooseLevel_ui->show();
+    }
 
     //此处可能呀清空游戏数据
 
@@ -489,6 +522,7 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+    tipTimes=3;
 
     freeGameMap(gameMap);
     if(isAutoSolve){
@@ -527,6 +561,21 @@ void Game_UI::on_beginButton_clicked()
 }
 
 void Game_UI::createGameMap(){
+    // 进度条
+    ui->gametime_label->setText("59");
+    ui->gametime_label->setStyleSheet("color:white");
+    ui->score_Label->setStyleSheet("color:white");
+    ui->timeBar->setTextVisible(false);
+    ui->timeBar->setMaximum(60);
+    ui->timeBar->setMinimum(0);
+    ui->timeBar->setValue(60);
+    // 游戏计时器
+    gameTimer = new QTimer;
+    connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
+    gameTimer->start(1000);
+
+
+    ui->prepareButton->hide();
     MyButton *button=new MyButton;
     gameButtonMap=(MyButton***) malloc(rowSize*sizeof(MyButton**));
     for(int i=0;i<rowSize;i++){
@@ -549,7 +598,7 @@ void Game_UI::createGameMap(){
             myButton->setGeometry(start_x+j*edgeOfButton,start_y+i*edgeOfButton,edgeOfButton,edgeOfButton);
             myButton->show();
             //连接信号槽，传递button的数组下标
-            connect(myButton, SIGNAL(clicked(int,int)),this, SLOT(on_myButton_clicked(int,int)));
+            connect(myButton, SIGNAL(clicked(int,int)),this, SLOT(slot_myButton_clicked(int,int)));
             //myButton->setText(QString::number(gameMap[i][j]));
             gameButtonMap[i][j]=myButton;
         }
@@ -558,6 +607,47 @@ void Game_UI::createGameMap(){
         //////////////////
     }
     initButtonImage();
+}
+
+void Game_UI::createEmptyGameMap(){
+    // 进度条
+    ui->gametime_label->setText("59");
+    ui->gametime_label->setStyleSheet("color:white");
+    ui->score_Label->setStyleSheet("color:white");
+    ui->timeBar->setTextVisible(false);
+    ui->timeBar->setMaximum(60);
+    ui->timeBar->setMinimum(0);
+    ui->timeBar->setValue(60);
+
+    ui->beginButton->hide();
+    ui->autoSolveProblemButton->hide();
+    ui->pauseButton->hide();
+    ui->resetButton->hide();
+
+    MyButton *button=new MyButton;
+    gameButtonMap=(MyButton***) malloc(rowSize*sizeof(MyButton**));
+    for(int i=0;i<rowSize;i++){
+        gameButtonMap[i]=(MyButton**)malloc(columnSize*sizeof(MyButton*));
+        for(int j=0;j<columnSize;j++){
+            gameButtonMap[i][j]=button;
+        }
+    }
+
+    gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
+
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize-1;j++){
+            MyButton *myButton=new MyButton;
+            myButton->setParent(this);
+            myButton->setCoordinate(i,j);
+            myButton->setGeometry(start_x+j*edgeOfButton,start_y+i*edgeOfButton,edgeOfButton,edgeOfButton);
+            //myButton->show();
+            //连接信号槽，传递button的数组下标
+            connect(myButton, SIGNAL(clicked(int,int)),this, SLOT(slot_myButton_clicked(int,int)));
+            //myButton->setText(QString::number(gameMap[i][j]));
+            gameButtonMap[i][j]=myButton;
+        }
+    }
 }
 
 void Game_UI::setAllButtonVisible(bool visible){
@@ -574,7 +664,7 @@ void Game_UI::setAllButtonVisible(bool visible){
     }
 }
 
-void Game_UI::on_myButton_clicked(int row,int column){
+void Game_UI::slot_myButton_clicked(int row,int column){
     voiceplayer=new VoicePlayer;
     if(count == 1){
         if(gameMap[row][column] == gameMap[vertex1.first][vertex1.second])
@@ -741,10 +831,20 @@ void Game_UI::on_autoSolveProblemButton_clicked()
 
 void Game_UI::on_tipButton_clicked()
 {
-    if(isDeadlock(gameMap)&&!allCleared(gameMap)){
-        cout<<"僵局"<<endl;
+    if(tipTimes>0){
+        tipTimes--;
+        if(isDeadlock(gameMap)&&!allCleared(gameMap)){
+            cout<<"僵局"<<endl;
+        }
+        tip(gameMap);
+
+        if(score<5){
+            score=0;
+        }else{
+            score-=5;
+        }
+        ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
     }
-    tip(gameMap);
 }
 
 void Game_UI::on_resetButton_clicked()
@@ -756,4 +856,66 @@ void Game_UI::on_resetButton_clicked()
         score-=5;
     }
     ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+}
+
+void Game_UI::on_prepareButton_clicked()
+{
+    if(!isPrepared){
+        QString pkMsg="PK:"+set_ui->mail;
+        set_ui->tcpsocket->write(pkMsg.toUtf8().data());
+        ui->prepareButton->setText(QString::fromLocal8Bit("取消准备"));
+        isPrepared=true;
+    }else{
+        set_ui->tcpsocket->write("CANCALPK");
+        ui->prepareButton->setText(QString::fromLocal8Bit("准备"));
+        isPrepared=false;
+    }
+
+}
+
+void Game_UI::slot_startPK(int** pkgameMap){
+    tipTimes=3;
+
+    freeGameMap(gameMap);
+    if(isAutoSolve){
+        autoProblemSolveThread->stop();
+    }
+    ui->label3->setVisible(false);
+
+    this->gameMap=pkgameMap;
+    for(int i=1;i<rowSize-1;i++){
+        for(int j=1;j<columnSize-1;j++){
+            //gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
+            gameButtonMap[i][j]->show();
+        }
+    }
+    initButtonImage();
+    score=0;
+    continuous_Erasure=0;
+    erasure_Interval=0;
+    Scence->clear();
+    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+    ui->score_Label->setStyleSheet("color:white");
+
+    ui->prepareButton->hide();
+}
+
+void Game_UI::slot_ChangeHasPrepared(bool win){
+    setAllButtonVisible(false);
+
+    if(win){
+        //胜利的图片///////////////////////////////////////////////////////////////////////////////////////////////
+    }else{
+        //输的图片
+    }
+
+    ui->prepareButton->show();
+    if(!isPrepared){
+        ui->prepareButton->setText(QString::fromLocal8Bit("取消准备"));
+        isPrepared=true;
+    }else{
+        ui->prepareButton->setText(QString::fromLocal8Bit("准备"));
+        isPrepared=false;
+    }
+
 }

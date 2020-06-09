@@ -2,6 +2,8 @@
 #include "ui_linkgame.h"
 #include"chooselevel_ui.h"
 #include"set_ui.h"
+#include"login_ui.h"
+#include"game_ui.h"
 #include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -69,6 +71,7 @@ LinkGame::~LinkGame()
 
 void LinkGame::on_onePersonButton_clicked()
 {
+    set_ui->isTwoPeople=false;
     ChooseLevel_UI *chooseUI_One = new ChooseLevel_UI;
     chooseUI_One->show();
     this->close();//���ﲻ����delete����Ϊthis��main�����д�����ջ�ռ�ϵͳ�Զ��ͷ�
@@ -76,9 +79,23 @@ void LinkGame::on_onePersonButton_clicked()
 
 void LinkGame::on_twoPersonButton_clicked()
 {
-    ChooseLevel_UI *chooseUI_Two = new ChooseLevel_UI;
-    chooseUI_Two->show();
-    this->close();//���ﲻ����delete����Ϊthis��main�����д�����ջ�ռ�ϵͳ�Զ��ͷ�
+    set_ui->isTwoPeople=true;
+    if(!set_ui->hasLogin){
+        //set_ui->connectToServer();
+        Login_UI *loginUI=new Login_UI;
+        loginUI->show();
+        this->close();
+    }else{
+        Game_UI *gameUI=new Game_UI;
+        connect(this, SIGNAL(signal_createEmptyMap()), gameUI, SLOT(createEmptyGameMap()));
+        gameUI->show();
+        emit signal_createEmptyMap();
+        this->close();
+    }
+
+//    ChooseLevel_UI *chooseUI_Two = new ChooseLevel_UI;
+//    chooseUI_Two->show();
+//    this->close();//���ﲻ����delete����Ϊthis��main�����д�����ջ�ռ�ϵͳ�Զ��ͷ�
 }
 
 void LinkGame::on_setButton_clicked()

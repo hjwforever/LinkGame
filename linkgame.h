@@ -18,7 +18,8 @@ class LinkGame : public QMainWindow
 public:
     LinkGame(QWidget *parent = nullptr);
     ~LinkGame();
-
+signals:
+    void signal_createEmptyMap();
 private slots:
     void on_onePersonButton_clicked();
     void on_twoPersonButton_clicked();

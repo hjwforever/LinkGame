@@ -24,11 +24,13 @@ SOURCES += \
     deleteqgraphicsitemthread.cpp \
     game_ui.cpp \
     global_value_method.cpp \
+    login_ui.cpp \
     main.cpp \
     linkgame.cpp \
     map.cpp \
     messagedialog.cpp \
     mybutton.cpp \
+    register_ui.cpp \
     set_ui.cpp \
     timeprogressbarthread.cpp \
     voiceplayer.cpp
@@ -41,9 +43,11 @@ HEADERS += \
     global_value_method.h \
     linkgame.h \
     linklist.h \
+    login_ui.h \
     map.h \
     messagedialog.h \
     mybutton.h \
+    register_ui.h \
     set_ui.h \
     timeprogressbarthread.h \
     voiceplayer.h
@@ -52,7 +56,9 @@ FORMS += \
     chooselevel_ui.ui \
     game_ui.ui \
     linkgame.ui \
+    login_ui.ui \
     messagedialog.ui \
+    register_ui.ui \
     set_ui.ui
 
 # Default rules for deployment.

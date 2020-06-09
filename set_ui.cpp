@@ -38,13 +38,90 @@ Set_UI::Set_UI(QWidget *parent) :
     ui->returnButton->setMask(pixmap4.mask());
     ui->returnButton->setStyleSheet("QToolButton{border:0px;}");
 
-
     voiceplayer=new VoicePlayer;
+
+
 }
 
 Set_UI::~Set_UI()
 {
     delete ui;
+}
+
+void Set_UI::connectToServer(){
+    //创建一个通信套接字，用来和服务器进行通信
+    tcpsocket = new QTcpSocket(this);
+
+    //和服务器进行连接
+    tcpsocket->connectToHost(serverIP, port);
+
+    //和服务器连接成功能会触发connected信号
+    connect(tcpsocket, &QTcpSocket::connected, this, &Set_UI::slotconnectedsuccess);
+    //接收到服务器的信息就会触发readyRead信号
+    connect(tcpsocket, &QTcpSocket::readyRead, this, &Set_UI::slotreceive);
+
+    connect(tcpsocket, &QTcpSocket::disconnected, this, &Set_UI::slotdisconnected);
+}
+
+//连接成功时
+void Set_UI::slotconnectedsuccess()
+{
+    cout<<"connected successfully!"<<endl;
+    //tcpsocket->write(msg.toUtf8().data());
+}
+
+void Set_UI::slotdisconnected()
+{
+    if(hasLogin){
+        //显示与服务器断开连接
+    }
+}
+
+void Set_UI::slotreceive()
+{
+    QByteArray array = tcpsocket->readAll();
+    QString msg = array;
+    cout<<msg.toLocal8Bit().toStdString()<<endl;
+
+    QStringList msgList;
+    msgList=msg.split(":");
+
+    //cout<<"split: "<<msgList.at(0).toLocal8Bit().toStdString()<<msgList.at(1).toLocal8Bit().toStdString()<<endl;
+    if(msgList.at(0)=="EMILEXIST"){
+
+    }else if(msgList.at(0)=="SIGNINSUCCESSFULLY"){
+        emit signal_signInSuccessfully();
+    }else if(msgList.at(0)=="FAILTOLOGIN"){
+
+    }else if(msgList.at(0)=="SUCCESSTOLOGIN"){
+        this->name=msgList.at(1);
+        emit signal_loginSuccessfully();
+    }else if(msgList.at(0)=="ORIGINALPASSWORDINCORRECT"){
+
+    }else if(msgList.at(0)=="PKMAP"){
+        ispking=true;
+        int rowSize=msgList.at(1).toInt();
+        int columnSize=msgList.at(2).toInt();
+
+        int** gameMap=(int**) malloc(rowSize*sizeof(int*));
+        for(int i=0;i<rowSize;i++){
+            gameMap[i]=(int*)malloc(columnSize*sizeof(int));
+            for(int j=0;j<columnSize;j++){
+                gameMap[i][j]=msgList.at(i*columnSize+j+3).toInt();
+            }
+        }
+        emit signal_startPK(gameMap);
+    }else if(msgList.at(0)=="RANK"){
+
+    }else if(msgList.at(0)=="LOSE"){
+        emit signal_ChangeHasPrepared(false);
+        ispking=false;
+    }else if(msgList.at(0)=="WIN"){
+        emit signal_ChangeHasPrepared(true);
+        ispking=false;
+    }
+
+    msgList.~QStringList();
 }
 
 void Set_UI::closeEvent(QCloseEvent *event){
@@ -120,4 +197,9 @@ void Set_UI::on_method_and_rule_pushButton_clicked()
                                                           "4.失败条件：超时。\n"
                                                           "5.连击加分机制：短时间内连续消除越多卡片，则加分越多。");
     messageDialog->show();
+}
+
+void Set_UI::on_save_set_pushButton_clicked()
+{
+    this->hide();
 }

@@ -596,7 +596,7 @@ QComboBox QAbstractItemView {
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Voice.qrc">:/image/background/set_UI_Background1.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/background5.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

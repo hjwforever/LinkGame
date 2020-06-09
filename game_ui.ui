@@ -282,6 +282,47 @@
      <string>重置</string>
     </property>
    </widget>
+   <widget class="QToolButton" name="prepareButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>380</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>准备</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="name_Label">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>500</y>
+      <width>150</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
    <zorder>beginButton</zorder>
@@ -294,6 +335,8 @@
    <zorder>autoSolveProblemButton</zorder>
    <zorder>tipButton</zorder>
    <zorder>resetButton</zorder>
+   <zorder>prepareButton</zorder>
+   <zorder>name_Label</zorder>
   </widget>
  </widget>
  <resources>
