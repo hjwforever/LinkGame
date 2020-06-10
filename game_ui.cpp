@@ -10,6 +10,7 @@
 #include<QSize>
 #include"linkgame.h"
 #include"set_ui.h"
+#include"rankinglist.h"
 
 using namespace std;
 
@@ -88,6 +89,17 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->prepareButton->setMask(pixmap7.mask());
     ui->prepareButton->setStyleSheet("QToolButton{border:0px;}");
 
+    QPixmap pixmap8(":/image/button_icon/linkgame_ui/list.png");
+    ui->rankingListButton->resize(pixmap8.size());
+    ui->rankingListButton->setIcon(pixmap8);
+    ui->rankingListButton->setIconSize(pixmap8.size());
+    ui->rankingListButton->setMask(pixmap8.mask());
+    ui->rankingListButton->setStyleSheet("QToolButton{border:0px;}");
+    if(!set_ui->isTwoPeople){
+        ui->rankingListButton->hide();
+    }
+
+    ui->rePlayToolButton->hide();
     ui->win_lose_gameover_Label->hide();
 
     ui->name_Label->setText(set_ui->name);
@@ -460,6 +472,10 @@ bool Game_UI::allCleared(int** gameMap)
 
 void Game_UI::gameOver()
 {
+    if(!set_ui->isTwoPeople){
+        ui->rePlayToolButton->show();
+    }
+
     setAllButtonVisible(false);
 
     if(!set_ui->ispking){
@@ -483,9 +499,9 @@ void Game_UI::gameOver()
     score+=ui->gametime_label->text().toInt()*2*level;
     ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
 
-    //提示框
-    QMessageBox::information(this, "Game Over!", tr("<span style='color: blue; font-size: 24px;'>   Your score:%1").arg(QString::number(score)));
-    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
+//    //提示框
+//    QMessageBox::information(this, "Game Over!", tr("<span style='color: blue; font-size: 24px;'>   Your score:%1").arg(QString::number(score)));
+//    ui->score_Label->setText(QString::fromLocal8Bit("得分：")+QString::number(score));
 
 
     //重新开始
@@ -523,6 +539,10 @@ void Game_UI::gameOver()
 void Game_UI::on_returnButton_clicked()
 {
 
+    if(rePlay_vertex_queue->length()!=0){
+        rePlay_vertex_queue->~QQueue();
+    }
+
     if(set_ui->isTwoPeople){
         if(set_ui->ispking){
             set_ui->tcpsocket->write("MIDFIELDEXIT");
@@ -544,6 +564,16 @@ void Game_UI::on_beginButton_clicked()
     tipTimes=3;
 
     freeGameMap(gameMap);
+
+    if(isRePlay){
+        isRePlay=false;
+        rePlayTimer->stop();
+    }
+
+    if(rePlay_vertex_queue->length()!=0){
+        rePlay_vertex_queue->clear();
+    }
+
     if(isAutoSolve){
         autoProblemSolveThread->stop();
     }
@@ -565,6 +595,15 @@ void Game_UI::on_beginButton_clicked()
     gameTimer->start(1000);
     connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
+
+    rePlayGameMap=(int**) malloc(rowSize*sizeof(int*));
+    for(int i=0;i<rowSize;i++){
+        rePlayGameMap[i]=(int*)malloc(columnSize*sizeof(int));
+        for(int j=0;j<columnSize;j++){
+            rePlayGameMap[i][j]=gameMap[i][j];
+        }
+    }
+
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
             //gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
@@ -606,6 +645,14 @@ void Game_UI::createGameMap(){
     }
 
     gameMap=map.creatMap(rowSize,columnSize,level,numOfPic);
+
+    rePlayGameMap=(int**) malloc(rowSize*sizeof(int*));
+    for(int i=0;i<rowSize;i++){
+        rePlayGameMap[i]=(int*)malloc(columnSize*sizeof(int));
+        for(int j=0;j<columnSize;j++){
+            rePlayGameMap[i][j]=gameMap[i][j];
+        }
+    }
 
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
@@ -685,6 +732,13 @@ void Game_UI::setAllButtonVisible(bool visible){
 }
 
 void Game_UI::slot_myButton_clicked(int row,int column){
+    if(!isRePlay){
+        Vertex *rePlayVertex=new Vertex;
+        rePlayVertex->first=row;
+        rePlayVertex->second=column;
+        rePlay_vertex_queue->enqueue(rePlayVertex);
+    }
+
     voiceplayer=new VoicePlayer;
     if(count == 1){
         if(gameMap[row][column] == gameMap[vertex1.first][vertex1.second])
@@ -994,3 +1048,57 @@ void Game_UI::slot_ChangeHasPrepared(bool win){
 //    if(event->buttons()&Qt::LeftButton)
 //        move(event->pos()+pos()-clickPos);
 //}
+
+void Game_UI::on_rankingListButton_clicked()
+{
+    RankingList *rankingList=new RankingList;
+    rankingList->show();
+    if(set_ui->hasLogin){
+        QString getRankMsg="GETRANK:"+set_ui->mail;
+        set_ui->tcpsocket->write(getRankMsg.toUtf8().data());
+    }
+
+}
+
+void Game_UI::on_rePlayToolButton_clicked()
+{
+    if(isRePlay){
+        ui->rePlayToolButton->setText(QString::fromLocal8Bit("回放"));
+        isRePlay=false;
+        rePlayTimer->stop();
+    }else{
+        ui->win_lose_gameover_Label->hide();
+        ui->rePlayToolButton->setText(QString::fromLocal8Bit("暂停回放"));
+        isRePlay=true;
+        if(!set_ui->isTwoPeople){
+            gameMap=rePlayGameMap;
+            for(int i=1;i<rowSize-1;i++){
+                for(int j=1;j<columnSize-1;j++){
+                    //gameButtonMap[i][j]->setText(QString::number(gameMap[i][j]));
+                    if(gameMap[i][j]!=0){
+                        gameButtonMap[i][j]->show();
+                    }
+                }
+            }
+            initButtonImage();
+
+            rePlayTimer = new QTimer;
+            connect(rePlayTimer, SIGNAL(timeout()), this, SLOT(slot_rePlay()));
+            rePlayTimer->start(500);
+        }
+    }
+}
+
+void Game_UI::slot_rePlay(){
+    if(rePlay_vertex_queue->length()!=0){
+        Vertex *rePlayVertex;
+        rePlayVertex=rePlay_vertex_queue->dequeue();
+        slot_myButton_clicked(rePlayVertex->first,rePlayVertex->second);
+    }else{
+        isRePlay=false;
+        rePlayTimer->stop();
+        freeGameMap(rePlayGameMap);
+        ui->rePlayToolButton->setText(QString::fromLocal8Bit("回放"));
+        ui->rePlayToolButton->hide();
+    }
+}

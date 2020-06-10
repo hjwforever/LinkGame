@@ -37,6 +37,7 @@ signals:
     void signal_loginSuccessfully();
     void signal_startPK(int** gameMap);
     void signal_ChangeHasPrepared(bool win);
+    void signal_RankMsg(QString rankMsg);
 
 private slots:
     void on_returnButton_clicked();

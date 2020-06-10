@@ -113,7 +113,17 @@ void Set_UI::slotreceive()
         }
         emit signal_startPK(gameMap);
     }else if(msgList.at(0)=="RANK"){
+        QString rankMsg="排名\t昵称\t胜\n";
+        for(int i=3;i<msgList.length();i++){
+            if(i%2==1){
+                rankMsg.append("NO."+QString::number((i-1)/2)+"\t");
+            }
+            rankMsg.append(msgList.at(i)+"\t");
 
+            if(i%2==0) rankMsg.append("\n");
+        }
+        rankMsg.append("\n您胜的场数: "+msgList.at(2));
+        emit signal_RankMsg(rankMsg);
     }else if(msgList.at(0)=="LOSE"){
         emit signal_ChangeHasPrepared(false);
         ispking=false;

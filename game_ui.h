@@ -17,6 +17,7 @@
 #include"autoproblemsolvethread.h"
 #include"linklist.h"
 #include "mymainwindow.h"
+#include<QQueue>
 
 namespace Ui {
 class Game_UI;
@@ -73,12 +74,18 @@ private slots:
 
     void slot_ChangeHasPrepared(bool win);
 
+    void on_rankingListButton_clicked();
+
+    void on_rePlayToolButton_clicked();
+    void slot_rePlay();
+
 private:
 
     Ui::Game_UI *ui;
     int level=1;                                 //难度等级
     Map map;                                   //游戏地图
     int** gameMap;                         //存储地图中按钮中编号的二维数�
+    int** rePlayGameMap;
     int rowSize=10;                         //行的大小
     int columnSize=10;                    //列的大小
     int numOfPic=10;                      //图片种类
@@ -92,6 +99,7 @@ private:
     bool isPause=false;
     bool isAutoSolve=false;
     bool isPrepared=false;
+    bool isRePlay=false;
     QString currentModel[5]={"fruit","animal","gem","face_easy","face_hard"};
     QElapsedTimer Erasure_Time;
     Vertex vertex1,vertex2;
@@ -99,7 +107,9 @@ private:
     MyButton*** gameButtonMap;//存放按钮地址的二维数�
     QGraphicsScene *Scence;
     QTimer *gameTimer;
+    QTimer *rePlayTimer;
     AutoProblemSolveThread *autoProblemSolveThread;
+    QQueue<Vertex*> *rePlay_vertex_queue=new QQueue<Vertex*>;
 };
 
 #endif // GAME_UI_H

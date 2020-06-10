@@ -15,6 +15,12 @@ public:
     explicit RankingList(QWidget *parent = nullptr);
     ~RankingList();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
+private slots:
+    void slot_GetRankMsg(QString rankMsg);
+
 private:
     Ui::RankingList *ui;
 };

@@ -33,7 +33,7 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
+     <iconset resource="Voice.qrc">
       <normaloff>:/image/button_icon/return2.png</normaloff>:/image/button_icon/return2.png</iconset>
     </property>
     <property name="iconSize">
@@ -219,7 +219,7 @@
      </rect>
     </property>
     <property name="pixmap">
-     <pixmap>:/image/background/background6.jpg</pixmap>
+     <pixmap resource="Voice.qrc">:/image/background/background6.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -336,6 +336,44 @@
      <string/>
     </property>
    </widget>
+   <widget class="QToolButton" name="rankingListButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>140</y>
+      <width>150</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>排行榜</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="rePlayToolButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>380</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>回放</string>
+    </property>
+   </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
    <zorder>beginButton</zorder>
@@ -351,8 +389,12 @@
    <zorder>prepareButton</zorder>
    <zorder>name_Label</zorder>
    <zorder>win_lose_gameover_Label</zorder>
+   <zorder>rankingListButton</zorder>
+   <zorder>rePlayToolButton</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>
