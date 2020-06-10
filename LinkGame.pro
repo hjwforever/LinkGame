@@ -31,6 +31,7 @@ SOURCES += \
     messagedialog.cpp \
     mybutton.cpp \
     mymainwindow.cpp \
+    rankinglist.cpp \
     register_ui.cpp \
     set_ui.cpp \
     timeprogressbarthread.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     messagedialog.h \
     mybutton.h \
     mymainwindow.h \
+    rankinglist.h \
     register_ui.h \
     set_ui.h \
     timeprogressbarthread.h \
@@ -60,6 +62,7 @@ FORMS += \
     linkgame.ui \
     login_ui.ui \
     messagedialog.ui \
+    rankinglist.ui \
     register_ui.ui \
     set_ui.ui
 
