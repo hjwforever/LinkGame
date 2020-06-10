@@ -1060,6 +1060,7 @@ void Game_UI::on_rankingListButton_clicked()
 
 }
 
+//»Ø·Å°´Å¥
 void Game_UI::on_rePlayToolButton_clicked()
 {
     if(isRePlay){
