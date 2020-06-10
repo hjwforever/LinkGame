@@ -10,7 +10,8 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSysInfo>
-
+#include<ui_rankinglist.h>
+#include"rankinglist.h"
 extern Set_UI *set_ui;
 
 LinkGame::LinkGame(QWidget *parent)
@@ -113,4 +114,11 @@ void LinkGame::on_aboutButton_clicked()
 {
     MessageDialog* messageDialog = new MessageDialog(this,"制作人：陈庆洋、邓硕、胡江浩、黄俊雯\n制作日期：2020.5-2020.6");
     messageDialog->show();
+}
+
+void LinkGame::on_ranking_List_Button_clicked()
+{
+    RankingList *rankingList=new RankingList;
+    rankingList->show();
+    this->close();
 }
