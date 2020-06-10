@@ -12,8 +12,8 @@ Register_UI::Register_UI(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
-    this->setWindowFlags(Qt::FramelessWindowHint);
     connect(set_ui, &Set_UI::signal_signInSuccessfully, this, &Register_UI::slot_SignInSuccessfully);
+    setWindowTitle("Register");
 }
 
 Register_UI::~Register_UI()

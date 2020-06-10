@@ -6,6 +6,7 @@ MessageDialog::MessageDialog(QWidget *parent,QString message) :
     ui(new Ui::MessageDialog)
 {
     ui->setupUi(this);
+    setWindowTitle("Message");
     ui->messageTextBrowser->setText(message);
     QPixmap pixmap1(":/image/button_icon/chooselevel_ui/return.png");
     ui->returnPushButton->resize(pixmap1.size());

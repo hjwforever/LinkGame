@@ -3,6 +3,8 @@
 
 #include<QMainWindow>
 #include<QMouseEvent>
+#include <QLabel>
+#include <QPushButton>
 class MyMainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -18,5 +20,4 @@ public:
     QPoint mousePoint;
     bool flag;
 };
-
 #endif // MYMAINWINDOW_H

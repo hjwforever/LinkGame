@@ -5,11 +5,11 @@
 extern Set_UI *set_ui;
 
 RankingList::RankingList(QWidget *parent) :
-    QMainWindow(parent),
+    MyMainWindow(parent),
     ui(new Ui::RankingList)
 {
     ui->setupUi(this);
-
+    setWindowTitle("Rank");
     connect(set_ui,SIGNAL(signal_RankMsg(QString)),this,SLOT(slot_GetRankMsg(QString)));
 }
 

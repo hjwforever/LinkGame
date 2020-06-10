@@ -25,8 +25,8 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->game_UI_graphicsView->setScene(Scence);
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
-    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setMinimumSize(45,45);
+    setWindowTitle("LinkGame");
 //    // ½ø¶ÈÌõ
 //    ui->gametime_label->setText("59");
 //    ui->gametime_label->setStyleSheet("color:white");

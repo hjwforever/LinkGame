@@ -1,7 +1,20 @@
 #include "mymainwindow.h"
+#include <QLabel>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QEvent>
+#include <QMouseEvent>
+#include <QApplication>
+
 
 MyMainWindow::MyMainWindow(QWidget *parent) : QMainWindow(parent)
 {
+
+      this->setWindowFlags( Qt::WindowStaysOnTopHint); //|Qt::FramelessWindowHint
+      resize(400, 300);
+      setWindowTitle("LinkGame");
+      setWindowIcon(QIcon(":/image/button_icon/fruit/8.png"));
+
 }
 MyMainWindow::~MyMainWindow()
 {

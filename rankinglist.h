@@ -2,12 +2,13 @@
 #define RANKINGLIST_H
 
 #include <QMainWindow>
+#include "mymainwindow.h"
 
 namespace Ui {
 class RankingList;
 }
 
-class RankingList : public QMainWindow
+class RankingList : public MyMainWindow
 {
     Q_OBJECT
 
