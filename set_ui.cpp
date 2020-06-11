@@ -72,8 +72,11 @@ void Set_UI::slotconnectedsuccess()
 
 void Set_UI::slotdisconnected()
 {
+    //cout<<"disconnected isOpen: "<<tcpsocket->state()<<endl;
     if(hasLogin){
+        hasLogin=false;
         //显示与服务器断开连接
+        cout<<"disconnect form server"<<endl;
     }
 }
 
@@ -129,6 +132,9 @@ void Set_UI::slotreceive()
     }else if(msgList.at(0)=="WIN"){
         emit signal_ChangeHasPrepared(true);
         ispking=false;
+    }else if(msgList.at(0)=="INCORRECTCAPTCHA"){    //验证码错误
+        MessageDialog* messageDialog = new MessageDialog(this,"验证码错误！请重新获取验证码！");
+        messageDialog->show();
     }
 
     msgList.~QStringList();

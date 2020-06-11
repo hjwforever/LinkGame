@@ -112,6 +112,16 @@ Game_UI::~Game_UI()
     delete ui;
 }
 
+void Game_UI::closeEvent(QCloseEvent *event){
+    if(set_ui->hasLogin){
+        if(set_ui->isTwoPeople&&set_ui->ispking){
+            set_ui->tcpsocket->write("MIDFIELDEXIT");
+        }
+        set_ui->tcpsocket->disconnectFromHost();
+    }
+    exit(0);
+}
+
 void Game_UI::freeGameMap(int** gameMap){
     for(int i=0;i<rowSize;i++){
         free(gameMap[i]);

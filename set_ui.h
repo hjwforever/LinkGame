@@ -67,7 +67,7 @@ public:
 
     int port=8888;
     QString serverIP="47.110.14.59";
-    QTcpSocket *tcpsocket;
+    QTcpSocket *tcpsocket=new QTcpSocket(this);
 };
 
 #endif // SET_UI_H

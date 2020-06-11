@@ -16,9 +16,15 @@ public:
     explicit Register_UI(QWidget *parent = nullptr);
     ~Register_UI();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private slots:
     void slot_SignInSuccessfully();
     void on_sureToolButton_clicked();
+
+
+    void on_captchaToolButton_clicked();
 
 private:
     Ui::Register_UI *ui;

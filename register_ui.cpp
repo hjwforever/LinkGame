@@ -21,10 +21,16 @@ Register_UI::~Register_UI()
     delete ui;
 }
 
+void Register_UI::closeEvent(QCloseEvent *event){
+    Login_UI *loginUI=new Login_UI;
+    loginUI->show();
+    delete this;
+}
+
 void Register_UI::on_sureToolButton_clicked()
 {
     QString signMsg="SIGNIN";
-    signMsg.append(":"+ui->mailLineEdit->text()+":"+ui->passwordLineEdit->text()+":"+ui->nameLineEdit->text());
+    signMsg.append(":"+ui->mailLineEdit->text()+":"+ui->passwordLineEdit->text()+":"+ui->nameLineEdit->text()+":"+ui->captchaLineEdit->text());
     set_ui->tcpsocket->write(signMsg.toUtf8().data());
 }
 
@@ -32,4 +38,10 @@ void Register_UI::slot_SignInSuccessfully(){
     Login_UI *loginUI=new Login_UI;
     loginUI->show();
     this->close();
+}
+
+void Register_UI::on_captchaToolButton_clicked()
+{
+    QString msg="GETCAPTCHA:"+ui->mailLineEdit->text();
+    set_ui->tcpsocket->write(msg.toUtf8().data());
 }

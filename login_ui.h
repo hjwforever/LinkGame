@@ -16,6 +16,9 @@ public:
     explicit Login_UI(QWidget *parent = nullptr);
     ~Login_UI();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 signals:
     void signal_createEmptyMap();
 

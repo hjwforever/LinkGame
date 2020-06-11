@@ -5,6 +5,7 @@
 #include"set_ui.h"
 #include"game_ui.h"
 #include"mybutton.h"
+#include"linkgame.h"
 
 extern Set_UI *set_ui;
 
@@ -14,7 +15,11 @@ Login_UI::Login_UI(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
-    set_ui->connectToServer();
+
+    if(!set_ui->tcpsocket->state()){
+        set_ui->connectToServer();
+    }
+
     connect(set_ui, &Set_UI::signal_loginSuccessfully, this, &Login_UI::slot_loginSuccessfully);
     setWindowTitle("Login");
 }
@@ -22,6 +27,16 @@ Login_UI::Login_UI(QWidget *parent) :
 Login_UI::~Login_UI()
 {
     delete ui;
+}
+
+void Login_UI::closeEvent(QCloseEvent *event){
+    if(set_ui->tcpsocket->state()){
+        set_ui->tcpsocket->disconnectFromHost();
+    }
+
+    LinkGame *linkGame_ui=new LinkGame;
+    linkGame_ui->show();
+    delete this;
 }
 
 void Login_UI::slot_loginSuccessfully(){
@@ -37,7 +52,7 @@ void Login_UI::on_registerToolButton_clicked()
 {
     Register_UI *registerUI=new Register_UI;
     registerUI->show();
-    this->close();
+    this->hide();
 }
 
 void Login_UI::on_loginToolButton_clicked()
