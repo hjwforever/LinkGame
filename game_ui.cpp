@@ -171,7 +171,7 @@ bool Game_UI::hasSollution(int** gameMap){
         }
         if(!hasSollution) {
             return false;
-            cout<<"无解 hasSollution(int** gameMap)"<<endl;
+//            cout<<"无解 hasSollution(int** gameMap)"<<endl;
             break;
         }
     }
@@ -256,7 +256,7 @@ void Game_UI::drawLine(int x1,int y1,int x2,int y2)
     pen.setWidth(4);
     QLine line(pointa,pointb);
     ///////////////////////////////////
-    cout<<"坐标："<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<" "<<endl;
+//    cout<<"坐标："<<x1<<" "<<y1<<" "<<x2<<" "<<y2<<" "<<endl;
     ////////////////////////////////////
     Scence->addLine(line,pen);
     ui->game_UI_graphicsView->update();
@@ -266,7 +266,7 @@ void Game_UI::drawLine(int x1,int y1,int x2,int y2)
 }
 
 void Game_UI::drawPathLine_exe(int index_x1,int index_y1,int index_x2,int index_y2,QList<Vertex> *list){
-    cout<<"drawPathLine"<<endl;
+//    cout<<"drawPathLine"<<endl;
     int x1,y1,x2,y2;
     MyButton *button1=gameButtonMap[index_x1][index_y1];
     MyButton *button2=gameButtonMap[index_x2][index_y2];
@@ -309,7 +309,7 @@ void Game_UI::hideButton_exe(int index_x1,int index_y1,int index_x2,int index_y2
     if(allCleared(gameMap))
     {
         gameOver();
-        cout<<"全部删除！！！"<<endl;
+//        cout<<"全部删除！！！"<<endl;
     }
 }
 
@@ -582,6 +582,7 @@ void Game_UI::on_returnButton_clicked()
 
 void Game_UI::on_beginButton_clicked()
 {
+    ui->rePlayToolButton->hide();
     tipTimes=3;
     ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
     freeGameMap(gameMap);
@@ -641,7 +642,7 @@ void Game_UI::on_beginButton_clicked()
 }
 
 void Game_UI::createGameMap(){
-    qDebug()<<"creatGameMap";
+//    qDebug()<<"creatGameMap";
     // 进度条
     ui->gametime_label->setText("59");
     ui->gametime_label->setStyleSheet("color:white");
@@ -679,7 +680,7 @@ void Game_UI::createGameMap(){
     for(int i=1;i<rowSize-1;i++){
         for(int j=1;j<columnSize-1;j++){
             /////////////////
-            cout<<gameMap[i][j]<<"\t";
+//            cout<<gameMap[i][j]<<"\t";
             ///////////////////////
             MyButton *myButton=new MyButton;
             myButton->setParent(this);
@@ -692,7 +693,7 @@ void Game_UI::createGameMap(){
             gameButtonMap[i][j]=myButton;
         }
         /////////////////
-        cout<<endl;
+//        cout<<endl;
         //////////////////
     }
     initButtonImage();
@@ -778,10 +779,10 @@ void Game_UI::slot_myButton_clicked(int row,int column){
                 gameButtonMap[vertex1.first][vertex1.second]->hide();
 
                 Erasure_Score();
-                for(int i=0;i<list.length();i++)//**************************************************
-                {
-                    cout<<i<<"hhhhhhhhhh"<<list.at(i).first<<" "<<list.at(i).second<<endl;
-                }//*******************************************************************************
+//                for(int i=0;i<list.length();i++)//**************************************************
+//                {
+////                    cout<<i<<"hhhhhhhhhh"<<list.at(i).first<<" "<<list.at(i).second<<endl;
+//                }//*******************************************************************************
 
                 int x1,y1,x2,y2;
                 MyButton *button1=gameButtonMap[row][column];
@@ -813,7 +814,7 @@ void Game_UI::slot_myButton_clicked(int row,int column){
 
                     ////////////////////////////////待添加结束界面
                     gameOver();
-                    cout<<"全部删除！！！"<<endl;
+//                    cout<<"全部删除！！！"<<endl;
                     ////////////////////////////////
                 }
 
@@ -826,7 +827,7 @@ void Game_UI::slot_myButton_clicked(int row,int column){
 //                }
                 if(isDeadlock(gameMap)&&!allCleared(gameMap)){
                     resetMap();
-                    cout<<"陷入僵局"<<endl;
+//                    cout<<"陷入僵局"<<endl;
                 }
             }
             else
@@ -937,9 +938,9 @@ void Game_UI::on_tipButton_clicked()
     if(tipTimes>0){
         tipTimes--;
         ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
-        if(isDeadlock(gameMap)&&!allCleared(gameMap)){
-            cout<<"僵局"<<endl;
-        }
+//        if(isDeadlock(gameMap)&&!allCleared(gameMap)){
+//            cout<<"僵局"<<endl;
+//        }
         tip(gameMap);
 
         if(score<5){

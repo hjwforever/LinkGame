@@ -20,12 +20,12 @@ void AutoProblemSolveThread::stop(){
 
 void AutoProblemSolveThread::run(){
 
-    for(int i=0;i<rowSize;i++){
-        for(int j=0;j<columnSize;j++){
-            cout<<gameMap[i][j]<<" ";
-        }
-        cout<<endl;
-    }
+//    for(int i=0;i<rowSize;i++){
+//        for(int j=0;j<columnSize;j++){
+//            cout<<gameMap[i][j]<<" ";
+//        }
+//        cout<<endl;
+//    }
 
     while(!allCleared(gameMap,rowSize,columnSize)){
         if(stopped) break;
@@ -58,7 +58,7 @@ void AutoProblemSolveThread::run(){
             }
         }
         if(!hasSollution) {
-            cout<<"无解 AutoProblemSolveThread"<<endl;
+//            cout<<"无解 AutoProblemSolveThread"<<endl;
             break;
         }
         if(!showProgress){

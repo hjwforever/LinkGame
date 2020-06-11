@@ -67,13 +67,13 @@ void Set_UI::connectToServer(){
 //连接成功时
 void Set_UI::slotconnectedsuccess()
 {
-    cout<<"connected successfully!"<<endl;
+//    cout<<"connected successfully!"<<endl;
     //tcpsocket->write(msg.toUtf8().data());
 }
 
 void Set_UI::slotdisconnected()
 {
-    cout<<"disconnect form server"<<endl;
+//    cout<<"disconnect form server"<<endl;
     //cout<<"disconnected isOpen: "<<tcpsocket->state()<<endl;
     if(hasLogin){
         hasLogin=false;

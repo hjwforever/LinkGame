@@ -19,6 +19,6 @@ void TimeProgressBarThread::run(){
     gameTimer->start(1000);
     emit TimeStar();
     ////////////////
-    cout<<"time star"<<endl;
+//    cout<<"time star"<<endl;
     ////////////////
 }
