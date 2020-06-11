@@ -22,6 +22,8 @@ Login_UI::Login_UI(QWidget *parent) :
 
     connect(set_ui, &Set_UI::signal_loginSuccessfully, this, &Login_UI::slot_loginSuccessfully);
     setWindowTitle("Login");
+
+    ui->mailLineEdit->setText(set_ui->mail);
 }
 
 Login_UI::~Login_UI()
@@ -42,6 +44,7 @@ void Login_UI::closeEvent(QCloseEvent *event){
 void Login_UI::slot_loginSuccessfully(){
     set_ui->hasLogin=true;
     Game_UI *gameUI=new Game_UI;
+    qDebug()<<"gameUI";
     connect(this, SIGNAL(signal_createEmptyMap()), gameUI, SLOT(createEmptyGameMap()));
     gameUI->show();
     emit signal_createEmptyMap();
@@ -53,7 +56,8 @@ void Login_UI::on_registerToolButton_clicked()
 {
     Register_UI *registerUI=new Register_UI;
     registerUI->show();
-    this->hide();
+    //this->hide();
+    delete this;
 }
 
 void Login_UI::on_loginToolButton_clicked()

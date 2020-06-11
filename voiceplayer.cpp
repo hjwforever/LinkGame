@@ -14,7 +14,7 @@ VoicePlayer::VoicePlayer()
     gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music4.mp3"));
     gameList_BGM->addMedia(QUrl("qrc:/voice/BGM/music5.mp3"));
     //循环播放
-    gameList_BGM->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    //gameList_BGM->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
     gameSound_BGM->setPlaylist(gameList_BGM);
     gameSound_BGM->setVolume(20);
     //按钮及消除音效

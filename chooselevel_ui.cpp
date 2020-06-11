@@ -46,6 +46,14 @@ ChooseLevel_UI::~ChooseLevel_UI()
 {
     delete ui;
 }
+
+void ChooseLevel_UI::closeEvent(QCloseEvent *event){
+    if(set_ui->tcpsocket->state()){
+        set_ui->tcpsocket->disconnectFromHost();
+    }
+    exit(0);
+}
+
 //简单难度按钮
 void ChooseLevel_UI::on_easyButton_clicked()
 {

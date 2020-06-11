@@ -2,6 +2,7 @@
 #include "ui_set_ui.h"
 #include"linkgame.h"
 #include"chooselevel_ui.h"
+#include"QMessageBox"
 
 static int BGM_index;
 
@@ -72,11 +73,12 @@ void Set_UI::slotconnectedsuccess()
 
 void Set_UI::slotdisconnected()
 {
+    cout<<"disconnect form server"<<endl;
     //cout<<"disconnected isOpen: "<<tcpsocket->state()<<endl;
     if(hasLogin){
         hasLogin=false;
         //显示与服务器断开连接
-        cout<<"disconnect form server"<<endl;
+
     }
 }
 
@@ -84,7 +86,7 @@ void Set_UI::slotreceive()
 {
     QByteArray array = tcpsocket->readAll();
     QString msg = array;
-    cout<<msg.toLocal8Bit().toStdString()<<endl;
+    qDebug()<<msg;
 
     QStringList msgList;
     msgList=msg.split(":");
@@ -98,6 +100,7 @@ void Set_UI::slotreceive()
 
     }else if(msgList.at(0)=="SUCCESSTOLOGIN"){
         this->name=msgList.at(1);
+        qDebug()<<"emit signal_loginSuccessfully()";
         emit signal_loginSuccessfully();
     }else if(msgList.at(0)=="ORIGINALPASSWORDINCORRECT"){
 
@@ -133,8 +136,9 @@ void Set_UI::slotreceive()
         emit signal_ChangeHasPrepared(true);
         ispking=false;
     }else if(msgList.at(0)=="INCORRECTCAPTCHA"){    //验证码错误
-        MessageDialog* messageDialog = new MessageDialog(this,"验证码错误！请重新获取验证码！");
-        messageDialog->show();
+//        MessageDialog* messageDialog = new MessageDialog(this,"验证码错误！请重新获取验证码！");
+//        messageDialog->show();
+        QMessageBox::information(this, "验证码错误!", tr("<span style='color: blue; font-size: 24px;'> 验证码错误！请重新获取！"));
     }
 
     msgList.~QStringList();

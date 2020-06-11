@@ -105,6 +105,7 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->name_Label->setText(set_ui->name);
     connect(set_ui, SIGNAL(signal_startPK(int**)),this, SLOT(slot_startPK(int**)));
     connect(set_ui, SIGNAL(signal_ChangeHasPrepared(bool)),this, SLOT(slot_ChangeHasPrepared(bool)));
+
 }
 
 Game_UI::~Game_UI()
@@ -125,6 +126,7 @@ void Game_UI::closeEvent(QCloseEvent *event){
 void Game_UI::freeGameMap(int** gameMap){
     for(int i=0;i<rowSize;i++){
         free(gameMap[i]);
+        gameMap[i]=nullptr;
     }
 }
 
@@ -824,6 +826,8 @@ void Game_UI::slot_myButton_clicked(int row,int column){
                 vertex1.first = row;
                 vertex1.second = column;
             }
+
+            list.~QList();
         }
         else
         {
@@ -838,7 +842,10 @@ void Game_UI::slot_myButton_clicked(int row,int column){
         vertex1.second = column;
         count++;
     }
-    voiceplayer->Stop_Voice();
+    //voiceplayer->Stop_Voice();
+    voiceplayer->~VoicePlayer();
+//    delete voiceplayer;
+//    voiceplayer=nullptr;
 }
 
 //ÔÝÍ£¼ÌÐø°´Å¥

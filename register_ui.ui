@@ -127,7 +127,7 @@
     <property name="font">
      <font>
       <family>楷体</family>
-      <pointsize>20</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
    </widget>
@@ -143,7 +143,7 @@
     <property name="font">
      <font>
       <family>楷体</family>
-      <pointsize>20</pointsize>
+      <pointsize>9</pointsize>
      </font>
     </property>
    </widget>
@@ -207,16 +207,16 @@
    <widget class="QToolButton" name="captchaToolButton">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>259</x>
       <y>270</y>
-      <width>130</width>
+      <width>131</width>
       <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>楷体</family>
-      <pointsize>16</pointsize>
+      <pointsize>14</pointsize>
      </font>
     </property>
     <property name="text">

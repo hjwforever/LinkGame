@@ -19,6 +19,10 @@ class LinkGame : public MyMainWindow
 public:
     LinkGame(QWidget *parent = nullptr);
     ~LinkGame();
+
+protected:
+    void closeEvent(QCloseEvent *event);
+
 signals:
     void signal_createEmptyMap();
 private slots:
@@ -30,7 +34,6 @@ private slots:
 
     void on_aboutButton_clicked();
 
-    void on_ranking_List_Button_clicked();
 
 private:
     Ui::LinkGame *ui;

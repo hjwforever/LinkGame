@@ -34,12 +34,12 @@ LinkGame::LinkGame(QWidget *parent)
     ui->twoPersonButton->setMask(pixmap2.mask());
     ui->twoPersonButton->setStyleSheet("QToolButton{border:0px;}");
 
-    QPixmap pixmap3(":/image/button_icon/linkgame_ui/list.png");
-    ui->ranking_List_Button->resize(pixmap3.size());
-    ui->ranking_List_Button->setIcon(pixmap3);
-    ui->ranking_List_Button->setIconSize(pixmap3.size());
-    ui->ranking_List_Button->setMask(pixmap3.mask());
-    ui->ranking_List_Button->setStyleSheet("QToolButton{border:0px;}");
+//    QPixmap pixmap3(":/image/button_icon/linkgame_ui/list.png");
+//    ui->ranking_List_Button->resize(pixmap3.size());
+//    ui->ranking_List_Button->setIcon(pixmap3);
+//    ui->ranking_List_Button->setIconSize(pixmap3.size());
+//    ui->ranking_List_Button->setMask(pixmap3.mask());
+//    ui->ranking_List_Button->setStyleSheet("QToolButton{border:0px;}");
 
     QPixmap pixmap4(":/image/button_icon/linkgame_ui/set.png");
     ui->setButton->resize(pixmap4.size());
@@ -69,13 +69,21 @@ LinkGame::~LinkGame()
     delete ui;
 }
 
+void LinkGame::closeEvent(QCloseEvent *event){
+    if(set_ui->tcpsocket->state()){
+        set_ui->tcpsocket->disconnectFromHost();
+    }
+
+    exit(0);
+}
 
 void LinkGame::on_onePersonButton_clicked()
 {
     set_ui->isTwoPeople=false;
     ChooseLevel_UI *chooseUI_One = new ChooseLevel_UI;
     chooseUI_One->show();
-    this->close();//���ﲻ����delete����Ϊthis��main�����д�����ջ�ռ�ϵͳ�Զ��ͷ�
+    //this->close();//���ﲻ����delete����Ϊthis��main�����д�����ջ�ռ�ϵͳ�Զ��ͷ�
+    delete this;
 }
 
 void LinkGame::on_twoPersonButton_clicked()
@@ -85,13 +93,15 @@ void LinkGame::on_twoPersonButton_clicked()
         //set_ui->connectToServer();
         Login_UI *loginUI=new Login_UI;
         loginUI->show();
-        this->close();
+        //this->close();
+        delete this;
     }else{
         Game_UI *gameUI=new Game_UI;
         connect(this, SIGNAL(signal_createEmptyMap()), gameUI, SLOT(createEmptyGameMap()));
         gameUI->show();
         emit signal_createEmptyMap();
-        this->close();
+        //this->close();
+        delete this;
     }
 
 //    ChooseLevel_UI *chooseUI_Two = new ChooseLevel_UI;
@@ -107,7 +117,11 @@ void LinkGame::on_setButton_clicked()
 
 void LinkGame::on_exitButton_clicked()
 {
-    qApp->quit();
+    if(set_ui->tcpsocket->state()){
+        set_ui->tcpsocket->disconnectFromHost();
+    }
+
+    exit(0);
 }
 
 void LinkGame::on_aboutButton_clicked()
@@ -116,9 +130,3 @@ void LinkGame::on_aboutButton_clicked()
     messageDialog->show();
 }
 
-void LinkGame::on_ranking_List_Button_clicked()
-{
-    RankingList *rankingList=new RankingList;
-    rankingList->show();
-    this->close();
-}

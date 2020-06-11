@@ -89,7 +89,7 @@
     <property name="font">
      <font>
       <family>楷体</family>
-      <pointsize>20</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
    </widget>
@@ -105,7 +105,7 @@
     <property name="font">
      <font>
       <family>楷体</family>
-      <pointsize>20</pointsize>
+      <pointsize>9</pointsize>
      </font>
     </property>
    </widget>

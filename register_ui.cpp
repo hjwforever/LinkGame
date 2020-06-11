@@ -14,6 +14,8 @@ Register_UI::Register_UI(QWidget *parent) :
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
     connect(set_ui, &Set_UI::signal_signInSuccessfully, this, &Register_UI::slot_SignInSuccessfully);
     setWindowTitle("Register");
+
+
 }
 
 Register_UI::~Register_UI()
@@ -32,9 +34,11 @@ void Register_UI::on_sureToolButton_clicked()
     QString signMsg="SIGNIN";
     signMsg.append(":"+ui->mailLineEdit->text()+":"+ui->passwordLineEdit->text()+":"+ui->nameLineEdit->text()+":"+ui->captchaLineEdit->text());
     set_ui->tcpsocket->write(signMsg.toUtf8().data());
+    ui->captchaToolButton->setEnabled(true);
 }
 
 void Register_UI::slot_SignInSuccessfully(){
+    set_ui->mail=ui->mailLineEdit->text();
     Login_UI *loginUI=new Login_UI;
     loginUI->show();
     //this->close();
@@ -45,6 +49,7 @@ void Register_UI::on_captchaToolButton_clicked()
 {
     QString msg="GETCAPTCHA:"+ui->mailLineEdit->text();
     set_ui->tcpsocket->write(msg.toUtf8().data());
+    ui->captchaToolButton->setEnabled(false);
 }
 
 void Register_UI::on_returnButton_clicked()

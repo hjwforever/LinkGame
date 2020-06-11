@@ -18,6 +18,9 @@ public:
     explicit ChooseLevel_UI(QWidget *parent = nullptr);
     ~ChooseLevel_UI();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private slots:
     void on_easyButton_clicked();
     void on_normalButton_clicked();
