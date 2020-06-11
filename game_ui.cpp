@@ -25,6 +25,7 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->game_UI_graphicsView->setScene(Scence);
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
+    ui->label->setStyleSheet("color:white");
     this->setMinimumSize(45,45);
     setWindowTitle("LinkGame");
 //    // 进度条
@@ -582,7 +583,7 @@ void Game_UI::on_returnButton_clicked()
 void Game_UI::on_beginButton_clicked()
 {
     tipTimes=3;
-
+    ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
     freeGameMap(gameMap);
 
     if(isRePlay){
@@ -931,8 +932,11 @@ void Game_UI::on_autoSolveProblemButton_clicked()
 
 void Game_UI::on_tipButton_clicked()
 {
+    if(set_ui->isTwoPeople&&!set_ui->ispking)
+        return;
     if(tipTimes>0){
         tipTimes--;
+        ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
         if(isDeadlock(gameMap)&&!allCleared(gameMap)){
             cout<<"僵局"<<endl;
         }
@@ -988,7 +992,7 @@ void Game_UI::on_prepareButton_clicked()
 
 void Game_UI::slot_startPK(int** pkgameMap){
     tipTimes=3;
-
+    ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
     freeGameMap(gameMap);
     if(isAutoSolve){
         autoProblemSolveThread->stop();
