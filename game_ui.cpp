@@ -548,7 +548,7 @@ void Game_UI::gameOver()
 
 void Game_UI::on_returnButton_clicked()
 {
-
+    freeGameMap(gameMap);
     if(rePlay_vertex_queue->length()!=0){
         rePlay_vertex_queue->~QQueue();
     }
@@ -630,6 +630,7 @@ void Game_UI::on_beginButton_clicked()
 }
 
 void Game_UI::createGameMap(){
+    qDebug()<<"creatGameMap";
     // ½ø¶ÈÌõ
     ui->gametime_label->setText("59");
     ui->gametime_label->setStyleSheet("color:white");
