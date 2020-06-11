@@ -13,6 +13,8 @@
         <file>button_Sound/success2.wav</file>
         <file>button_Sound/success3.wav</file>
         <file>button_Sound/timeout.wav</file>
+        <file>button_Sound/sound1.wav</file>
+        <file>button_Sound/sound2.wav</file>
     </qresource>
     <qresource prefix="/image">
         <file>background/background1.jpg</file>
@@ -202,5 +204,10 @@
         <file>button_icon/win_pink.png</file>
         <file>button_icon/game_ui/cancel_prepare.png</file>
         <file>button_icon/game_ui/prepare.png</file>
+        <file>button_icon/login_ui/login.png</file>
+        <file>button_icon/login_ui/register.png</file>
+        <file>button_icon/redister_ui/get_code.png</file>
+        <file>button_icon/redister_ui/sure.png</file>
+        <file>button_icon/game_ui/pause_playback.png</file>
     </qresource>
 </RCC>

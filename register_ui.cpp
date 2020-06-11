@@ -11,9 +11,26 @@ Register_UI::Register_UI(QWidget *parent) :
     ui(new Ui::Register_UI)
 {
     ui->setupUi(this);
+
+    QPixmap pixmap1(":/image/button_icon/redister_ui/get_code.png");
+    ui->captchaToolButton->resize(pixmap1.size());
+    ui->captchaToolButton->setIcon(pixmap1);
+    ui->captchaToolButton->setIconSize(pixmap1.size());
+    ui->captchaToolButton->setMask(pixmap1.mask());
+    ui->captchaToolButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap2(":/image/button_icon/redister_ui/sure.png");
+    ui->sureToolButton->resize(pixmap2.size());
+    ui->sureToolButton->setIcon(pixmap2);
+    ui->sureToolButton->setIconSize(pixmap2.size());
+    ui->sureToolButton->setMask(pixmap2.mask());
+    ui->sureToolButton->setStyleSheet("QToolButton{border:0px;}");
+
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
     connect(set_ui, &Set_UI::signal_signInSuccessfully, this, &Register_UI::slot_SignInSuccessfully);
     setWindowTitle("Register");
+
+
 
 
 }

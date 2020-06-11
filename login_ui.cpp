@@ -14,6 +14,21 @@ Login_UI::Login_UI(QWidget *parent) :
     ui(new Ui::Login_UI)
 {
     ui->setupUi(this);
+
+    QPixmap pixmap1(":/image/button_icon/login_ui/login.png");
+    ui->loginToolButton->resize(pixmap1.size());
+    ui->loginToolButton->setIcon(pixmap1);
+    ui->loginToolButton->setIconSize(pixmap1.size());
+    ui->loginToolButton->setMask(pixmap1.mask());
+    ui->loginToolButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap2(":/image/button_icon/login_ui/register.png");
+    ui->registerToolButton->resize(pixmap2.size());
+    ui->registerToolButton->setIcon(pixmap2);
+    ui->registerToolButton->setIconSize(pixmap2.size());
+    ui->registerToolButton->setMask(pixmap2.mask());
+    ui->registerToolButton->setStyleSheet("QToolButton{border:0px;}");
+
     ui->passwordLineEdit->setEchoMode(QLineEdit::Password);
 
     if(!set_ui->tcpsocket->state()){

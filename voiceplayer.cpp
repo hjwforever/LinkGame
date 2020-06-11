@@ -36,14 +36,14 @@ void VoicePlayer::Pause_BGM()
 
 void VoicePlayer::Play_Voice(int i)
 {
-    QString url="qrc:/voice/button_Sound/sound.mp3";
-    url.insert(29,QString::number(i));
-    //cout<<url.toStdString()<<endl;
-    gameList_Voice->addMedia(QUrl(url));
-    gameList_Voice->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//播放一次
-    gameSound_Voice->setPlaylist(gameList_Voice);
-    gameSound_Voice->setVolume(30);
-    gameSound_Voice->play();
+    if(i==1){
+        music=new QSound(":/voice/button_Sound/sound1.wav");
+        music->play();
+    }else if(i==2){
+        music=new QSound(":/voice/button_Sound/sound2.wav");
+        music->play();
+    }
+
 }
 
 void VoicePlayer::Play_Music(int i){

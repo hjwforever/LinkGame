@@ -95,6 +95,14 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->rankingListButton->setIconSize(pixmap8.size());
     ui->rankingListButton->setMask(pixmap8.mask());
     ui->rankingListButton->setStyleSheet("QToolButton{border:0px;}");
+
+    QPixmap pixmap9(":/image/button_icon/game_ui/playback.png");
+    ui->rePlayToolButton->resize(pixmap9.size());
+    ui->rePlayToolButton->setIcon(pixmap9);
+    ui->rePlayToolButton->setIconSize(pixmap9.size());
+    ui->rePlayToolButton->setMask(pixmap9.mask());
+    ui->rePlayToolButton->setStyleSheet("QToolButton{border:0px;}");
+
     if(!set_ui->isTwoPeople){
         ui->rankingListButton->hide();
     }
@@ -1082,12 +1090,24 @@ void Game_UI::on_rankingListButton_clicked()
 void Game_UI::on_rePlayToolButton_clicked()
 {
     if(isRePlay){
-        ui->rePlayToolButton->setText(QString::fromLocal8Bit("回放"));
+//        ui->rePlayToolButton->setText(QString::fromLocal8Bit("回放"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/playback.png");
+        ui->rePlayToolButton->resize(pixmap1.size());
+        ui->rePlayToolButton->setIcon(pixmap1);
+        ui->rePlayToolButton->setIconSize(pixmap1.size());
+        ui->rePlayToolButton->setMask(pixmap1.mask());
+        ui->rePlayToolButton->setStyleSheet("QToolButton{border:0px;}");
         isRePlay=false;
         rePlayTimer->stop();
     }else{
         ui->win_lose_gameover_Label->hide();
-        ui->rePlayToolButton->setText(QString::fromLocal8Bit("暂停回放"));
+//        ui->rePlayToolButton->setText(QString::fromLocal8Bit("暂停回放"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/pause_playback.png");
+        ui->rePlayToolButton->resize(pixmap1.size());
+        ui->rePlayToolButton->setIcon(pixmap1);
+        ui->rePlayToolButton->setIconSize(pixmap1.size());
+        ui->rePlayToolButton->setMask(pixmap1.mask());
+        ui->rePlayToolButton->setStyleSheet("QToolButton{border:0px;}");
         isRePlay=true;
         if(!set_ui->isTwoPeople){
             gameMap=rePlayGameMap;
@@ -1117,7 +1137,13 @@ void Game_UI::slot_rePlay(){
         isRePlay=false;
         rePlayTimer->stop();
         freeGameMap(rePlayGameMap);
-        ui->rePlayToolButton->setText(QString::fromLocal8Bit("回放"));
+//        ui->rePlayToolButton->setText(QString::fromLocal8Bit("回放"));
+        QPixmap pixmap1(":/image/button_icon/game_ui/playback.png");
+        ui->rePlayToolButton->resize(pixmap1.size());
+        ui->rePlayToolButton->setIcon(pixmap1);
+        ui->rePlayToolButton->setIconSize(pixmap1.size());
+        ui->rePlayToolButton->setMask(pixmap1.mask());
+        ui->rePlayToolButton->setStyleSheet("QToolButton{border:0px;}");
         ui->rePlayToolButton->hide();
     }
 }

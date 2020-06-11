@@ -4,6 +4,7 @@
 #include <QtMultimedia/QMediaPlayer>
 #include<QtMultimedia/QMediaPlaylist>
 #include<iostream>
+#include<QSound>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ public:
     void Play_Music(int i);
     void Stop_Voice();
     QString url;
+    QSound *music;
 };
 
 #endif // VOICEPLAYER_H

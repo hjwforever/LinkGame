@@ -2,6 +2,8 @@
 #define REGISTER_UI_H
 
 #include <QMainWindow>
+#include <QPixmap>
+#include <QBitmap>
 #include "mymainwindow.h"
 
 namespace Ui {
