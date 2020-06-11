@@ -19,7 +19,7 @@
      <rect>
       <x>100</x>
       <y>10</y>
-      <width>99</width>
+      <width>100</width>
       <height>40</height>
      </rect>
     </property>
@@ -42,7 +42,7 @@
      </font>
     </property>
     <property name="text">
-     <string>排行榜</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;排行榜&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -51,10 +51,10 @@
    <widget class="QLabel" name="rankingListLabel">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>25</x>
       <y>50</y>
-      <width>251</width>
-      <height>311</height>
+      <width>250</width>
+      <height>300</height>
      </rect>
     </property>
     <property name="font">
@@ -67,8 +67,32 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="backgroundLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>300</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Voice.qrc">:/image/background/background4.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>backgroundLabel</zorder>
+   <zorder>rankLabel</zorder>
+   <zorder>rankingListLabel</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

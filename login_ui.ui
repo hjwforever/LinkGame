@@ -17,10 +17,10 @@
    <widget class="QLabel" name="mailLabel">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>100</y>
-      <width>91</width>
-      <height>31</height>
+      <x>50</x>
+      <y>90</y>
+      <width>90</width>
+      <height>40</height>
      </rect>
     </property>
     <property name="font">
@@ -31,6 +31,9 @@
     </property>
     <property name="text">
      <string>邮箱:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -55,10 +58,10 @@
    <widget class="QLabel" name="passwordLabel">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>150</y>
-      <width>91</width>
-      <height>31</height>
+      <x>50</x>
+      <y>140</y>
+      <width>90</width>
+      <height>40</height>
      </rect>
     </property>
     <property name="font">
@@ -70,15 +73,24 @@
     <property name="text">
      <string>密码:</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="mailLineEdit">
     <property name="geometry">
      <rect>
       <x>140</x>
       <y>90</y>
-      <width>251</width>
-      <height>41</height>
+      <width>250</width>
+      <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QLineEdit" name="passwordLineEdit">
@@ -86,9 +98,15 @@
      <rect>
       <x>140</x>
       <y>140</y>
-      <width>251</width>
-      <height>41</height>
+      <width>250</width>
+      <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>楷体</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QToolButton" name="loginToolButton">
@@ -96,8 +114,8 @@
      <rect>
       <x>110</x>
       <y>230</y>
-      <width>101</width>
-      <height>41</height>
+      <width>100</width>
+      <height>40</height>
      </rect>
     </property>
     <property name="font">
@@ -113,10 +131,10 @@
    <widget class="QToolButton" name="registerToolButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>240</x>
       <y>230</y>
-      <width>101</width>
-      <height>41</height>
+      <width>100</width>
+      <height>40</height>
      </rect>
     </property>
     <property name="font">
@@ -129,8 +147,64 @@
      <string>注册</string>
     </property>
    </widget>
+   <widget class="QLabel" name="loginBackgroundLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>450</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Voice.qrc">:/image/background/background2.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="returnButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>10</y>
+      <width>40</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Voice.qrc">
+      <normaloff>:/image/button_icon/return2.png</normaloff>:/image/button_icon/return2.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>loginBackgroundLabel</zorder>
+   <zorder>mailLabel</zorder>
+   <zorder>label</zorder>
+   <zorder>passwordLabel</zorder>
+   <zorder>mailLineEdit</zorder>
+   <zorder>passwordLineEdit</zorder>
+   <zorder>loginToolButton</zorder>
+   <zorder>registerToolButton</zorder>
+   <zorder>returnButton</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Voice.qrc"/>
+ </resources>
  <connections/>
 </ui>

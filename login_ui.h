@@ -29,6 +29,8 @@ private slots:
 
     void on_loginToolButton_clicked();
 
+    void on_returnButton_clicked();
+
 private:
     Ui::Login_UI *ui;
 };

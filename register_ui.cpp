@@ -45,3 +45,10 @@ void Register_UI::on_captchaToolButton_clicked()
     QString msg="GETCAPTCHA:"+ui->mailLineEdit->text();
     set_ui->tcpsocket->write(msg.toUtf8().data());
 }
+
+void Register_UI::on_returnButton_clicked()
+{
+    Login_UI *loginUI=new Login_UI;
+    loginUI->show();
+    delete this;
+}

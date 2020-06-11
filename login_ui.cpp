@@ -64,3 +64,14 @@ void Login_UI::on_loginToolButton_clicked()
         set_ui->tcpsocket->write(signMsg.toUtf8().data());
     }
 }
+
+void Login_UI::on_returnButton_clicked()
+{
+    if(set_ui->tcpsocket->state()){
+        set_ui->tcpsocket->disconnectFromHost();
+    }
+
+    LinkGame *linkGame_ui=new LinkGame;
+    linkGame_ui->show();
+    delete this;
+}

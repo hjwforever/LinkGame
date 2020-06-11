@@ -26,6 +26,8 @@ private slots:
 
     void on_captchaToolButton_clicked();
 
+    void on_returnButton_clicked();
+
 private:
     Ui::Register_UI *ui;
 };
