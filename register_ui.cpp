@@ -37,7 +37,8 @@ void Register_UI::on_sureToolButton_clicked()
 void Register_UI::slot_SignInSuccessfully(){
     Login_UI *loginUI=new Login_UI;
     loginUI->show();
-    this->close();
+    //this->close();
+    delete this;
 }
 
 void Register_UI::on_captchaToolButton_clicked()

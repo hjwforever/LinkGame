@@ -45,7 +45,8 @@ void Login_UI::slot_loginSuccessfully(){
     connect(this, SIGNAL(signal_createEmptyMap()), gameUI, SLOT(createEmptyGameMap()));
     gameUI->show();
     emit signal_createEmptyMap();
-    this->close();
+    //this->close();
+    delete this;
 }
 
 void Login_UI::on_registerToolButton_clicked()
