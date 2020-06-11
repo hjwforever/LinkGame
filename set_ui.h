@@ -66,7 +66,7 @@ public:
     QString mail="";
 
     int port=8888;
-    QString serverIP="127.0.0.1";//"47.110.14.59";
+    QString serverIP="47.110.14.59";
     QTcpSocket *tcpsocket=new QTcpSocket(this);
 };
 
