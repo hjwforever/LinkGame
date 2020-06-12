@@ -374,25 +374,6 @@
      <string>回放</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>715</x>
-      <y>260</y>
-      <width>54</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>楷体</family>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>3/3</string>
-    </property>
-   </widget>
    <zorder>game_UI_graphicsView</zorder>
    <zorder>returnButton</zorder>
    <zorder>beginButton</zorder>
@@ -410,7 +391,6 @@
    <zorder>win_lose_gameover_Label</zorder>
    <zorder>rankingListButton</zorder>
    <zorder>rePlayToolButton</zorder>
-   <zorder>label</zorder>
   </widget>
  </widget>
  <resources>

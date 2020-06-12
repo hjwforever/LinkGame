@@ -25,7 +25,7 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->game_UI_graphicsView->setScene(Scence);
     ui->score_Label->setStyleSheet("color:white");
     ui->label3->setVisible(false);
-    ui->label->setStyleSheet("color:white");
+    //ui->label->setStyleSheet("color:white");
     this->setMinimumSize(45,45);
     setWindowTitle("LinkGame");
 
@@ -573,7 +573,13 @@ void Game_UI::on_beginButton_clicked()
 {
     ui->rePlayToolButton->hide();
     tipTimes=3;
-    ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
+//    ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
+    QPixmap pixmap4(QString(":/image/button_icon/game_ui/remind%1.png").arg(QString::number(tipTimes)));
+    ui->tipButton->resize(pixmap4.size());
+    ui->tipButton->setIcon(pixmap4);
+    ui->tipButton->setIconSize(pixmap4.size());
+    ui->tipButton->setMask(pixmap4.mask());
+    ui->tipButton->setStyleSheet("QToolButton{border:0px;}");
     freeGameMap(gameMap);
 
     if(isRePlay){
@@ -926,7 +932,13 @@ void Game_UI::on_tipButton_clicked()
         return;
     if(tipTimes>0){
         tipTimes--;
-        ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
+        //ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
+        QPixmap pixmap4(QString(":/image/button_icon/game_ui/remind%1.png").arg(QString::number(tipTimes)));
+        ui->tipButton->resize(pixmap4.size());
+        ui->tipButton->setIcon(pixmap4);
+        ui->tipButton->setIconSize(pixmap4.size());
+        ui->tipButton->setMask(pixmap4.mask());
+        ui->tipButton->setStyleSheet("QToolButton{border:0px;}");
 //        if(isDeadlock(gameMap)&&!allCleared(gameMap)){
 //            cout<<"½©¾Ö"<<endl;
 //        }
@@ -982,7 +994,8 @@ void Game_UI::on_prepareButton_clicked()
 
 void Game_UI::slot_startPK(int** pkgameMap){
     tipTimes=3;
-    ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
+//    ui->label->setText(QString::fromLocal8Bit("%1/3").arg(QString::number(tipTimes)));
+    QPixmap pixmap4(QString(":/image/button_icon/game_ui/remind%1.png").arg(QString::number(tipTimes)));
     freeGameMap(gameMap);
     if(isAutoSolve){
         autoProblemSolveThread->stop();
