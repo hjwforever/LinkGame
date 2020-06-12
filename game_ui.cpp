@@ -548,6 +548,12 @@ void Game_UI::gameOver()
 
 void Game_UI::on_returnButton_clicked()
 {
+    if(isAutoSolve)
+    {
+        autoProblemSolveThread->stop();
+        Sleep(500);
+    }
+
     freeGameMap(gameMap);
     if(rePlay_vertex_queue->length()!=0){
         rePlay_vertex_queue->~QQueue();

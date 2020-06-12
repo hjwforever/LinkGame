@@ -59,7 +59,7 @@ void Login_UI::closeEvent(QCloseEvent *event){
 void Login_UI::slot_loginSuccessfully(){
     set_ui->hasLogin=true;
     Game_UI *gameUI=new Game_UI;
-    qDebug()<<"gameUI";
+    //qDebug()<<"gameUI";
     connect(this, SIGNAL(signal_createEmptyMap()), gameUI, SLOT(createEmptyGameMap()));
     gameUI->show();
     emit signal_createEmptyMap();

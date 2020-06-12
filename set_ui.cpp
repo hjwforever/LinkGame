@@ -86,7 +86,7 @@ void Set_UI::slotreceive()
 {
     QByteArray array = tcpsocket->readAll();
     QString msg = array;
-    qDebug()<<msg;
+    //qDebug()<<msg;
 
     QStringList msgList;
     msgList=msg.split(":");
@@ -100,7 +100,7 @@ void Set_UI::slotreceive()
 
     }else if(msgList.at(0)=="SUCCESSTOLOGIN"){
         this->name=msgList.at(1);
-        qDebug()<<"emit signal_loginSuccessfully()";
+        //qDebug()<<"emit signal_loginSuccessfully()";
         emit signal_loginSuccessfully();
     }else if(msgList.at(0)=="ORIGINALPASSWORDINCORRECT"){
 

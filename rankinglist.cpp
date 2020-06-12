@@ -9,6 +9,8 @@ RankingList::RankingList(QWidget *parent) :
     ui(new Ui::RankingList)
 {
     ui->setupUi(this);
+
+    ui->rankingListLabel->setStyleSheet("font-size:25px; color: white");
     setWindowTitle("Rank");
     connect(set_ui,SIGNAL(signal_RankMsg(QString)),this,SLOT(slot_GetRankMsg(QString)));
 }
