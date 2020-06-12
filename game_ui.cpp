@@ -28,18 +28,6 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->label->setStyleSheet("color:white");
     this->setMinimumSize(45,45);
     setWindowTitle("LinkGame");
-//    // 进度条
-//    ui->gametime_label->setText("59");
-//    ui->gametime_label->setStyleSheet("color:white");
-//    ui->score_Label->setStyleSheet("color:white");
-//    ui->timeBar->setTextVisible(false);
-//    ui->timeBar->setMaximum(60);
-//    ui->timeBar->setMinimum(0);
-//    ui->timeBar->setValue(60);
-//    // 游戏计时器
-//    gameTimer = new QTimer;
-//    connect(gameTimer, SIGNAL(timeout()), this, SLOT(gameTimerEvent()));
-//    gameTimer->start(1000);
 
     QPixmap pixmap1(":/image/button_icon/game_ui/restart.png");
     ui->beginButton->resize(pixmap1.size());
@@ -62,7 +50,7 @@ Game_UI::Game_UI(QWidget *parent) :
     ui->autoSolveProblemButton->setMask(pixmap3.mask());
     ui->autoSolveProblemButton->setStyleSheet("QToolButton{border:0px;}");
 
-    QPixmap pixmap4(":/image/button_icon/game_ui/remind.png");
+    QPixmap pixmap4(":/image/button_icon/game_ui/remind3.png");
     ui->tipButton->resize(pixmap4.size());
     ui->tipButton->setIcon(pixmap4);
     ui->tipButton->setIconSize(pixmap4.size());
@@ -446,6 +434,7 @@ void Game_UI::tip(int** gameMap_0){
                                         //                                        qApp->processEvents();
                                         hasSollution=true;
                                         goto label;
+
                                     }
                                 }
                             }

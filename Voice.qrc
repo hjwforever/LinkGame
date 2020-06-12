@@ -209,5 +209,9 @@
         <file>button_icon/redister_ui/get_code.png</file>
         <file>button_icon/redister_ui/sure.png</file>
         <file>button_icon/game_ui/pause_playback.png</file>
+        <file>button_icon/game_ui/remind0.png</file>
+        <file>button_icon/game_ui/remind1.png</file>
+        <file>button_icon/game_ui/remind2.png</file>
+        <file>button_icon/game_ui/remind3.png</file>
     </qresource>
 </RCC>
