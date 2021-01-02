@@ -1,10 +1,21 @@
 # Link Game
-由胡江浩、黄俊雯、邓硕、陈庆洋的小组负责完成的连连看游戏项目。  
-计划四周完成：  
-- 周一  
-  1. 黄俊雯、陈庆洋负责项目管理平台与工具的选取及应用。
-  2. 胡江浩负责项目功能的介绍。
-  3. 邓硕负责项目管理开发模型的选择及应用。  
-- 周二  
-- 周三  
-- 周四  
+连连看游戏，可全网联机对战，总体分客户端和服务器两部分
+
+## 功能简述
+!!联网对战；
+登录、注册；
+切换音乐，调借音量；
+切换难度，切换图片主题；
+僵局判断,
+自动解题，
+解题提示；
+
+## 游戏截图
+![1](https://img.aruoxi.top/linkgame/1.png)
+![2](https://img.aruoxi.top/linkgame/2.png)
+![3](https://img.aruoxi.top/linkgame/3.png)
+![4](https://img.aruoxi.top/linkgame/4.png)
+![5](https://img.aruoxi.top/linkgame/5.png)
+![6](https://img.aruoxi.top/linkgame/6.png)
+![7](https://img.aruoxi.top/linkgame/7.png)
+![8](https://img.aruoxi.top/linkgame/8.png)
